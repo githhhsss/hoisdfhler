@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class WebControls_WebTop : System.Web.UI.UserControl
+public partial class WebControls_WebScript : System.Web.UI.UserControl
 {
     private string _Path;
     /// <summary>  
@@ -26,6 +26,6 @@ public partial class WebControls_WebTop : System.Web.UI.UserControl
     }
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        
     }
 }

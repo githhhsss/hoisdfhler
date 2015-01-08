@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class WebControls_WebTop : System.Web.UI.UserControl
+public partial class WebControls_WebFoot : System.Web.UI.UserControl
 {
     private string _Path;
     /// <summary>  
