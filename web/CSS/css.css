@@ -19,7 +19,21 @@ img{border-style: none;padding: 0px;margin: 0px;}
 .web-top .web-top-right .web-top-right-ss{  margin-left:25px; margin-top:10px;width:184px; height:32px ;background-image: url('../Images/web/top_meun_ss.png');background-repeat: no-repeat;}
 
 /*商城尾部样式*/
+.web-foot-top-null{left:0px;right:0px;margin-left:auto; margin-right:auto; height:10px;width:1366px; overflow:hidden;position:relative; }
 .web-foot{left:0px;right:0px;margin-left:auto; margin-right:auto; height:206px;width:1366px; overflow:hidden;position:relative;background:#1ea78d; }
+.web-foot .web-foot-logo{ padding-top:35px;text-align:center;}
+.web-foot .web-foot--{padding:20px; text-align:center;}
+.web-foot .web-foot-text{text-align: center;line-height: 20px;font-family: BatangChe;font-weight: bold;font-size: 12px;}
+.web-foot .web-foot-text .foot-text-1{font-weight:100;}
 
+
+
+/*通用样式页面*/
 .web-page{left:0px;right:0px;margin-left:auto; margin-right:auto; height:auto; width:1366px;position:relative; }
-.web-page div{  height:700px;background:#159684;}
+
+
+
+.clear{ clear:both;}
+
+/*首页*/
+

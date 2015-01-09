@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="WebTop.ascx.cs" Inherits="WebControls_WebTop" %>
 <div class="web-top" id="web-top">
     <div class="web-top-left">
-        <img src="<%= MyPath %>Images/web/logo.png" /></div>
+        <a href="/"><img src="<%= MyPath %>Images/web/logo.png" /></a></div>
     <div class="web-top-jgx">
         <img src="<%= MyPath %>Images/web/top_meun_1.png" /></div>
     <div class="web-top-center">
