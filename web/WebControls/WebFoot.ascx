@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="WebFoot.ascx.cs" Inherits="WebControls_WebFoot" %>
-<div class="web-foot-top-null"></div>
+<%--<div class="web-foot-top-null"></div>--%>
 <div class="web-foot">
     <div class="web-foot-logo"><img src="<%= MyPath %>Images/web/logo.png" /></div>
     <div class="web-foot--"><img src="<%= MyPath %>Images/web/foot__.png" /></div>
