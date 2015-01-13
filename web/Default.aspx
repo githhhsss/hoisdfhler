@@ -78,7 +78,7 @@
         .index-list-text h3 a{color:#59c3aa;}
         .index-list-text h3 a:hover{text-decoration: none;}
         .index-list-text span{color:#062033; font-family:Myriad Pro; line-height:}
-        #index-list-1,#index-list-2,#index-list-3{ display:none;}
+        #index-list-1,#index-list-2,#index-list-3{ display:none; padding-bottom:50px;}
     </style>
 </head>
 <body>
@@ -98,9 +98,9 @@
             <div class="index-content-tab">
                 <div class="index-tab-noneleft"></div>
                 <ul>
-                    <li><a id="current0" href="javascript:;">最新资讯</a></li>
-	                <li><a id="current1" href="javascript:;">行业动态</a></li>
-                    <li><a id="current2" href="javascript:;">推荐视频</a></li>
+                    <li><a id="current0" href="javascript:;"><%--最新资讯--%></a></li>
+	                <li><a id="current1" href="javascript:;"><%--行业动态--%></a></li>
+                    <li><a id="current2" href="javascript:;"><%--推荐视频--%></a></li>
                 </ul>
             </div>
             <div class="clear"></div>
