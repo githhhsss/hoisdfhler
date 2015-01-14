@@ -104,6 +104,7 @@
                 </ul>
             </div>
             <div class="clear"></div>
+            <%--最新资讯--%>
             <div id ="index-list-1">
             <div class="index-list">
                 <div class="index-list-img fl">
@@ -142,6 +143,7 @@
                 <div class="index-list-tottom clear"></div>
             </div>
             </div>
+            <%--行业动态--%>
             <div id ="index-list-2">
             <div class="index-list">
                 <div class="index-list-img fl">
@@ -180,6 +182,7 @@
                 <div class="index-list-tottom clear"></div>
             </div>
             </div>
+            <%--推荐视频--%>
             <div id ="index-list-3">
             <div class="index-list">
                 <div class="index-list-img fl">

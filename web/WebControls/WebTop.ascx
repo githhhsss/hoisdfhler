@@ -14,10 +14,11 @@
     </div>
     <div class="web-top-right">
         <ul class="web-top-center-ul">
-            <li><a href="#"><img src="<%= MyPath %>Images/web/top_meun_dl.png" /></a></li>
+            <li><a href="<%= MyPath %>User/Login.aspx"><img src="<%= MyPath %>Images/web/top_meun_dl.png" /></a></li>
             <li><div><img src="<%= MyPath %>Images/web/top_meun_2.png" /></div></li>
-            <li><a href="#"><img src="<%= MyPath %>Images/web/top_meun_zc.png" /></a></li>
-            <li><div class="web-top-right-ss"></div></li>
+            <li><a href="<%= MyPath %>User/Register.aspx"><img src="<%= MyPath %>Images/web/top_meun_zc.png" /></a></li>
+            <li><div class="web-top-right-ss">
+                <input id="Text1" type="text" /></div></li>
         </ul>
     </div>
 </div>
