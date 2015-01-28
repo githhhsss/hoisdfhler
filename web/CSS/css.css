@@ -1,9 +1,9 @@
-﻿*{ margin:0px; padding:0px;}
+﻿*{ margin:0px; padding:0px;font-family:造字工房雅圆（非商用）常规体;}
 body{font-size: 12px;font-family: 宋体, Arial, Helvetica, sans-serif;color: #333;}
 img{border-style: none;padding: 0px;margin: 0px;}
 
 /*商城头部样式*/
-.web-top{ left:0px;right:0px;margin-left:auto; margin-right:auto; height:55px;width:1366px; overflow:hidden;position:relative;background:rgb(16,22,54); filter:alpha(opacity=50); background:rgba(16,22,54,0.2); z-index:99999; }
+.web-top{ left:0px;right:0px;margin-left:auto; margin-right:auto; height:55px;width:1366px; overflow:hidden;position:relative;background:rgb(16,22,54); filter:alpha(opacity=50); background:rgba(16,22,54,0.5); z-index:99999; }
 .web-top .web-top-left{position:absolute;left:0px;width:160px;height:55px;overflow:hidden;}
 .web-top .web-top-left img{ margin-top:10px; margin-left:25px;}
 .web-top .web-top-jgx{position:absolute;left:160px;width:3px;overflow:hidden; }
@@ -17,14 +17,14 @@ img{border-style: none;padding: 0px;margin: 0px;}
 .web-top .web-top-right .web-top-center-ul li{ float:left;}
 .web-top .web-top-right img{ margin-top:18px; margin-left:25px;}
 .web-top .web-top-right .web-top-right-ss{ padding-left:25px;   margin-top:10px;width:184px; height:32px ;}
-.web-top .web-top-right .web-top-right-ss input{ border:none; padding-left:29px;width:155px; height:32px ; line-height:32px; background: url('../Images/web/top_meun_ss.png') left center;}
+.web-top .web-top-right .web-top-right-ss input{ border:none; padding-left:29px;width:155px; height:32px ; line-height:32px; background: url('../Images/web/top_meun_ss.png') left center no-repeat;}
 
 /*商城尾部样式*/
 .web-foot-top-null{left:0px;right:0px;margin-left:auto; margin-right:auto; height:10px;width:1366px; overflow:hidden;position:relative; }
 .web-foot{left:0px;right:0px;margin-left:auto; margin-right:auto; height:206px;width:1366px; overflow:hidden;position:relative;background:#1ea78d; }
 .web-foot .web-foot-logo{ padding-top:35px;text-align:center;}
 .web-foot .web-foot--{padding:20px; text-align:center;}
-.web-foot .web-foot-text{text-align: center;line-height: 20px;font-family:@造字工房雅圆（非商用）常规体;font-weight: bold;font-size: 12px;}
+.web-foot .web-foot-text{text-align: center;line-height: 20px;font-family:造字工房雅圆（非商用）常规体;font-weight: bold;font-size: 12px;}
 .web-foot .web-foot-text .foot-text-1{font-weight:100;}
 
 
@@ -34,13 +34,6 @@ img{border-style: none;padding: 0px;margin: 0px;}
 .clear{ clear:both;}
 .fl{ float:left;}
 .fr{ float:right;}
-.ss
-{
-    background-image: url('../Images/index/meun_1.png');
-    background-repeat: no-repeat;
-    background-position: center center;
-    text-decoration: none;
-}
 
 /*首页*/
 

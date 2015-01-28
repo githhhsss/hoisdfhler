@@ -45,7 +45,6 @@
                 $("#index-list-1").hide();
                 $("#index-list-3").show();
             });
-
         })
     </script>
     <style type="text/css">
