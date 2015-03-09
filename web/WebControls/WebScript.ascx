@@ -1,6 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="WebScript.ascx.cs" Inherits="WebControls_WebScript" %>
 <script type="text/javascript" src="<%= MyPath %>JS/jq/jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="<%= MyPath %>JS/com.js"></script>
+<script type="text/javascript" src="<%= MyPath %>JS/ys.js"></script>
 <script type="text/javascript" src="<%= MyPath %>JS/flexSlider/jquery.flexslider.js"></script>
 <script type="text/javascript">
     $(function () {

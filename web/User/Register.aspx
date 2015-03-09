@@ -35,9 +35,28 @@
             <div class="register-body-list">密码答案：<input id="Text6" type="text" /></div>
             <div class="register-body-ty">
                 <input id="Checkbox1" type="checkbox" /> <span>我已同意并阅读，Mmovie服务使用协议</span></div>
-            <div class="register-body-bottom"><a href="#" class="aa"></a> 已有账号，点此<a href="Login.aspx" class="a">登陆</a></div>
+            <div class="register-body-bottom"><a href="javascript:;" class="aa"></a> 已有账号，点此<a href="Login.aspx" class="a">登陆</a></div>
         </div>
     </div>
     <mycontrols:webFoot id="WebFoot1" runat="server"/>
+    <script type="text/javascript">
+        $(function () {
+            $(".aa").click(function () {
+                yscom.ajax({
+                    url: "Action/Handler.ashx?cmd=RegisterUser",
+                    data: {
+                        
+                    },
+                    success: function (data) {
+                        if (data.flag == "true") {
+                            yscom.messager('成功', data.msg);
+                        } else {
+                            yscom.messager('失败', data.msg);
+                        }
+                    }
+                });
+            });
+        })
+    </script>
 </body>
 </html>
