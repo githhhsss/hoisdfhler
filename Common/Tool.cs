@@ -64,7 +64,8 @@ namespace Maticsoft.Common
         /// <param name="cookiename">cookie名</param>
         public static void CookieRemove(string cookiename)
         {
-            HttpContext.Current.Request.Cookies.Remove(cookiename);
+            CookieWrite(cookiename, "");
+            //HttpContext.Current.Request.Cookies.Remove(cookiename);
         }
         /// <summary>
         /// 返回 URL 字符串的编码结果
