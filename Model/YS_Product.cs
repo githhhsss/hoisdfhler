@@ -11,11 +11,11 @@ namespace YS_WEB.Model
 		{}
 		#region Model
 		private int _id;
-		private int _producttype;
+		private YS_Enum.ProductType _producttype;
 		private string _productname;
 		private decimal _price;
 		private decimal _promotion;
-		private int _state;
+        private YS_Enum.ProductState _state;
 		private string _description;
 		private int _stock;
 		private DateTime _inputtime;
@@ -40,7 +40,7 @@ namespace YS_WEB.Model
 		/// <summary>
 		/// 产品类型：0默认，1器材，2二手，3拍摄外单，4职位，5其他
 		/// </summary>
-		public int ProductType
+        public YS_Enum.ProductType ProductType
 		{
 			set{ _producttype=value;}
 			get{return _producttype;}
@@ -72,7 +72,7 @@ namespace YS_WEB.Model
 		/// <summary>
 		/// 状态：0默认，1在售，2下架
 		/// </summary>
-		public int State
+        public YS_Enum.ProductState State
 		{
 			set{ _state=value;}
 			get{return _state;}

@@ -8,10 +8,10 @@ namespace YS_WEB.BLL
 	/// <summary>
 	/// YS_Attention
 	/// </summary>
-	public partial class YS_Attention
+	public partial class YS_AttentionBLL
 	{
-		private readonly YS_WEB.DAL.YS_Attention dal=new YS_WEB.DAL.YS_Attention();
-		public YS_Attention()
+		private readonly YS_WEB.DAL.YS_AttentionDAL dal=new YS_WEB.DAL.YS_AttentionDAL();
+		public YS_AttentionBLL()
 		{}
 		#region  BasicMethod
 

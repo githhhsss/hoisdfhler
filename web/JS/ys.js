@@ -62,7 +62,17 @@
             }]
         });
     },
-    messager: function () {
-        alert("d");
+    messager: function (title, centent) {
+//        $("<div class=\"datagrid-mask\" id=\"m-datagrid-mask\"></div>").css({
+//            display: "block", width: "100%", height: $(window).height(), zIndex: 99998
+//        }).appendTo("body");
+//        $("<div class=\"datagrid-mask-msg\" id=\"m-datagrid-mask-msg\"></div>").html(centent).appendTo("body").css({
+//            display: "block", left: ($(document.body).outerWidth(true) - 190) / 2, top: ($(window).height() - 45) / 2, zIndex: 99999
+//        });
+
+
+//        $("#m-datagrid-mask").remove();
+//        $("#m-datagrid-mask-msg").remove();
+
     }
 }

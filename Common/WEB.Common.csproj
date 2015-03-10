@@ -173,6 +173,7 @@
     <Compile Include="RMB.cs" />
     <Compile Include="StringPlus.cs" />
     <Compile Include="TimeParser.cs" />
+    <Compile Include="Tool.cs" />
     <Compile Include="UrlOper.cs" />
   </ItemGroup>
   <ItemGroup>

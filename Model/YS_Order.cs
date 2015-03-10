@@ -21,7 +21,7 @@ namespace YS_WEB.Model
 		private string _deliveraddress;
 		private decimal _price;
 		private decimal _promotion;
-		private int _state;
+        private YS_Enum.OrderState _state;
 		private DateTime _addtime;
 		/// <summary>
 		/// 
@@ -114,7 +114,7 @@ namespace YS_WEB.Model
 		/// <summary>
 		/// 订单状态：0默认，1待支付，2已支付/待发货，3已发货/待签收，4已完成
 		/// </summary>
-		public int State
+        public YS_Enum.OrderState State
 		{
 			set{ _state=value;}
 			get{return _state;}

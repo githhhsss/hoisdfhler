@@ -8,9 +8,9 @@ namespace YS_WEB.DAL
 	/// <summary>
 	/// 数据访问类:YS_OrderItem
 	/// </summary>
-	public partial class YS_OrderItem
+	public partial class YS_OrderItemDAL
 	{
-		public YS_OrderItem()
+        public YS_OrderItemDAL()
 		{}
 		#region  BasicMethod
 
@@ -23,9 +23,9 @@ namespace YS_WEB.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into YS_OrderItem(");
-			strSql.Append("ID,OrderID,ProductID)");
+			strSql.Append("OrderID,ProductID)");
 			strSql.Append(" values (");
-			strSql.Append("@ID,@OrderID,@ProductID)");
+			strSql.Append("@OrderID,@ProductID)");
 			SqlParameter[] parameters = {
 					new SqlParameter("@ID", SqlDbType.Int,4),
 					new SqlParameter("@OrderID", SqlDbType.Int,4),

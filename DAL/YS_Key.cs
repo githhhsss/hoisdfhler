@@ -8,9 +8,9 @@ namespace YS_WEB.DAL
 	/// <summary>
 	/// 数据访问类:YS_Key
 	/// </summary>
-	public partial class YS_Key
+	public partial class YS_KeyDAL
 	{
-		public YS_Key()
+        public YS_KeyDAL()
 		{}
 		#region  BasicMethod
 
@@ -23,9 +23,9 @@ namespace YS_WEB.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into YS_Key(");
-			strSql.Append("ID,KeyName)");
+			strSql.Append("KeyName)");
 			strSql.Append(" values (");
-			strSql.Append("@ID,@KeyName)");
+			strSql.Append("@KeyName)");
 			SqlParameter[] parameters = {
 					new SqlParameter("@ID", SqlDbType.Int,4),
 					new SqlParameter("@KeyName", SqlDbType.NVarChar,50)};

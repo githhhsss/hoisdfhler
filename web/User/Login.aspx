@@ -33,7 +33,7 @@
             </div>
             <div class="login-input-text">密&nbsp;&nbsp;码</div>
             <div class="login-input">
-                <input id="txt_password" type="text" />
+                <input id="txt_password" type="password" />
             </div>
             <div class="login-wjmm"><a href="FindPassword.aspx">忘记密码</a></div>
             <div class="login-button">
@@ -43,5 +43,25 @@
         </div>
     </div>
     <mycontrols:webFoot id="WebFoot1" runat="server"/>
+    <script type="text/javascript">
+        $(function () {
+            $(".ok").click(function () {
+                yscom.ajax({
+                    url: "Action/Handler.ashx?cmd=UserLogin",
+                    data: {
+                        "username": $("#txt_username").val(),
+                        "password": $("#txt_password").val()
+                    },
+                    success: function (data) {
+                        if (data.flag == "true") {
+                            window.location = 'Default.aspx';
+                        } else {
+                            alert(data.msg);
+                        }
+                    }
+                });
+            });
+        })
+    </script>
 </body>
 </html>

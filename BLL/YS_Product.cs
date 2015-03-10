@@ -8,10 +8,10 @@ namespace YS_WEB.BLL
 	/// <summary>
 	/// YS_Product
 	/// </summary>
-	public partial class YS_Product
+	public partial class YS_ProductBLL
 	{
-		private readonly YS_WEB.DAL.YS_Product dal=new YS_WEB.DAL.YS_Product();
-		public YS_Product()
+		private readonly YS_WEB.DAL.YS_ProductDAL dal=new YS_WEB.DAL.YS_ProductDAL();
+        public YS_ProductBLL()
 		{}
 		#region  BasicMethod
 

@@ -8,10 +8,10 @@ namespace YS_WEB.BLL
 	/// <summary>
 	/// YS_Car
 	/// </summary>
-	public partial class YS_Car
+	public partial class YS_CarBLL
 	{
-		private readonly YS_WEB.DAL.YS_Car dal=new YS_WEB.DAL.YS_Car();
-		public YS_Car()
+		private readonly YS_WEB.DAL.YS_CarDAL dal=new YS_WEB.DAL.YS_CarDAL();
+		public YS_CarBLL()
 		{}
 		#region  BasicMethod
 

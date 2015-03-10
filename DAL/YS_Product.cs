@@ -8,9 +8,9 @@ namespace YS_WEB.DAL
 	/// <summary>
 	/// 数据访问类:YS_Product
 	/// </summary>
-	public partial class YS_Product
+	public partial class YS_ProductDAL
 	{
-		public YS_Product()
+        public YS_ProductDAL()
 		{}
 		#region  BasicMethod
 
@@ -23,9 +23,9 @@ namespace YS_WEB.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into YS_Product(");
-			strSql.Append("ID,ProductType,ProductName,Price,Promotion,State,Description,Stock,InputTime,StartTime,OverTime,Sales,ProductKey,IsHot,ProductMan,ProductPhone,ProductAddress,ProductXinJiu,PriceRange)");
+			strSql.Append("ProductType,ProductName,Price,Promotion,State,Description,Stock,InputTime,StartTime,OverTime,Sales,ProductKey,IsHot,ProductMan,ProductPhone,ProductAddress,ProductXinJiu,PriceRange)");
 			strSql.Append(" values (");
-			strSql.Append("@ID,@ProductType,@ProductName,@Price,@Promotion,@State,@Description,@Stock,@InputTime,@StartTime,@OverTime,@Sales,@ProductKey,@IsHot,@ProductMan,@ProductPhone,@ProductAddress,@ProductXinJiu,@PriceRange)");
+			strSql.Append("@ProductType,@ProductName,@Price,@Promotion,@State,@Description,@Stock,@InputTime,@StartTime,@OverTime,@Sales,@ProductKey,@IsHot,@ProductMan,@ProductPhone,@ProductAddress,@ProductXinJiu,@PriceRange)");
 			SqlParameter[] parameters = {
 					new SqlParameter("@ID", SqlDbType.Int,4),
 					new SqlParameter("@ProductType", SqlDbType.Int,4),
@@ -217,7 +217,7 @@ namespace YS_WEB.DAL
 				}
 				if(row["ProductType"]!=null && row["ProductType"].ToString()!="")
 				{
-					model.ProductType=int.Parse(row["ProductType"].ToString());
+                    model.ProductType = (YS_WEB.Model.YS_Enum.ProductType)int.Parse(row["ProductType"].ToString());
 				}
 				if(row["ProductName"]!=null)
 				{
@@ -233,7 +233,7 @@ namespace YS_WEB.DAL
 				}
 				if(row["State"]!=null && row["State"].ToString()!="")
 				{
-					model.State=int.Parse(row["State"].ToString());
+                    model.State = (YS_WEB.Model.YS_Enum.ProductState)int.Parse(row["State"].ToString());
 				}
 				if(row["Description"]!=null)
 				{

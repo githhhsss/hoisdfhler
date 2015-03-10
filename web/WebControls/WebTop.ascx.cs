@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Maticsoft.Common;
 
 public partial class WebControls_WebTop : System.Web.UI.UserControl
 {
@@ -26,6 +27,17 @@ public partial class WebControls_WebTop : System.Web.UI.UserControl
     }
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (string.IsNullOrEmpty(Tool.CookieGet("UserName")))
+        {
+            is_login.Visible = false;
+            no_login.Visible = true;
+        }
+        else
+        {
+            is_login.Visible = true;
+            no_login.Visible = false;
+            login_User.InnerHtml = "<span style='color:#FFF;'>" + Tool.CookieGet("ReadName") + "</span>";
+            login_Out.InnerHtml = "<span style='color:#FFF;'>退出</span>";
+        }
     }
 }

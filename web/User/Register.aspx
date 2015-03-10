@@ -27,9 +27,9 @@
     <div class="web-page">
         <div class="register-body">
             <div class="register-body-top"></div>
-            <div class="register-body-list">用&nbsp;户&nbsp;名：<input id="Text1" type="text" /></div>
-            <div class="register-body-list">密&nbsp;&nbsp;&nbsp;&nbsp;码：<input id="Text2" type="text" /></div>
-            <div class="register-body-list">确认密码：<input id="Text3" type="text" /></div>
+            <div class="register-body-list">用&nbsp;户&nbsp;名：<input id="userNameTxt" type="text" /></div>
+            <div class="register-body-list">密&nbsp;&nbsp;&nbsp;&nbsp;码：<input id="Text2" type="password" /></div>
+            <div class="register-body-list">确认密码：<input id="Text3" type="password" /></div>
             <div class="register-body-list">电子邮件：<input id="Text4" type="text" /></div>
             <div class="register-body-list">密码问题：<input id="Text5" type="text" /></div>
             <div class="register-body-list">密码答案：<input id="Text6" type="text" /></div>
@@ -45,13 +45,18 @@
                 yscom.ajax({
                     url: "Action/Handler.ashx?cmd=RegisterUser",
                     data: {
-                        
+                        "username": $("#userNameTxt").val(),
+                        "password": $("#Text2").val(),
+                        "passwordag": $("#Text3").val(),
+                        "e_mail": $("#Text4").val(),
+                        "question": $("#Text5").val(),
+                        "answer": $("#Text6").val()
                     },
                     success: function (data) {
                         if (data.flag == "true") {
-                            yscom.messager('成功', data.msg);
+                            alert(data.msg);
                         } else {
-                            yscom.messager('失败', data.msg);
+                            alert(data.msg);
                         }
                     }
                 });

@@ -8,10 +8,10 @@ namespace YS_WEB.BLL
 	/// <summary>
 	/// YS_Key
 	/// </summary>
-	public partial class YS_Key
+	public partial class YS_KeyBLL
 	{
-		private readonly YS_WEB.DAL.YS_Key dal=new YS_WEB.DAL.YS_Key();
-		public YS_Key()
+		private readonly YS_WEB.DAL.YS_KeyDAL dal=new YS_WEB.DAL.YS_KeyDAL();
+        public YS_KeyBLL()
 		{}
 		#region  BasicMethod
 

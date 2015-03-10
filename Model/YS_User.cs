@@ -17,7 +17,7 @@ namespace YS_WEB.Model
 		private string _address;
 		private DateTime _birthday;
 		private string _e_mail;
-		private int _usertype;
+        private YS_Enum.UserType _usertype;
 		private string _question;
 		private string _answer;
 		private string _headimg;
@@ -86,7 +86,7 @@ namespace YS_WEB.Model
 		/// <summary>
 		/// 用户类型：0（默认），1商城用户，2管理员,3公司机构
 		/// </summary>
-		public int UserType
+		public YS_Enum.UserType UserType
 		{
 			set{ _usertype=value;}
 			get{return _usertype;}

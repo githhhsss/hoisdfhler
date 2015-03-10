@@ -8,9 +8,9 @@ namespace YS_WEB.DAL
 	/// <summary>
 	/// 数据访问类:YS_Recharge
 	/// </summary>
-	public partial class YS_Recharge
+	public partial class YS_RechargeDAL
 	{
-		public YS_Recharge()
+        public YS_RechargeDAL()
 		{}
 		#region  BasicMethod
 
@@ -23,9 +23,9 @@ namespace YS_WEB.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into YS_Recharge(");
-			strSql.Append("ID,UserID,UserName,RechargeMoney,RechargeTime)");
+			strSql.Append("UserID,UserName,RechargeMoney,RechargeTime)");
 			strSql.Append(" values (");
-			strSql.Append("@ID,@UserID,@UserName,@RechargeMoney,@RechargeTime)");
+			strSql.Append("@UserID,@UserName,@RechargeMoney,@RechargeTime)");
 			SqlParameter[] parameters = {
 					new SqlParameter("@ID", SqlDbType.Int,4),
 					new SqlParameter("@UserID", SqlDbType.Int,4),

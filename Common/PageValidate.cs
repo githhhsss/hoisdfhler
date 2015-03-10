@@ -118,7 +118,7 @@ namespace Maticsoft.Common
 
 		#region 邮件地址
 		/// <summary>
-		/// 是否是浮点数 可带正负号
+        /// 是否邮件地址
 		/// </summary>
 		/// <param name="inputData">输入字符串</param>
 		/// <returns></returns>

@@ -8,10 +8,10 @@ namespace YS_WEB.BLL
 	/// <summary>
 	/// YS_Comment
 	/// </summary>
-	public partial class YS_Comment
+	public partial class YS_CommentBLL
 	{
-		private readonly YS_WEB.DAL.YS_Comment dal=new YS_WEB.DAL.YS_Comment();
-		public YS_Comment()
+		private readonly YS_WEB.DAL.YS_CommentDAL dal=new YS_WEB.DAL.YS_CommentDAL();
+        public YS_CommentBLL()
 		{}
 		#region  BasicMethod
 

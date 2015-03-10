@@ -8,9 +8,9 @@ namespace YS_WEB.DAL
 	/// <summary>
 	/// 数据访问类:YS_Delivery
 	/// </summary>
-	public partial class YS_Delivery
+	public partial class YS_DeliveryDAL
 	{
-		public YS_Delivery()
+        public YS_DeliveryDAL()
 		{}
 		#region  BasicMethod
 
@@ -23,9 +23,9 @@ namespace YS_WEB.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into YS_Delivery(");
-			strSql.Append("ID,UserID,UserName,DeliveryName,DeliverPhone,DeliverSheng,DeliverCity,DeliverZipCode,DeliverAddress)");
+			strSql.Append("UserID,UserName,DeliveryName,DeliverPhone,DeliverSheng,DeliverCity,DeliverZipCode,DeliverAddress)");
 			strSql.Append(" values (");
-			strSql.Append("@ID,@UserID,@UserName,@DeliveryName,@DeliverPhone,@DeliverSheng,@DeliverCity,@DeliverZipCode,@DeliverAddress)");
+			strSql.Append("@UserID,@UserName,@DeliveryName,@DeliverPhone,@DeliverSheng,@DeliverCity,@DeliverZipCode,@DeliverAddress)");
 			SqlParameter[] parameters = {
 					new SqlParameter("@ID", SqlDbType.Int,4),
 					new SqlParameter("@UserID", SqlDbType.Int,4),

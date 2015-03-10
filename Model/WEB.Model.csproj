@@ -127,6 +127,7 @@
     <Compile Include="YS_Car.cs" />
     <Compile Include="YS_Comment.cs" />
     <Compile Include="YS_Delivery.cs" />
+    <Compile Include="YS_Enum.cs" />
     <Compile Include="YS_Key.cs" />
     <Compile Include="YS_Order.cs" />
     <Compile Include="YS_OrderItem.cs" />

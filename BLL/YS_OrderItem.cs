@@ -8,10 +8,10 @@ namespace YS_WEB.BLL
 	/// <summary>
 	/// YS_OrderItem
 	/// </summary>
-	public partial class YS_OrderItem
+	public partial class YS_OrderItemBLL
 	{
-		private readonly YS_WEB.DAL.YS_OrderItem dal=new YS_WEB.DAL.YS_OrderItem();
-		public YS_OrderItem()
+		private readonly YS_WEB.DAL.YS_OrderItemDAL dal=new YS_WEB.DAL.YS_OrderItemDAL();
+        public YS_OrderItemBLL()
 		{}
 		#region  BasicMethod
 

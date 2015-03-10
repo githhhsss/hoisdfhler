@@ -8,9 +8,9 @@ namespace YS_WEB.DAL
 	/// <summary>
 	/// 数据访问类:YS_Attention
 	/// </summary>
-	public partial class YS_Attention
+	public partial class YS_AttentionDAL
 	{
-		public YS_Attention()
+        public YS_AttentionDAL()
 		{}
 		#region  BasicMethod
 
@@ -23,9 +23,9 @@ namespace YS_WEB.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into YS_Attention(");
-			strSql.Append("ID,AttentionID,AttentionName,BeConcernedID,BeConcernedName,AttentionTime)");
+			strSql.Append("AttentionID,AttentionName,BeConcernedID,BeConcernedName,AttentionTime)");
 			strSql.Append(" values (");
-			strSql.Append("@ID,@AttentionID,@AttentionName,@BeConcernedID,@BeConcernedName,@AttentionTime)");
+			strSql.Append("@AttentionID,@AttentionName,@BeConcernedID,@BeConcernedName,@AttentionTime)");
 			SqlParameter[] parameters = {
 					new SqlParameter("@ID", SqlDbType.Int,4),
 					new SqlParameter("@AttentionID", SqlDbType.Int,4),

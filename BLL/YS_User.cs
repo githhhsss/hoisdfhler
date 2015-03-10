@@ -8,10 +8,10 @@ namespace YS_WEB.BLL
 	/// <summary>
 	/// YS_User
 	/// </summary>
-	public partial class YS_User
+	public partial class YS_UserBLL
 	{
-		private readonly YS_WEB.DAL.YS_User dal=new YS_WEB.DAL.YS_User();
-		public YS_User()
+		private readonly YS_WEB.DAL.YS_UserDAL dal=new YS_WEB.DAL.YS_UserDAL();
+        public YS_UserBLL()
 		{}
 		#region  BasicMethod
 
@@ -43,11 +43,27 @@ namespace YS_WEB.BLL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public YS_WEB.Model.YS_User GetModel()
+		public YS_WEB.Model.YS_User GetModel(int id)
 		{
 			//该表无主键信息，请自定义主键/条件字段
-			return dal.GetModel();
+			return dal.GetModel(id);
 		}
+        /// <summary>
+        /// 得到一个对象实体
+        /// </summary>
+        public YS_WEB.Model.YS_User GetModel(string userName)
+        {
+            //该表无主键信息，请自定义主键/条件字段
+            return dal.GetModel(userName);
+        }
+        /// <summary>
+        /// 得到一个对象实体
+        /// </summary>
+        public YS_WEB.Model.YS_User GetModel(string userName ,string password)
+        {
+            //该表无主键信息，请自定义主键/条件字段
+            return dal.GetModel(userName,password);
+        }
 
 		/// <summary>
 		/// 得到一个对象实体，从缓存中

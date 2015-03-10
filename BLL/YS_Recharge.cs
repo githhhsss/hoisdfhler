@@ -8,10 +8,10 @@ namespace YS_WEB.BLL
 	/// <summary>
 	/// YS_Recharge
 	/// </summary>
-	public partial class YS_Recharge
+	public partial class YS_RechargeBLL
 	{
-		private readonly YS_WEB.DAL.YS_Recharge dal=new YS_WEB.DAL.YS_Recharge();
-		public YS_Recharge()
+		private readonly YS_WEB.DAL.YS_RechargeDAL dal=new YS_WEB.DAL.YS_RechargeDAL();
+        public YS_RechargeBLL()
 		{}
 		#region  BasicMethod
 

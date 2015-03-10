@@ -8,9 +8,9 @@ namespace YS_WEB.DAL
 	/// <summary>
 	/// 数据访问类:YS_Comment
 	/// </summary>
-	public partial class YS_Comment
+	public partial class YS_CommentDAL
 	{
-		public YS_Comment()
+        public YS_CommentDAL()
 		{}
 		#region  BasicMethod
 
@@ -23,9 +23,9 @@ namespace YS_WEB.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into YS_Comment(");
-			strSql.Append("ID,UserID,UserName,ProductID,ProductName,Content)");
+			strSql.Append("UserID,UserName,ProductID,ProductName,Content)");
 			strSql.Append(" values (");
-			strSql.Append("@ID,@UserID,@UserName,@ProductID,@ProductName,@Content)");
+			strSql.Append("@UserID,@UserName,@ProductID,@ProductName,@Content)");
 			SqlParameter[] parameters = {
 					new SqlParameter("@ID", SqlDbType.Int,4),
 					new SqlParameter("@UserID", SqlDbType.Int,4),

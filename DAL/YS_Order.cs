@@ -8,9 +8,9 @@ namespace YS_WEB.DAL
 	/// <summary>
 	/// 数据访问类:YS_Order
 	/// </summary>
-	public partial class YS_Order
+	public partial class YS_OrderDAL
 	{
-		public YS_Order()
+        public YS_OrderDAL()
 		{}
 		#region  BasicMethod
 
@@ -23,9 +23,9 @@ namespace YS_WEB.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into YS_Order(");
-			strSql.Append("ID,UserID,UserName,DeliveryName,DeliverPhone,DeliverSheng,DeliverCity,DeliverZipCode,DeliverAddress,Price,Promotion,State,AddTime)");
+			strSql.Append("UserID,UserName,DeliveryName,DeliverPhone,DeliverSheng,DeliverCity,DeliverZipCode,DeliverAddress,Price,Promotion,State,AddTime)");
 			strSql.Append(" values (");
-			strSql.Append("@ID,@UserID,@UserName,@DeliveryName,@DeliverPhone,@DeliverSheng,@DeliverCity,@DeliverZipCode,@DeliverAddress,@Price,@Promotion,@State,@AddTime)");
+			strSql.Append("@UserID,@UserName,@DeliveryName,@DeliverPhone,@DeliverSheng,@DeliverCity,@DeliverZipCode,@DeliverAddress,@Price,@Promotion,@State,@AddTime)");
 			SqlParameter[] parameters = {
 					new SqlParameter("@ID", SqlDbType.Int,4),
 					new SqlParameter("@UserID", SqlDbType.Int,4),
@@ -227,7 +227,7 @@ namespace YS_WEB.DAL
 				}
 				if(row["State"]!=null && row["State"].ToString()!="")
 				{
-					model.State=int.Parse(row["State"].ToString());
+                    model.State = (YS_WEB.Model.YS_Enum.OrderState)int.Parse(row["State"].ToString());
 				}
 				if(row["AddTime"]!=null && row["AddTime"].ToString()!="")
 				{

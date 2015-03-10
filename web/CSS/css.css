@@ -19,6 +19,11 @@ img{border-style: none;padding: 0px;margin: 0px;}
 .web-top .web-top-right .web-top-right-ss{ padding-left:25px;   margin-top:10px;width:184px; height:32px ;}
 .web-top .web-top-right .web-top-right-ss input{ border:none; padding-left:29px;width:155px; height:32px ; line-height:32px; background: url('../Images/web/top_meun_ss.png') left center no-repeat;}
 
+/*登陆后状态*/
+.web-top .web-top-right .span{ margin-top:18px; margin-left:25px; line-height:50px; }
+.web-top .web-top-right .web-top-center-ul li a{ text-decoration:none;color:#FFF;}
+.web-top .web-top-right .web-top-center-ul li a:hover{ text-decoration:underline;}
+
 /*商城尾部样式*/
 .web-foot-top-null{left:0px;right:0px;margin-left:auto; margin-right:auto; height:10px;width:1366px; overflow:hidden;position:relative; }
 .web-foot{left:0px;right:0px;margin-left:auto; margin-right:auto; height:206px;width:1366px; overflow:hidden;position:relative;background:#1ea78d; }

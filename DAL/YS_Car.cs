@@ -8,9 +8,9 @@ namespace YS_WEB.DAL
 	/// <summary>
 	/// 数据访问类:YS_Car
 	/// </summary>
-	public partial class YS_Car
+	public partial class YS_CarDAL
 	{
-		public YS_Car()
+        public YS_CarDAL()
 		{}
 		#region  BasicMethod
 
@@ -23,9 +23,9 @@ namespace YS_WEB.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into YS_Car(");
-			strSql.Append("ID,UserID,UserName,ProductID,ProductName,Number,Price,Promotion,IsCan)");
+			strSql.Append("UserID,UserName,ProductID,ProductName,Number,Price,Promotion,IsCan)");
 			strSql.Append(" values (");
-			strSql.Append("@ID,@UserID,@UserName,@ProductID,@ProductName,@Number,@Price,@Promotion,@IsCan)");
+			strSql.Append("@UserID,@UserName,@ProductID,@ProductName,@Number,@Price,@Promotion,@IsCan)");
 			SqlParameter[] parameters = {
 					new SqlParameter("@ID", SqlDbType.Int,4),
 					new SqlParameter("@UserID", SqlDbType.Int,4),

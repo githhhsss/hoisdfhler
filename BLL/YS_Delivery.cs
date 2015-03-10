@@ -8,10 +8,10 @@ namespace YS_WEB.BLL
 	/// <summary>
 	/// YS_Delivery
 	/// </summary>
-	public partial class YS_Delivery
+	public partial class YS_DeliveryBLL
 	{
-		private readonly YS_WEB.DAL.YS_Delivery dal=new YS_WEB.DAL.YS_Delivery();
-		public YS_Delivery()
+		private readonly YS_WEB.DAL.YS_DeliveryDAL dal=new YS_WEB.DAL.YS_DeliveryDAL();
+        public YS_DeliveryBLL()
 		{}
 		#region  BasicMethod
 
