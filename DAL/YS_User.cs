@@ -79,7 +79,6 @@ namespace YS_WEB.DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("update YS_User set ");
-            strSql.Append("ID=@ID,");
             strSql.Append("UserName=@UserName,");
             strSql.Append("ReadName=@ReadName,");
             strSql.Append("Password=@Password,");
@@ -96,7 +95,7 @@ namespace YS_WEB.DAL
             strSql.Append("CompanyGM=@CompanyGM,");
             strSql.Append("CompanyWebAdderss=@CompanyWebAdderss,");
             strSql.Append("MyMoney=@MyMoney");
-            strSql.Append(" where ");
+            strSql.Append(" where ID=@ID");
             SqlParameter[] parameters = {
 					new SqlParameter("@ID", SqlDbType.Int,4),
 					new SqlParameter("@UserName", SqlDbType.NVarChar,50),

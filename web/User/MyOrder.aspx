@@ -48,7 +48,7 @@
                 <th style="width:115px">订单状态</th><th style="border-right:0;width:120px">操作</th></tr>
              <asp:Repeater ID="Repeater1" runat="server">
                 <ItemTemplate>
-                    <tr><td>商品名称</td>
+                    <tr><td><%# Eval("") %></td>
                     <td>
                         <div>
                             <input id="Text1" type="text" />
