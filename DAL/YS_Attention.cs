@@ -57,7 +57,6 @@ namespace YS_WEB.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update YS_Attention set ");
-			strSql.Append("ID=@ID,");
 			strSql.Append("AttentionID=@AttentionID,");
 			strSql.Append("AttentionName=@AttentionName,");
 			strSql.Append("BeConcernedID=@BeConcernedID,");

@@ -34,11 +34,19 @@ namespace YS_WEB.BLL
 		/// <summary>
 		/// 删除一条数据
 		/// </summary>
-		public bool Delete()
+		public bool Delete(int ID)
 		{
 			//该表无主键信息，请自定义主键/条件字段
-			return dal.Delete();
+			return dal.Delete(ID);
 		}
+        /// <summary>
+        /// 删除一条数据
+        /// </summary>
+        public bool Delete(YS_WEB.Model.YS_User model)
+        {
+            //该表无主键信息，请自定义主键/条件字段
+            return dal.Delete(model);
+        }
 
 		/// <summary>
 		/// 得到一个对象实体

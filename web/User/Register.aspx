@@ -27,12 +27,12 @@
     <div class="web-page">
         <div class="register-body">
             <div class="register-body-top"></div>
-            <div class="register-body-list">用&nbsp;户&nbsp;名：<input id="userNameTxt" type="text" /></div>
-            <div class="register-body-list">密&nbsp;&nbsp;&nbsp;&nbsp;码：<input id="Text2" type="password" /></div>
-            <div class="register-body-list">确认密码：<input id="Text3" type="password" /></div>
-            <div class="register-body-list">电子邮件：<input id="Text4" type="text" /></div>
-            <div class="register-body-list">密码问题：<input id="Text5" type="text" /></div>
-            <div class="register-body-list">密码答案：<input id="Text6" type="text" /></div>
+            <div class="register-body-list">用&nbsp;户&nbsp;名：<input id="RegisteruserNameTxt" type="text" /></div>
+            <div class="register-body-list">密&nbsp;&nbsp;&nbsp;&nbsp;码：<input id="Registerpassword" type="password" /></div>
+            <div class="register-body-list">确认密码：<input id="Registerpassword2" type="password" /></div>
+            <div class="register-body-list">电子邮件：<input id="RegisterText4" type="text" /></div>
+            <div class="register-body-list">密码问题：<input id="RegisterText5" type="text" /></div>
+            <div class="register-body-list">密码答案：<input id="RegisterText6" type="text" /></div>
             <div class="register-body-ty">
                 <input id="Checkbox1" type="checkbox" /> <span>我已同意并阅读，Mmovie服务使用协议</span></div>
             <div class="register-body-bottom"><a href="javascript:;" class="aa"></a> 已有账号，点此<a href="Login.aspx" class="a">登陆</a></div>
@@ -45,16 +45,16 @@
                 yscom.ajax({
                     url: "Action/Handler.ashx?cmd=RegisterUser",
                     data: {
-                        "username": $("#userNameTxt").val(),
-                        "password": $("#Text2").val(),
-                        "passwordag": $("#Text3").val(),
-                        "e_mail": $("#Text4").val(),
-                        "question": $("#Text5").val(),
-                        "answer": $("#Text6").val()
+                        "username": $("#RegisteruserNameTxt").val(),
+                        "password": $("#Registerpassword").val(),
+                        "passwordag": $("#Registerpassword2").val(),
+                        "e_mail": $("#RegisterText4").val(),
+                        "question": $("#RegisterText5").val(),
+                        "answer": $("#RegisterText6").val()
                     },
                     success: function (data) {
                         if (data.flag == "true") {
-                            alert(data.msg);
+                            window.location = "Default.aspx";
                         } else {
                             alert(data.msg);
                         }

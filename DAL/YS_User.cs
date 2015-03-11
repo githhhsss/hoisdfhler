@@ -146,14 +146,40 @@ namespace YS_WEB.DAL
         /// <summary>
         /// 删除一条数据
         /// </summary>
-        public bool Delete()
+        public bool Delete(int ID)
         {
             //该表无主键信息，请自定义主键/条件字段
             StringBuilder strSql = new StringBuilder();
             strSql.Append("delete from YS_User ");
-            strSql.Append(" where ");
+            strSql.Append(" where ID = @ID");
             SqlParameter[] parameters = {
+                new SqlParameter("@ID", SqlDbType.Int,4)
 			};
+            parameters[0].Value = ID;
+
+            int rows = DbHelperSQL.ExecuteSql(strSql.ToString(), parameters);
+            if (rows > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        /// <summary>
+        /// 删除一条数据
+        /// </summary>
+        public bool Delete(YS_WEB.Model.YS_User model)
+        {
+            //该表无主键信息，请自定义主键/条件字段
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("delete from YS_User ");
+            strSql.Append(" where ID = @ID");
+            SqlParameter[] parameters = {
+                new SqlParameter("@ID", SqlDbType.Int,4)
+			};
+            parameters[0].Value = model.ID;
 
             int rows = DbHelperSQL.ExecuteSql(strSql.ToString(), parameters);
             if (rows > 0)

@@ -20,7 +20,7 @@
   display: none;
 }
 .datagrid-mask-msg {
-  background: #ffffff url('images/loading.gif') no-repeat scroll 5px center;
+  background: #ffffff url('../images/loading.gif') no-repeat scroll 5px center;
 }
 .datagrid-mask {
   background: #ccc;

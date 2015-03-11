@@ -68,12 +68,12 @@ public class Handler : IHttpHandler
         }
         //添加用户
         user.UserName = username;
-        user.Password = HashEncode.HashEncoding(password);
+        user.Password = HashEncode.MD5(password);
         user.E_Mail = e_mail;
         user.Question = question;
         user.Answer = answer;
         user.Address = "";
-        user.Birthday = new DateTime(1800, 1, 1);
+        user.Birthday = DateTime.Now;
         user.Company = "";
         user.CompanyGM = "";
         user.CompanyType = "";
@@ -112,13 +112,14 @@ public class Handler : IHttpHandler
         string username = context.Request["username"];
         string password = context.Request["password"];
         YS_UserBLL userbll = new YS_UserBLL();
-        YS_User user = userbll.GetModel(username, HashEncode.HashEncoding(password));
+        YS_User user = userbll.GetModel(username, HashEncode.MD5(password));
         if (user != null)
         {
             Tool.CookieWrite("UserName", user.UserName);
             Tool.CookieWrite("ReadName", user.ReadName);
             Tool.CookieWrite("UserID", user.ID.ToString());
-            context.Response.Write("{\"flag\":\"true\",\"msg\":\"登陆成功\"}"); 
+            context.Response.Write("{\"flag\":\"true\",\"msg\":\"登陆成功\"}");
+            return;
         }
         else
         {
@@ -126,6 +127,81 @@ public class Handler : IHttpHandler
             return;
         }
     }
+    public void ChangePassword(HttpContext context)
+    {
+        string password1 = context.Request["password1"];
+        string password2 = context.Request["password2"];
+        string password3 = context.Request["password3"];
+        if (password2 != password3)
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"2次密码不正确\"}");
+            return;
+        }
+        string username = Tool.CookieGet("UserName");
+        YS_UserBLL userbll = new YS_UserBLL();
+        YS_User user = userbll.GetModel(username);
+        if (user != null)
+        {
+            if (user.Password == HashEncode.MD5(password1))
+            {
+                user.Password = HashEncode.MD5(password2);
+                if (userbll.Update(user))
+                {
+                    context.Response.Write("{\"flag\":\"true\",\"msg\":\"密码修改成功\"}");
+                    return;
+                }
+                else
+                {
+                    context.Response.Write("{\"flag\":\"false\",\"msg\":\"未知错误\"}");
+                    return;
+                }
+            }
+            else
+            {
+                context.Response.Write("{\"flag\":\"false\",\"msg\":\"原始密码错误\"}");
+                return;
+            }
+
+        }
+        else
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"用户登陆超时！请退出重新登陆\"}");
+            return;
+        }
+    }
+    public void ChangeMyInformation(HttpContext context)
+    {
+        string username = context.Request["username"];
+        string readname = context.Request["readname"];
+        string address = context.Request["address"];
+        string e_mail = context.Request["e_mail"];
+        
+        YS_UserBLL userbll = new YS_UserBLL();
+        YS_User user = userbll.GetModel(username);
+        if (user != null)
+        {
+            user.ReadName = readname;
+            user.E_Mail =  e_mail;
+            user.Address = address;
+            if (userbll.Update(user))
+            {
+                context.Response.Write("{\"flag\":\"true\",\"msg\":\"信息修改成功\"}");
+                return;
+            }
+            else
+            {
+                context.Response.Write("{\"flag\":\"false\",\"msg\":\"未知错误\"}");
+                return;
+            }
+
+        }
+        else
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"用户登陆超时！请退出重新登陆\"}");
+            return;
+        }
+    }
+    
     public bool IsReusable
     {
         get
