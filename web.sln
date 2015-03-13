@@ -47,6 +47,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Lib\Microsoft.Practices.EnterpriseLibrary.Data.dll = Lib\Microsoft.Practices.EnterpriseLibrary.Data.dll
 		Lib\Microsoft.Web.UI.WebControls.dll = Lib\Microsoft.Web.UI.WebControls.dll
 		Lib\MySql.Data.dll = Lib\MySql.Data.dll
+		Lib\Newtonsoft.Json.dll = Lib\Newtonsoft.Json.dll
 		Lib\OpenSmtp.dll = Lib\OpenSmtp.dll
 		Lib\OWC10Chart.dll = Lib\OWC10Chart.dll
 		Lib\System.Data.SQLite.DLL = Lib\System.Data.SQLite.DLL
