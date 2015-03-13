@@ -34,20 +34,20 @@ namespace YS_WEB.BLL
 		/// <summary>
 		/// 删除一条数据
 		/// </summary>
-		public bool Delete()
+		public bool Delete(int id)
 		{
 			//该表无主键信息，请自定义主键/条件字段
-			return dal.Delete();
+			return dal.Delete(id);
 		}
 
-		/// <summary>
-		/// 得到一个对象实体
-		/// </summary>
-		public YS_WEB.Model.YS_Product GetModel()
-		{
-			//该表无主键信息，请自定义主键/条件字段
-			return dal.GetModel();
-		}
+        /// <summary>
+        /// 得到一个对象实体
+        /// </summary>
+        public YS_WEB.Model.YS_Product GetModel(int id)
+        {
+            //该表无主键信息，请自定义主键/条件字段
+            return dal.GetModel(id);
+        }
 
 		/// <summary>
 		/// 得到一个对象实体，从缓存中

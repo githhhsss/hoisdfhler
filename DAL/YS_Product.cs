@@ -83,7 +83,6 @@ namespace YS_WEB.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update YS_Product set ");
-			strSql.Append("ID=@ID,");
 			strSql.Append("ProductType=@ProductType,");
 			strSql.Append("ProductName=@ProductName,");
 			strSql.Append("Price=@Price,");
@@ -102,7 +101,7 @@ namespace YS_WEB.DAL
 			strSql.Append("ProductAddress=@ProductAddress,");
 			strSql.Append("ProductXinJiu=@ProductXinJiu,");
 			strSql.Append("PriceRange=@PriceRange");
-			strSql.Append(" where ");
+            strSql.Append(" where ID=@ID");
 			SqlParameter[] parameters = {
 					new SqlParameter("@ID", SqlDbType.Int,4),
 					new SqlParameter("@ProductType", SqlDbType.Int,4),
@@ -157,14 +156,16 @@ namespace YS_WEB.DAL
 		/// <summary>
 		/// 删除一条数据
 		/// </summary>
-		public bool Delete()
+		public bool Delete(int id)
 		{
 			//该表无主键信息，请自定义主键/条件字段
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("delete from YS_Product ");
-			strSql.Append(" where ");
-			SqlParameter[] parameters = {
+            strSql.Append(" where ID = @ID");
+            SqlParameter[] parameters = {
+                new SqlParameter("@ID", SqlDbType.Int,4)
 			};
+            parameters[0].Value = id;
 
 			int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -177,7 +178,30 @@ namespace YS_WEB.DAL
 			}
 		}
 
-
+        /// <summary>
+        /// 得到一个对象实体
+        /// </summary>
+        public YS_WEB.Model.YS_Product GetModel(int id)
+        {
+            //该表无主键信息，请自定义主键/条件字段
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select  top 1 ID,ProductType,ProductName,Price,Promotion,State,Description,Stock,InputTime,StartTime,OverTime,Sales,ProductKey,IsHot,ProductMan,ProductPhone,ProductAddress,ProductXinJiu,PriceRange from YS_Product ");
+            strSql.Append(" where ID=@ID");
+            SqlParameter[] parameters = {
+                new SqlParameter("@ID", SqlDbType.Int,4)
+			};
+            parameters[0].Value = id;
+            YS_WEB.Model.YS_Product model = new YS_WEB.Model.YS_Product();
+            DataSet ds = DbHelperSQL.Query(strSql.ToString(), parameters);
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                return DataRowToModel(ds.Tables[0].Rows[0]);
+            }
+            else
+            {
+                return null;
+            }
+        }
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
@@ -186,7 +210,7 @@ namespace YS_WEB.DAL
 			//该表无主键信息，请自定义主键/条件字段
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select  top 1 ID,ProductType,ProductName,Price,Promotion,State,Description,Stock,InputTime,StartTime,OverTime,Sales,ProductKey,IsHot,ProductMan,ProductPhone,ProductAddress,ProductXinJiu,PriceRange from YS_Product ");
-			strSql.Append(" where ");
+			strSql.Append(" where ID=@ID");
 			SqlParameter[] parameters = {
 			};
 

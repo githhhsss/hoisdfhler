@@ -110,7 +110,7 @@
                         <li>
                             <span class="u-th-num">序号</span>
                             <span class="u-th-name">用户名</span>
-                            <span class="u-th-rname">真是姓名</span>
+                            <span class="u-th-rname">真实姓名</span>
                             <span class="u-th-type">用户类型</span>
                             <span class="u-th-email">e-mail</span>
                             <span class="u-th-time">注册时间</span>

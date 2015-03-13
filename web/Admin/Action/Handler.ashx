@@ -178,13 +178,13 @@ public class Handler : IHttpHandler
         string readname = context.Request["readname"];
         string address = context.Request["address"];
         string e_mail = context.Request["e_mail"];
-        
+
         YS_UserBLL userbll = new YS_UserBLL();
         YS_User user = userbll.GetModel(username);
         if (user != null)
         {
             user.ReadName = readname;
-            user.E_Mail =  e_mail;
+            user.E_Mail = e_mail;
             user.Address = address;
             if (userbll.Update(user))
             {
@@ -219,7 +219,7 @@ public class Handler : IHttpHandler
         string companyWebAdderss = context.Request["companyWebAdderss"];
         string readName = context.Request["readName"];
         string userType = context.Request["userType"];
-        
+
 
         YS_UserBLL userbll = new YS_UserBLL();
         YS_User user = userbll.GetModel(username);
@@ -254,7 +254,7 @@ public class Handler : IHttpHandler
         user.MyMoney = 0;
         user.ReadName = readName;
         user.Score = 0;
-        user.UserType = (YS_Enum.UserType)Enum.Parse(typeof(YS_Enum.UserType), userType); 
+        user.UserType = (YS_Enum.UserType)Enum.Parse(typeof(YS_Enum.UserType), userType);
 
         try
         {
@@ -279,7 +279,7 @@ public class Handler : IHttpHandler
     public void UpdatePassword(HttpContext context)
     {
         int UID = Convert.ToInt32(context.Request["ID"]);
-        
+
         YS_UserBLL userbll = new YS_UserBLL();
         YS_User user = userbll.GetModel(UID);
         if (user != null)
@@ -331,7 +331,189 @@ public class Handler : IHttpHandler
             return;
         }
     }
-    
+
+    //添加产品
+    public void AddProduct(HttpContext context)
+    {
+        string ProductName = context.Request["txt1"];
+        string Price = context.Request["txt2"];
+        string Promotion = context.Request["txt5"];
+        string State = context.Request["Select3"];
+        string Description = context.Request["txt6"];
+        string Stock = context.Request["txt3"];
+        string ProductKey = context.Request["txt4"];
+
+        if (!PageValidate.IsDecimal(Price))
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"价格格式不对\"}");
+            return;
+        }
+        if (!PageValidate.IsDecimal(Promotion))
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"促销格式不对\"}");
+            return;
+        }
+        if (!PageValidate.IsNumber(Stock))
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"库存格式不对\"}");
+            return;
+        }
+
+        YS_ProductBLL probll = new YS_ProductBLL();
+        YS_Product pro = new YS_Product();
+        pro.Description = Description;
+        pro.InputTime = DateTime.Now;
+        pro.IsHot = true;
+        pro.OverTime = new DateTime(9999, 12, 30);
+        pro.Price = Convert.ToDecimal(Price);
+        pro.PriceRange = "";
+        pro.ProductAddress = "";
+        pro.ProductKey = ProductKey;
+        pro.ProductMan = "";
+        pro.ProductName = ProductName;
+        pro.ProductPhone = "";
+        pro.ProductType = YS_Enum.ProductType.器材;
+        pro.ProductXinJiu = "";
+        pro.Promotion = Convert.ToDecimal(Promotion);
+        pro.Sales = 0;
+        pro.StartTime = DateTime.Now;
+        pro.State = (YS_Enum.ProductState)Enum.Parse(typeof(YS_Enum.ProductState), State);
+        pro.Stock = Convert.ToInt32(Stock);
+
+        try
+        {
+            if (probll.Add(pro))
+            {
+                context.Response.Write("{\"flag\":\"true\",\"msg\":\"产品添加成功\"}");
+                return;
+            }
+            else
+            {
+                context.Response.Write("{\"flag\":\"false\",\"msg\":\"未知错误\"}");
+                return;
+            }
+
+        }
+        catch
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"数据库异常\"}");
+            return;
+        }
+
+    }
+    //修改产品
+    public void EditPro(HttpContext context)
+    {
+        int pid = Convert.ToInt32(context.Request["pid"]);
+        string ProductName = context.Request["txt1"];
+        string Price = context.Request["txt2"];
+        string Promotion = context.Request["txt5"];
+        string State = context.Request["Select3"];
+        string Description = context.Request["txt6"];
+        string Stock = context.Request["txt3"];
+        string ProductKey = context.Request["txt4"];
+
+        if (!PageValidate.IsDecimal(Price))
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"价格格式不对\"}");
+            return;
+        }
+        if (!PageValidate.IsDecimal(Promotion))
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"促销格式不对\"}");
+            return;
+        }
+        if (!PageValidate.IsNumber(Stock))
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"库存格式不对\"}");
+            return;
+        }
+
+        YS_ProductBLL probll = new YS_ProductBLL();
+        YS_Product pro = probll.GetModel(pid);
+        pro.Description = Description;
+        pro.InputTime = DateTime.Now;
+        pro.IsHot = true;
+        pro.OverTime = new DateTime(9999, 12, 30);
+        pro.Price = Convert.ToDecimal(Price);
+        pro.PriceRange = "";
+        pro.ProductAddress = "";
+        pro.ProductKey = ProductKey;
+        pro.ProductMan = "";
+        pro.ProductName = ProductName;
+        pro.ProductPhone = "";
+        pro.ProductType = YS_Enum.ProductType.器材;
+        pro.ProductXinJiu = "";
+        pro.Promotion = Convert.ToDecimal(Promotion);
+        pro.Sales = 0;
+        pro.StartTime = DateTime.Now;
+        pro.State = (YS_Enum.ProductState)Enum.Parse(typeof(YS_Enum.ProductState), State);
+        pro.Stock = Convert.ToInt32(Stock);
+
+        try
+        {
+            if (probll.Update(pro))
+            {
+                context.Response.Write("{\"flag\":\"true\",\"msg\":\"产品修改成功\"}");
+                return;
+            }
+            else
+            {
+                context.Response.Write("{\"flag\":\"false\",\"msg\":\"未知错误\"}");
+                return;
+            }
+
+        }
+        catch
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"数据库异常\"}");
+            return;
+        }
+
+    }
+    /// <summary>
+    /// 转义json特殊字符
+    /// </summary>
+    /// <param name="s"></param>
+    /// <returns></returns>
+    protected static string StringToJson(string s)
+    {
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+        for (int i = 0; i < s.Length; i++)
+        {
+            char c = s[i];
+            switch (c)
+            {
+                case '\"':
+                    sb.Append("\\\"");
+                    break;
+                case '\\':
+                    sb.Append("\\\\");
+                    break;
+                case '/':
+                    sb.Append("\\/");
+                    break;
+                case '\b':
+                    sb.Append("\\b");
+                    break;
+                case '\f':
+                    sb.Append("\\f");
+                    break;
+                case '\n':
+                    sb.Append("\\n");
+                    break;
+                case '\r':
+                    sb.Append("\\r");
+                    break;
+                case '\t':
+                    sb.Append("\\t");
+                    break;
+                default:
+                    sb.Append(c); break;
+            }
+        }
+        return sb.ToString();
+    }
     public bool IsReusable
     {
         get

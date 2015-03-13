@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ProductManager.aspx.cs" Inherits="User_Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ProductUpdate.aspx.cs" Inherits="User_Default" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -29,45 +29,31 @@
     .my-right .u-right .orderTitle a{ display:block; float:left; height:69px; line-height:69px; width:180px;border-right:1px solid #DDDDDD; text-align:center; font-size:23px;text-decoration:none; color:#000000;}
     .my-right .u-right .orderTitle .sel{border-top:5px solid #1ea78d; height:65px; background:#FFF; line-height:60px;}
     
-    .my-right .u-right .data-edit{ height:710px;}
+    .my-right .u-right .data-edit{ height:1000px;}
     .my-right .u-right .data-edit ul li{ list-style:none;}
     
     .right-form{ margin-top:40px; margin-left:50px;}
     .right-form ul li .form-title{ display:inline-block;width:80px; height:30px; color:#123654; line-height:30px; text-align:right; font-size:14px; margin-bottom:10px;}
     .right-form ul li .form-txt{height:30px;line-height:30px; font-size:14px; width:500px; }
+    .right-form ul li .form-mtxt{height:120px;line-height:20px; font-size:14px; width:500px; }
+    .right-form ul li .form-div{height:600px;width:500px;}
     .right-form ul li .form-readonly{ background:#e9e9e9;}
     
     .right-form ul li .btn{ display:block ;background:url("../Images/btnbj.png") no-repeat center center; width:150px; height:40px;background-size:cover; font-size:18px; text-align:center; line-height:40px; margin-left:432px;}
     
-    
-    /*列表数据*/
-     .right-form ul li span{  float:left;display:block; margin:0; padding:0 ;text-align:center; line-height:30px ;height:30px; border:1px solid #CCC;overflow:hidden;text-overflow:ellipsis;-o-text-overflow: ellipsis;white-space:nowrap;width:100%;}
-    .right-form .u-th-1{ width:40px; color:#1ea78d;line-height:40px ;height:40px; font-size:16px;}
-    .right-form .u-th-2{ width:140px; color:#1ea78d;line-height:40px ;height:40px; font-size:16px;}
-    .right-form .u-th-3{width:80px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
-    .right-form .u-th-4{width:80px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
-    .right-form .u-th-5{width:80px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
-    .right-form .u-th-6{width:100px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
-    .right-form .u-th-7{width:100px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
-    .right-form .u-th-do{width:210px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
-    
-    .right-form .odd { background:#F9F9F9;}
-    
-    .right-form .u-td-1{width:40px;}
-    .right-form .u-td-2{width:140px;}
-    .right-form .u-td-3{width:80px;}
-    .right-form .u-td-4{width:80px;}
-    .right-form .u-td-5{width:80px;}
-    .right-form .u-td-6{width:100px;}
-    .right-form .u-td-7{width:100px;}
-    .right-form .u-td-do{width:210px;}
-    .right-form .u-td-do a{ display:block; float:left; margin-left:3px;margin-top:3px ;background:url("../Images/btnbj.png") no-repeat center center; width:66px; height:24px;background-size:cover; font-size:12px; text-align:center; line-height:24px;}
-    
+    .right-form  .form-say{height:40px;line-height:40px; font-size:14px; color:#1ea78d;}
     
     </style>
     <myControls:WebScript id="WebScript1" runat="server" />
+    <script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.all.min.js"> </script>
+   <script type="text/javascript">
+       function setBaidu() {
+           UE.getEditor('editor').setContent("<%= GetEditor()%>");
+       }
+        </script>
 </head>
-<body>
+<body onload="setBaidu()">
     <myControls:WebTop id="WebTop1" runat="server" />
 
     <div class="web-page">
@@ -103,10 +89,10 @@
             <div class="u-right">
 
             <div class="orderTitle">
-                <a class="sel" href="ProductManager.aspx">商品列表</a> 
+                <a href="ProductManager.aspx">商品列表</a> 
                 <a href="ProductAdd.aspx">增加商品</a> 
-                <a href="ProductQuery.aspx">查看商品</a>
-                <a href="ProductUpdate.aspx">修改商品</a>
+                <a target="_blank" href="ProductQuery.aspx">查看商品</a>
+                <a class="sel" href="ProductUpdate.aspx">修改商品</a>
             </div>
 
             <!--信息-->
@@ -114,33 +100,22 @@
                 <form id="form1" runat="server">
                 <div class="right-form">
                     <ul>
-                        <li>
-                            <span class="u-th-1">序号</span>
-                            <span class="u-th-2">商品名称</span>
-                            <span class="u-th-3">价格</span>
-                            <span class="u-th-4">库存</span>
-                            <span class="u-th-5">状态</span>
-                            <span class="u-th-6">折扣</span>
-                            <span class="u-th-7">录入时间</span>
-                            <span  class="u-th-do">操作</span>
-                        </li>
-                        <asp:Repeater ID="Repeater1" runat="server">
-                            <ItemTemplate>
-                            <li>
-                                <span class="u-td-1 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Container.ItemIndex+1 %></span>
-                                <span class="u-td-2 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Eval("ProductName")%></span>
-                                <span class="u-td-3 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Eval("Price")%></span>
-                                <span class="u-td-4 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Eval("Stock")%></span>
-                                <span class="u-td-5 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# (YS_WEB.Model.YS_Enum.ProductState)Eval("State")%></span>
-                                <span class="u-td-6 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Eval("Promotion")%></span>
-                                <span class="u-td-7 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Convert.ToDateTime(Eval("InputTime")).ToString("yyyy-MM-dd hh:mm")%></span>
-                                <span  class="u-td-do <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>">
-                                    <a href="ProductUpdate.aspx?itemid=<%# Eval("ID")%>">查看</a>
-                                    <a href="ProductUpdate.aspx?itemid=<%# Eval("ID")%>">编辑</a>
-                                    <a href="javascript:;">删除</a></span>
-                            </li>
-                            </ItemTemplate>
-                        </asp:Repeater>
+                        <li><span class="form-say">产品基本信息</span></li>
+                        <li><span class="form-title">商品名称：</span><input class="form-txt" id="ptxt1" type="text" runat="server" /></li>
+                        <li><span class="form-title">价格：</span><input class="form-txt" id="ptxt2" runat="server" type="text" /></li>
+                        <li><span class="form-title">状态：</span>
+                            <select id="Select3" class="form-txt" runat="server">
+                                <option>在售</option>
+                                <option>下架</option>
+                            </select></li>
+                        <li><span class="form-title">库存：</span><input class="form-txt" id="ptxt3" runat="server" type="text" /></li>
+                        <li><span class="form-title">关键字：</span><input class="form-txt" id="ptxt4" runat="server" type="text" /></li>
+                        <li><span class="form-title">促销折扣：</span><input class="form-txt" id="ptxt5" runat="server" type="text" /></li>
+                       <li><span class="form-say">产品详细描述</span>
+                              <script id="editor" type="text/plain" style="width:830px; height:500px;" ></script>
+                       </li>
+                       <li><span style=" display:inline-block;height:5px;"></span></li>
+                        <li><a id="editPro" class="btn" href="javascript:;">确认修改</a></li>
                     </ul>
                 </div>
                 </form>
@@ -153,16 +128,26 @@
 
     <mycontrols:webFoot id="WebFoot1" runat="server"/>
     <script type="text/javascript">
+        //-----百度编辑器-----------------------------------------
+        //实例化编辑器
+        //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+        var ue = UE.getEditor('editor');
+    </script>
+    <script type="text/javascript">
         $(function () {
-            $("#ChangeMyInformation").click(function () {
-                if (confirm("确定要修改信息吗？")) {
+            $("#editPro").click(function () {
+                if (confirm("确定要添加信息吗？")) {
                     yscom.ajax({
-                        url: "Action/Handler.ashx?cmd=ChangeMyInformation",
+                        url: "Action/Handler.ashx?cmd=EditPro",
                         data: {
-                            "username": $("#mynametxt").val(),
-                            "readname": $("#myreadnametxt").val(),
-                            "address": $("#myaddresstxt").val(),
-                            "e_mail": $("#myemailtxt").val()
+                            "pid":yscom.getParams("itemid"),
+                            "txt1": $("#ptxt1").val(),
+                            "txt2": $("#ptxt2").val(),
+                            "txt3": $("#ptxt3").val(),
+                            "txt4": $("#ptxt4").val(),
+                            "txt5": $("#ptxt5").val(),
+                            "txt6": UE.getEditor('editor').getContent(),
+                            "Select3": $("#Select3").val()
                         },
                         success: function (data) {
                             if (data.flag == "true") {

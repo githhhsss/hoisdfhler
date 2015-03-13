@@ -41,9 +41,5 @@ public partial class User_Default : System.Web.UI.Page
         this.name.InnerText = user.UserName;
         this.city.InnerText = user.UserType.ToString();
 
-        /*商品列表*/
-        YS_ProductBLL productbll = new YS_ProductBLL();
-        Repeater1.DataSource = productbll.GetList("ProductType in(0,1)");//默认和器材管理
-        Repeater1.DataBind();
     }
 }
