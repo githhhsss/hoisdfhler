@@ -50,16 +50,12 @@ public partial class User_Default : System.Web.UI.Page
             YS_Product pro = probll.GetModel(pid);
 
             this.ptxt1.Value = pro.ProductName;
-            this.ptxt2.Value = pro.Price.ToString("f2");
-            this.ptxt3.Value = pro.Stock.ToString();
             this.ptxt4.Value = pro.ProductKey;
-            this.ptxt5.Value = pro.Promotion.ToString();
-            this.Select3.Value = ((YS_Enum.ProductState)pro.State).ToString();
             editor = StringToJson(pro.Description);
         }
         else
         {
-            Response.Redirect("ProductAdd.aspx");
+            Response.Redirect("ZiXunAdd.aspx");
         }
     }
     public string GetEditor()

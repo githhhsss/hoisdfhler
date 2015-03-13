@@ -343,6 +343,11 @@ public class Handler : IHttpHandler
         string Stock = context.Request["txt3"];
         string ProductKey = context.Request["txt4"];
 
+        if (string.IsNullOrEmpty(ProductName))
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"产品名称不能为空\"}");
+            return;
+        }
         if (!PageValidate.IsDecimal(Price))
         {
             context.Response.Write("{\"flag\":\"false\",\"msg\":\"价格格式不对\"}");
@@ -413,6 +418,11 @@ public class Handler : IHttpHandler
         string Stock = context.Request["txt3"];
         string ProductKey = context.Request["txt4"];
 
+        if (string.IsNullOrEmpty(ProductName))
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"产品名称不能为空\"}");
+            return;
+        }
         if (!PageValidate.IsDecimal(Price))
         {
             context.Response.Write("{\"flag\":\"false\",\"msg\":\"价格格式不对\"}");
@@ -470,6 +480,145 @@ public class Handler : IHttpHandler
             return;
         }
 
+    }
+
+    //添加资讯
+    public void AddZiXun(HttpContext context)
+    {
+        string ProductName = context.Request["txt1"];
+        string ProductKey = context.Request["txt4"];
+        string Description = context.Request["txt6"];
+
+        if (string.IsNullOrEmpty(ProductName))
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"标题名称不能为空\"}");
+            return;
+        }
+        
+        YS_ProductBLL probll = new YS_ProductBLL();
+        YS_Product pro = new YS_Product();
+        pro.Description = Description;
+        pro.InputTime = DateTime.Now;
+        pro.IsHot = true;
+        pro.OverTime = new DateTime(9999, 12, 30);
+        pro.Price = 0;
+        pro.PriceRange = "";
+        pro.ProductAddress = "";
+        pro.ProductKey = ProductKey;
+        pro.ProductMan = "";
+        pro.ProductName = ProductName;
+        pro.ProductPhone = "";
+        pro.ProductType = YS_Enum.ProductType.其他;
+        pro.ProductXinJiu = "";
+        pro.Promotion = 0;
+        pro.Sales = 0;
+        pro.StartTime = DateTime.Now;
+        pro.State = YS_Enum.ProductState.默认;
+        pro.Stock = 0;
+
+        try
+        {
+            if (probll.Add(pro))
+            {
+                context.Response.Write("{\"flag\":\"true\",\"msg\":\"资讯添加成功\"}");
+                return;
+            }
+            else
+            {
+                context.Response.Write("{\"flag\":\"false\",\"msg\":\"未知错误\"}");
+                return;
+            }
+
+        }
+        catch
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"数据库异常\"}");
+            return;
+        }
+
+    }
+    //修改资讯
+    public void EditZiXun(HttpContext context)
+    {
+        int pid = Convert.ToInt32(context.Request["pid"]);
+        string ProductName = context.Request["txt1"];
+        string Description = context.Request["txt6"];
+        string ProductKey = context.Request["txt4"];
+
+        if (string.IsNullOrEmpty(ProductName))
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"标题名称不能为空\"}");
+            return;
+        }
+
+        YS_ProductBLL probll = new YS_ProductBLL();
+        YS_Product pro = probll.GetModel(pid);
+        pro.Description = Description;
+        pro.InputTime = DateTime.Now;
+        pro.IsHot = true;
+        pro.OverTime = new DateTime(9999, 12, 30);
+        pro.Price = 0;
+        pro.PriceRange = "";
+        pro.ProductAddress = "";
+        pro.ProductKey = ProductKey;
+        pro.ProductMan = "";
+        pro.ProductName = ProductName;
+        pro.ProductPhone = "";
+        pro.ProductType = YS_Enum.ProductType.其他;
+        pro.ProductXinJiu = "";
+        pro.Promotion = 0;
+        pro.Sales = 0;
+        pro.StartTime = DateTime.Now;
+        pro.State = YS_Enum.ProductState.默认;
+        pro.Stock = 0;
+
+        try
+        {
+            if (probll.Update(pro))
+            {
+                context.Response.Write("{\"flag\":\"true\",\"msg\":\"资讯修改成功\"}");
+                return;
+            }
+            else
+            {
+                context.Response.Write("{\"flag\":\"false\",\"msg\":\"未知错误\"}");
+                return;
+            }
+
+        }
+        catch
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"数据库异常\"}");
+            return;
+        }
+
+    }
+    //删除产品……
+    public void DeletePro(HttpContext context)
+    {
+        int UID = Convert.ToInt32(context.Request["ID"]);
+
+        YS_ProductBLL pbll = new YS_ProductBLL();
+        YS_Product pro = pbll.GetModel(UID);
+        if (pro != null)
+        {
+            if (pbll.Delete(pro.ID))
+            {
+                context.Response.Write("{\"flag\":\"true\",\"msg\":\"用户删除成功\"}");
+                return;
+            }
+            else
+            {
+                context.Response.Write("{\"flag\":\"false\",\"msg\":\"未知错误\"}");
+                return;
+            }
+
+        }
+        else
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"找不到用户，请刷新页面\"}");
+            return;
+        }
     }
     /// <summary>
     /// 转义json特殊字符

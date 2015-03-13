@@ -137,7 +137,7 @@
                                 <span  class="u-td-do <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>">
                                     <a href="ProductUpdate.aspx?itemid=<%# Eval("ID")%>">查看</a>
                                     <a href="ProductUpdate.aspx?itemid=<%# Eval("ID")%>">编辑</a>
-                                    <a href="javascript:;">删除</a></span>
+                                    <a href="javascript:;" onclick='deletePro(<%# Eval("ID")%>)'>删除</a></span>
                             </li>
                             </ItemTemplate>
                         </asp:Repeater>
@@ -175,6 +175,24 @@
                 };
             });
         })
+        function deletePro(pid) {
+            if (confirm("确定要删除用户吗?")) {
+                yscom.ajax({
+                    url: "Action/Handler.ashx?cmd=DeletePro",
+                    data: {
+                        "ID": pid
+                    },
+                    success: function (data) {
+                        if (data.flag == "true") {
+                            alert(data.msg);
+                            window.location = 'ProductManager.aspx';
+                        } else {
+                            alert(data.msg);
+                        }
+                    }
+                });
+            }
+        }
     </script>
 </body>
 </html>
