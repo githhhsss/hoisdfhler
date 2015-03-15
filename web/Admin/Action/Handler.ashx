@@ -593,6 +593,123 @@ public class Handler : IHttpHandler
         }
 
     }
+    //添加招聘
+    public void AddZhaoPin(HttpContext context)
+    {
+        string ProductName = context.Request["txt2"];
+        string PriceRange = context.Request["txt5"];
+        string ProductMan = context.Request["txt1"];
+        string ProductPhone = context.Request["txt4"];
+        string ProductAddress = context.Request["txt3"];
+        string Description = context.Request["txt6"];
+
+        if (string.IsNullOrEmpty(ProductName))
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"标题名称不能为空\"}");
+            return;
+        }
+        
+        YS_ProductBLL probll = new YS_ProductBLL();
+        YS_Product pro = new YS_Product();
+        pro.Description = Description;
+        pro.InputTime = DateTime.Now;
+        pro.IsHot = true;
+        pro.OverTime = new DateTime(9999, 12, 30);
+        pro.Price = 0;
+        pro.PriceRange = PriceRange;
+        pro.ProductAddress = ProductAddress;
+        pro.ProductKey = "招聘";
+        pro.ProductMan = ProductMan;
+        pro.ProductName = ProductName;
+        pro.ProductPhone = ProductPhone;
+        pro.ProductType = YS_Enum.ProductType.职位;
+        pro.ProductXinJiu = "";
+        pro.Promotion = 0;
+        pro.Sales = 0;
+        pro.StartTime = DateTime.Now;
+        pro.State = YS_Enum.ProductState.默认;
+        pro.Stock = 0;
+
+        try
+        {
+            if (probll.Add(pro))
+            {
+                context.Response.Write("{\"flag\":\"true\",\"msg\":\"招聘信息添加成功\"}");
+                return;
+            }
+            else
+            {
+                context.Response.Write("{\"flag\":\"false\",\"msg\":\"未知错误\"}");
+                return;
+            }
+
+        }
+        catch
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"数据库异常\"}");
+            return;
+        }
+
+    }
+    //修改招聘
+    public void EditZhaoPin(HttpContext context)
+    {
+        int pid = Convert.ToInt32(context.Request["pid"]);
+        string ProductName = context.Request["txt2"];
+        string PriceRange = context.Request["txt5"];
+        string ProductMan = context.Request["txt1"];
+        string ProductPhone = context.Request["txt4"];
+        string ProductAddress = context.Request["txt3"];
+        string Description = context.Request["txt6"];
+
+        if (string.IsNullOrEmpty(ProductName))
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"标题名称不能为空\"}");
+            return;
+        }
+
+        YS_ProductBLL probll = new YS_ProductBLL();
+        YS_Product pro = probll.GetModel(pid);
+        pro.Description = Description;
+        pro.InputTime = DateTime.Now;
+        pro.IsHot = true;
+        pro.OverTime = new DateTime(9999, 12, 30);
+        pro.Price = 0;
+        pro.PriceRange = PriceRange;
+        pro.ProductAddress = ProductAddress;
+        pro.ProductKey = "招聘";
+        pro.ProductMan = ProductMan;
+        pro.ProductName = ProductName;
+        pro.ProductPhone = ProductPhone;
+        pro.ProductType = YS_Enum.ProductType.职位;
+        pro.ProductXinJiu = "";
+        pro.Promotion = 0;
+        pro.Sales = 0;
+        pro.StartTime = DateTime.Now;
+        pro.State = YS_Enum.ProductState.默认;
+        pro.Stock = 0;
+
+        try
+        {
+            if (probll.Update(pro))
+            {
+                context.Response.Write("{\"flag\":\"true\",\"msg\":\"招聘信息修改成功\"}");
+                return;
+            }
+            else
+            {
+                context.Response.Write("{\"flag\":\"false\",\"msg\":\"未知错误\"}");
+                return;
+            }
+
+        }
+        catch
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"数据库异常\"}");
+            return;
+        }
+
+    }
     //删除产品……
     public void DeletePro(HttpContext context)
     {

@@ -43,7 +43,7 @@ namespace YS_WEB.DAL
 					new SqlParameter("@IsHot", SqlDbType.Bit,1),
 					new SqlParameter("@ProductMan", SqlDbType.NVarChar,50),
 					new SqlParameter("@ProductPhone", SqlDbType.NVarChar,12),
-					new SqlParameter("@ProductAddress", SqlDbType.NChar,10),
+					new SqlParameter("@ProductAddress", SqlDbType.NVarChar,50),
 					new SqlParameter("@ProductXinJiu", SqlDbType.NVarChar,50),
 					new SqlParameter("@PriceRange", SqlDbType.NVarChar,100)};
 			parameters[0].Value = model.ID;
@@ -119,7 +119,7 @@ namespace YS_WEB.DAL
 					new SqlParameter("@IsHot", SqlDbType.Bit,1),
 					new SqlParameter("@ProductMan", SqlDbType.NVarChar,50),
 					new SqlParameter("@ProductPhone", SqlDbType.NVarChar,12),
-					new SqlParameter("@ProductAddress", SqlDbType.NChar,10),
+					new SqlParameter("@ProductAddress", SqlDbType.NVarChar,50),
 					new SqlParameter("@ProductXinJiu", SqlDbType.NVarChar,50),
 					new SqlParameter("@PriceRange", SqlDbType.NVarChar,100)};
 			parameters[0].Value = model.ID;

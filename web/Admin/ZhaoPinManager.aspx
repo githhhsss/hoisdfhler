@@ -43,10 +43,10 @@
     /*列表数据*/
      .right-form ul li span{  float:left;display:block; margin:0; padding:0 ;text-align:center; line-height:30px ;height:30px; border:1px solid #CCC;overflow:hidden;text-overflow:ellipsis;-o-text-overflow: ellipsis;white-space:nowrap;width:100%;}
     .right-form .u-th-1{ width:40px; color:#1ea78d;line-height:40px ;height:40px; font-size:16px;}
-    .right-form .u-th-2{ width:400px; color:#1ea78d;line-height:40px ;height:40px; font-size:16px;}
+    .right-form .u-th-2{ width:200px; color:#1ea78d;line-height:40px ;height:40px; font-size:16px;}
     .right-form .u-th-3{width:80px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
-    .right-form .u-th-4{width:80px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
-    .right-form .u-th-5{width:80px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
+    .right-form .u-th-4{width:100px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
+    .right-form .u-th-5{width:100px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
     .right-form .u-th-6{width:100px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
     .right-form .u-th-7{width:100px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
     .right-form .u-th-do{width:210px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
@@ -54,10 +54,10 @@
     .right-form .odd { background:#F9F9F9;}
     
     .right-form .u-td-1{width:40px;}
-    .right-form .u-td-2{width:400px;}
+    .right-form .u-td-2{width:200px;}
     .right-form .u-td-3{width:80px;}
-    .right-form .u-td-4{width:80px;}
-    .right-form .u-td-5{width:80px;}
+    .right-form .u-td-4{width:100px;}
+    .right-form .u-td-5{width:100px;}
     .right-form .u-td-6{width:100px;}
     .right-form .u-td-7{width:100px;}
     .right-form .u-td-do{width:210px;}
@@ -102,7 +102,7 @@
             <div class="u-right">
 
             <div class="orderTitle">
-                <a class="sel" href="ZhaoPinnManager.aspx">招聘信息</a> 
+                <a class="sel" href="ZhaoPinManager.aspx">招聘信息</a> 
                 <a href="ZhaoPinAdd.aspx">添加招聘</a> 
                 <a target="_blank" href="ZhaoPinQuery.aspx">查看招聘</a>
                 <a href="ZhaoPinUpdate.aspx">修改招聘</a>
@@ -115,9 +115,10 @@
                     <ul>
                         <li>
                             <span class="u-th-1">序号</span>
-                            <span class="u-th-2">标题</span>
-                            <span class="u-th-3">类型</span>
-                            <span class="u-th-4"></span>
+                            <span class="u-th-2">公司</span>
+                            <span class="u-th-3">职位</span>
+                            <span class="u-th-4">薪酬</span>
+                            <span class="u-th-5">联系电话</span>
                             <span class="u-th-7">录入时间</span>
                             <span  class="u-th-do">操作</span>
                         </li>
@@ -125,12 +126,14 @@
                             <ItemTemplate>
                             <li>
                                 <span class="u-td-1 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Container.ItemIndex+1 %></span>
-                                <span class="u-td-2 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Eval("ProductName")%></span>
-                                <span class="u-td-3 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Eval("ProductKey")%></span>
+                                <span class="u-td-2 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Eval("ProductMan")%></span>
+                                <span class="u-td-3 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Eval("ProductName")%></span>
+                                <span class="u-td-4 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Eval("PriceRange")%></span>
+                                <span class="u-td-5 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Eval("ProductPhone")%></span>
                                 <span class="u-td-7 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Convert.ToDateTime(Eval("InputTime")).ToString("yyyy-MM-dd hh:mm")%></span>
                                 <span  class="u-td-do <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>">
                                     <a href="ZiXunUpdate.aspx?itemid=<%# Eval("ID")%>">查看</a>
-                                    <a href="ZiXunUpdate.aspx?itemid=<%# Eval("ID")%>">编辑</a>
+                                    <a href="ZhaoPinUpdate.aspx?itemid=<%# Eval("ID")%>">编辑</a>
                                     <a href="javascript:;" onclick='deletePro(<%# Eval("ID")%>)'>删除</a></span>
                             </li>
                             </ItemTemplate>

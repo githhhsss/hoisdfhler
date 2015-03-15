@@ -49,8 +49,11 @@ public partial class User_Default : System.Web.UI.Page
             YS_ProductBLL probll = new YS_ProductBLL();
             YS_Product pro = probll.GetModel(pid);
 
-            this.ptxt1.Value = pro.ProductName;
-            this.ptxt4.Value = pro.ProductKey;
+            this.ptxt1.Value = pro.ProductMan;
+            this.ptxt2.Value = pro.ProductName;
+            this.ptxt3.Value = pro.ProductAddress;
+            this.ptxt4.Value = pro.ProductPhone; ;
+            this.Select3.Value = ((YS_Enum.ProductState)pro.State).ToString();
             editor = StringToJson(pro.Description);
         }
         else

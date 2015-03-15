@@ -96,14 +96,26 @@
                 <div class="right-form">
                     <ul>
                         <li><span class="form-say">基本信息</span></li>
-                        <li><span class="form-title">标题：</span><input class="form-txt" id="ptxt1" type="text" runat="server" /></li>
-                        <li><span class="form-title">状态：</span>
+                        <li><span class="form-title">公司：</span><input class="form-txt" id="ptxt1" type="text" runat="server" /></li>
+                        <li><span class="form-title">职位：</span><input class="form-txt" id="ptxt2" type="text" runat="server" /></li>
+                        <li><span class="form-title">薪酬：</span>
                             <select id="Select3" class="form-txt">
-                                <option>在售</option>
-                                <option>下架</option>
+                                <option>面议</option>
+                                <option>1-1000</option>
+                                <option>1000-2000</option>
+                                <option>2000-3000</option>
+                                <option>3000-4000</option>
+                                <option>4000-5000</option>
+                                <option>5000-6000</option>
+                                <option>6000-7000</option>
+                                <option>7000-8000</option>
+                                <option>8000-9000</option>
+                                <option>9000-10000</option>
+                                <option>10000以上</option>
                             </select></li>
-                        <li><span class="form-title">关键字：</span><input class="form-txt" id="ptxt4" runat="server" type="text" /></li>
-                       <li><span class="form-say">内容</span>
+                        <li><span class="form-title">联系电话：</span><input class="form-txt" id="ptxt4" runat="server" type="text" /></li>
+                        <li><span class="form-title">公司地址：</span><input class="form-txt" id="ptxt3" runat="server" type="text" /></li>
+                       <li><span class="form-say">职位描述：</span>
                                <script id="editor" type="text/plain" style="width:830px; height:500px;" ></script>
                        </li>
                        <li><span style=" display:inline-block;height:5px;"></span></li>
@@ -130,10 +142,13 @@
             $("#AddPro").click(function () {
                 if (confirm("确定要添加信息吗？")) {
                     yscom.ajax({
-                        url: "Action/Handler.ashx?cmd=AddZiXun",
+                        url: "Action/Handler.ashx?cmd=AddZhaoPin",
                         data: {
                             "txt1": $("#ptxt1").val(),
+                            "txt2": $("#ptxt2").val(),
+                            "txt3": $("#ptxt3").val(),
                             "txt4": $("#ptxt4").val(),
+                            "txt5": $("#Select3").val(),
                             "txt6": UE.getEditor('editor').getContent()
                         },
                         success: function (data) {

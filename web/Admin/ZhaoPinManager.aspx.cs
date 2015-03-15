@@ -43,7 +43,7 @@ public partial class User_Default : System.Web.UI.Page
 
         /*资讯列表*/
         YS_ProductBLL productbll = new YS_ProductBLL();
-        Repeater1.DataSource = productbll.GetList("ProductType in(2,3,4)");//默认和器材管理
+        Repeater1.DataSource = productbll.GetList("ProductType in(4)");//默认和器材管理
         Repeater1.DataBind();
     }
 }
