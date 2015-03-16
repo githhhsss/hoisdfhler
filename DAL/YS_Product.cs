@@ -104,7 +104,7 @@ namespace YS_WEB.DAL
 			strSql.Append("ProductPhone=@ProductPhone,");
 			strSql.Append("ProductAddress=@ProductAddress,");
 			strSql.Append("ProductXinJiu=@ProductXinJiu,");
-			strSql.Append("PriceRange=@PriceRange");
+			strSql.Append("PriceRange=@PriceRange,");
             strSql.Append("UserID=@UserID,");
             strSql.Append("UserName=@UserName");
             strSql.Append(" where ID=@ID");
