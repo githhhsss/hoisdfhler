@@ -29,7 +29,7 @@
     .my-right .u-right .orderTitle a{ display:block; float:left; height:69px; line-height:69px; width:180px;border-right:1px solid #DDDDDD; text-align:center; font-size:23px;text-decoration:none; color:#000000;}
     .my-right .u-right .orderTitle .sel{border-top:5px solid #1ea78d; height:65px; background:#FFF; line-height:60px;}
     
-    .my-right .u-right .data-edit{ height:1000px;}
+    .my-right .u-right .data-edit{ height:1450px;}
     .my-right .u-right .data-edit ul li{ list-style:none;}
     
     .right-form{ margin-top:40px; margin-left:50px;}
@@ -91,7 +91,6 @@
             <div class="orderTitle">
                 <a href="ProductManager.aspx">商品列表</a> 
                 <a href="ProductAdd.aspx">增加商品</a> 
-                <a target="_blank" href="ProductQuery.aspx">查看商品</a>
                 <a class="sel" href="ProductUpdate.aspx">修改商品</a>
             </div>
 
@@ -100,6 +99,9 @@
                 <form id="form1" runat="server">
                 <div class="right-form">
                     <ul>
+                        <li><span class="form-say">产品图像</span></li>
+                            <li><img id="pimg" src="../ProductImg/pro.jpg" runat="server" style=" width:720px; height:450px;" /></li>
+                            <li><span class="form-title">图片目录：</span><input class="form-txt" id="ppText1" type="text" runat="server" value="pro.jpg" /></li>
                         <li><span class="form-say">产品基本信息</span></li>
                         <li><span class="form-title">商品名称：</span><input class="form-txt" id="ptxt1" type="text" runat="server" /></li>
                         <li><span class="form-title">价格：</span><input class="form-txt" id="ptxt2" runat="server" type="text" /></li>
@@ -135,6 +137,9 @@
     </script>
     <script type="text/javascript">
         $(function () {
+            $("#ppText1").change(function () {
+                $("#pimg").attr("src", "/ProductImg/" + $("#ppText1").val());
+            });
             $("#editPro").click(function () {
                 if (confirm("确定要修改信息吗？")) {
                     yscom.ajax({
@@ -146,6 +151,7 @@
                             "txt3": $("#ptxt3").val(),
                             "txt4": $("#ptxt4").val(),
                             "txt5": $("#ptxt5").val(),
+                            "pimg": $("#ppText1").val(),
                             "txt6": UE.getEditor('editor').getContent(),
                             "Select3": $("#Select3").val()
                         },

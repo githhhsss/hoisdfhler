@@ -342,6 +342,7 @@ public class Handler : IHttpHandler
         string Description = context.Request["txt6"];
         string Stock = context.Request["txt3"];
         string ProductKey = context.Request["txt4"];
+        string pimg = context.Request["pimg"];
 
         if (string.IsNullOrEmpty(ProductName))
         {
@@ -372,7 +373,7 @@ public class Handler : IHttpHandler
         pro.OverTime = new DateTime(9999, 12, 30);
         pro.Price = Convert.ToDecimal(Price);
         pro.PriceRange = "";
-        pro.ProductAddress = "";
+        pro.ProductAddress = pimg;
         pro.ProductKey = ProductKey;
         pro.ProductMan = "";
         pro.ProductName = ProductName;
@@ -417,6 +418,7 @@ public class Handler : IHttpHandler
         string Description = context.Request["txt6"];
         string Stock = context.Request["txt3"];
         string ProductKey = context.Request["txt4"];
+        string pimg = context.Request["pimg"];
 
         if (string.IsNullOrEmpty(ProductName))
         {
@@ -447,7 +449,7 @@ public class Handler : IHttpHandler
         pro.OverTime = new DateTime(9999, 12, 30);
         pro.Price = Convert.ToDecimal(Price);
         pro.PriceRange = "";
-        pro.ProductAddress = "";
+        pro.ProductAddress = pimg;
         pro.ProductKey = ProductKey;
         pro.ProductMan = "";
         pro.ProductName = ProductName;

@@ -105,7 +105,6 @@
             <div class="orderTitle">
                 <a class="sel" href="ProductManager.aspx">商品列表</a> 
                 <a href="ProductAdd.aspx">增加商品</a> 
-                <a href="ProductQuery.aspx">查看商品</a>
                 <a href="ProductUpdate.aspx">修改商品</a>
             </div>
 
@@ -135,7 +134,7 @@
                                 <span class="u-td-6 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Eval("Promotion")%></span>
                                 <span class="u-td-7 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Convert.ToDateTime(Eval("InputTime")).ToString("yyyy-MM-dd hh:mm")%></span>
                                 <span  class="u-td-do <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>">
-                                    <a href="ProductUpdate.aspx?itemid=<%# Eval("ID")%>">查看</a>
+                                    <a href="/Shop/ProductItem.aspx?itemid=<%# Eval("ID")%>">查看</a>
                                     <a href="ProductUpdate.aspx?itemid=<%# Eval("ID")%>">编辑</a>
                                     <a href="javascript:;" onclick='deletePro(<%# Eval("ID")%>)'>删除</a></span>
                             </li>
@@ -176,7 +175,7 @@
             });
         })
         function deletePro(pid) {
-            if (confirm("确定要删除用户吗?")) {
+            if (confirm("确定要删除产品吗?")) {
                 yscom.ajax({
                     url: "Action/Handler.ashx?cmd=DeletePro",
                     data: {
