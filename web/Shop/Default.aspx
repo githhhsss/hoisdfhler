@@ -43,11 +43,16 @@
        .sc-centent-2{ margin-top:28px; height:44px;width:980px;background:url('/images/shop/shoptitle.png') center bottom no-repeat;}
        .sc-centent-2 ul{ font-size:12px;}
        .sc-centent-2 ul li { list-style:none;padding:0;float:left;  margin:16px 20px 0px 20px;}
-       .sc-centent-2-li{ margin-left:500px;}
+     .sc-centent-2 .sc-centent-2-li{ margin-left:440px;}
        .sc-centent-3{margin-top:18px;height:44px;width:980px;background:url('/images/shop/fltitle.png') center bottom no-repeat;}
        .sc-centent-3 ul{ font-size:12px; color:#0eb493;font-weight:bold;}
        .sc-centent-3 ul li { list-style:none;padding:0;float:left; margin:16px 20px 0px 20px;}
-       .sc-centent-4{margin-top:26px; width:980px;height:200px;}
+      .sc-centent-3 .sc-centent-3-li{color:#7f7e7e;margin-left:480px;}
+       .sc-centent-4{margin-top:26px; width:980px;height:968px;}
+       .sc-centent-4-div{background:url('/images/shop/k.png') center bottom no-repeat; width:303px;height:367px; margin-bottom:117px; text-align:center;}
+        .sc-centent-4 ul li { list-style:none;padding:0;float:left; margin:16px 20px 0px 20px;}
+       .sc-centent-4-div span{ font-family:OpenSans; font-size:16px;}
+       .sc-centent-4-div img{ width:273px; height:277px; margin:15px 15px 15px 15px;}
        
        /*合作伙伴链接*/
        .sc-bottom{ padding-top:60px; padding-bottom:60px;}
@@ -120,14 +125,14 @@
                     <li><span>摄像机/相机</span></ li>
                     <li><span>镜头</span></ li>
                     <li><span>辅助设备</span></ li>
-                    <li><span>我的购物车</span></li>
+                    <li class="sc-centent-3-li"><span>我的购物车</span></li>
                 </ul>
             </div>
             <div class="sc-centent-4">
                 <ul>
                     <asp:Repeater ID="Repeater1" runat="server">
                     <ItemTemplate>
-                    <li><a href="ProductItem.aspx?itemid=<%# Eval("ID") %>"><div><img src="/ProductImg/<%# Eval("ProductAddress") %>" /><span><%# Eval("ProductName")%></span><span>$<%# Eval("Price")%></span></div></a></li>
+                    <li><a href="ProductItem.aspx?itemid=<%# Eval("ID") %>"><div class="sc-centent-4-div"><img  src="/ProductImg/<%# Eval("ProductAddress") %>" /></br><span><%# Eval("ProductName")%></span></br><span>$<%# Eval("Price")%></span></div></a></li>
                     </ItemTemplate>
                     </asp:Repeater>
                 </ul>
