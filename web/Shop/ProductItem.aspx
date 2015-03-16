@@ -11,6 +11,9 @@
        #pro_img{ width:661px; height:383px;}
        .sci-left{ margin-top:119px; float:left;}
        .sci-right{margin-top:119px; float:left; margin-left:150px;}
+       .sci-right .sci_divA{ line-height:39px;  text-align:center;  width:174px; height:39px;float:left;background:url('/images/shop/btnbj.png') center bottom no-repeat;}
+       .sci-right .sci_divB{ line-height:39px; margin-left:20px; text-align:center; width:174px; height:39px; float:left;background:url('/images/shop/btnbj.png') center bottom no-repeat;}
+       .sci-right a{font-family:造字工房雅圆（非商用）常规体; font-size:20px; font-weight:bold; color:White;}
        #sci_name{ font-family:造字工房雅圆（非商用）常规体; font-size:37px;}
        #sci_say{font-family:造字工房雅圆（非商用）常规体; font-size:12px;}
        #sci_price{font-family:造字工房雅圆（非商用）常规体; font-size:37px;}
@@ -38,7 +41,7 @@
                     <li><span id="sci_say" runat="server"></span></li>
                     <li><span id="sci_price" runat="server"></span></li>
                     <li><span id="sci_stock" runat="server"></span></li>
-                    <li id="buy"><a href="javascript:;">立即购买</a><a href="javascript:;">加入购物车</a></li>
+                    <li id="buy"><div class="sci_divA"><a href="javascript:;">立即购买</a></div><div class="sci_divB"><a href="javascript:;">加入购物车</a></div></li>
                 </ul>
             </div>
         </div>
