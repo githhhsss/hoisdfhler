@@ -53,7 +53,7 @@ public partial class User_Default : System.Web.UI.Page
             this.ptxt2.Value = pro.Price.ToString("f2");
             this.ptxt3.Value = pro.Stock.ToString();
             this.ptxt4.Value = pro.ProductKey;
-            this.ptxt5.Value = pro.Promotion.ToString();
+            this.ptxt5.Value = pro.Promotion.ToString("f2");
             this.Select3.Value = ((YS_Enum.ProductState)pro.State).ToString();
             editor = StringToJson(pro.Description);
         }

@@ -136,7 +136,7 @@
     <script type="text/javascript">
         $(function () {
             $("#editPro").click(function () {
-                if (confirm("确定要添加信息吗？")) {
+                if (confirm("确定要修改信息吗？")) {
                     yscom.ajax({
                         url: "Action/Handler.ashx?cmd=EditPro",
                         data: {
