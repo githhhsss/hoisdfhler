@@ -166,7 +166,7 @@
             });
         })
         function deletePro(pid) {
-            if (confirm("确定要删除用户吗?")) {
+            if (confirm("确定要删除信息吗?")) {
                 yscom.ajax({
                     url: "Action/Handler.ashx?cmd=DeletePro",
                     data: {
@@ -175,7 +175,7 @@
                     success: function (data) {
                         if (data.flag == "true") {
                             alert(data.msg);
-                            window.location = 'ProductManager.aspx';
+                            window.location = 'IssusingManager.aspx';
                         } else {
                             alert(data.msg);
                         }

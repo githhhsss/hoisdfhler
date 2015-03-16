@@ -175,7 +175,7 @@
             });
         })
         function deletePro(pid) {
-            if (confirm("确定要删除产品吗?")) {
+            if (confirm("确定要删除信息吗?")) {
                 yscom.ajax({
                     url: "Action/Handler.ashx?cmd=DeletePro",
                     data: {
