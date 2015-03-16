@@ -35,8 +35,19 @@
        .sc-center ul li .sc-center-img1{width:342px;height:260px;}
        
        /*产品列表*/
-       .sc-centent{}
-       .sc-centent a{ color:Red;}
+       .sc-centent{ }
+       sc-centent sc-width{ }
+       .sc-centent a{ color:Black;}
+       .sc-content-1-fl{ font-weight:bold; font-size:25px;}
+      .sc-centent-1{ margin-top:55px;width:980px;}
+       .sc-centent-2{ margin-top:28px; height:44px;width:980px;background:url('/images/shop/shoptitle.png') center bottom no-repeat;}
+       .sc-centent-2 ul{ font-size:12px;}
+       .sc-centent-2 ul li { list-style:none;padding:0;float:left;  margin:16px 20px 0px 20px;}
+       .sc-centent-2-li{ margin-left:500px;}
+       .sc-centent-3{margin-top:18px;height:44px;width:980px;background:url('/images/shop/fltitle.png') center bottom no-repeat;}
+       .sc-centent-3 ul{ font-size:12px; color:#0eb493;font-weight:bold;}
+       .sc-centent-3 ul li { list-style:none;padding:0;float:left; margin:16px 20px 0px 20px;}
+       .sc-centent-4{margin-top:26px; width:980px;height:200px;}
        
        /*合作伙伴链接*/
        .sc-bottom{ padding-top:60px; padding-bottom:60px;}
@@ -92,15 +103,15 @@
         </div>
 
         <div class="sc-centent sc-width">
-            <div class="sc-centent-1"><span>所有分类</span> <a href="../Default.aspx">首页</a> &gt; <a href="Default.aspx">商城</a></div>
+            <div class="sc-centent-1"><span class="sc-content-1-fl">所有分类</span>&nbsp;&nbsp;&nbsp; <a href="../Default.aspx">首页</a> &gt; <a href="Default.aspx">商城</a></div>
             <div class="sc-centent-2">
                 <ul>
-                    <li><span></span>综合</li>
-                    <li><span></span>销量</li>
-                    <li><span></span>价格从低到高</li>
-                    <li><span></span>价格从高到底</li>
-                    <li>
-                        <span></span><input id="scText1" type="text" /></li>
+                    <li><span>综合</span></li>
+                    <li><span>销量</span></li>
+                    <li><span>价格从低到高</span></li>
+                    <li><span>价格从高到底</span></li>
+                    <li class="sc-centent-2-li">
+                        <span ><input id="scText1" type="text" /></span></li>
                 </ul>
             </div>
             <div class="sc-centent-3">
