@@ -33,7 +33,7 @@ namespace YS_WEB.DAL
 					new SqlParameter("@Price", SqlDbType.Money,8),
 					new SqlParameter("@Promotion", SqlDbType.Float,8),
 					new SqlParameter("@State", SqlDbType.Int,4),
-					new SqlParameter("@Description", SqlDbType.Text),
+					new SqlParameter("@Description", SqlDbType.NText),
 					new SqlParameter("@Stock", SqlDbType.Int,4),
 					new SqlParameter("@InputTime", SqlDbType.DateTime),
 					new SqlParameter("@StartTime", SqlDbType.DateTime),
@@ -43,7 +43,7 @@ namespace YS_WEB.DAL
 					new SqlParameter("@IsHot", SqlDbType.Bit,1),
 					new SqlParameter("@ProductMan", SqlDbType.NVarChar,50),
 					new SqlParameter("@ProductPhone", SqlDbType.NVarChar,12),
-					new SqlParameter("@ProductAddress", SqlDbType.NVarChar,50),
+					new SqlParameter("@ProductAddress", SqlDbType.NVarChar,300),
 					new SqlParameter("@ProductXinJiu", SqlDbType.NVarChar,50),
 					new SqlParameter("@PriceRange", SqlDbType.NVarChar,100)};
 			parameters[0].Value = model.ID;
@@ -109,7 +109,7 @@ namespace YS_WEB.DAL
 					new SqlParameter("@Price", SqlDbType.Money,8),
 					new SqlParameter("@Promotion", SqlDbType.Float,8),
 					new SqlParameter("@State", SqlDbType.Int,4),
-					new SqlParameter("@Description", SqlDbType.Text),
+					new SqlParameter("@Description", SqlDbType.NText),
 					new SqlParameter("@Stock", SqlDbType.Int,4),
 					new SqlParameter("@InputTime", SqlDbType.DateTime),
 					new SqlParameter("@StartTime", SqlDbType.DateTime),
@@ -119,7 +119,7 @@ namespace YS_WEB.DAL
 					new SqlParameter("@IsHot", SqlDbType.Bit,1),
 					new SqlParameter("@ProductMan", SqlDbType.NVarChar,50),
 					new SqlParameter("@ProductPhone", SqlDbType.NVarChar,12),
-					new SqlParameter("@ProductAddress", SqlDbType.NVarChar,50),
+					new SqlParameter("@ProductAddress", SqlDbType.NVarChar,300),
 					new SqlParameter("@ProductXinJiu", SqlDbType.NVarChar,50),
 					new SqlParameter("@PriceRange", SqlDbType.NVarChar,100)};
 			parameters[0].Value = model.ID;

@@ -32,7 +32,7 @@ namespace YS_WEB.DAL
 					new SqlParameter("@UserName", SqlDbType.NVarChar,50),
 					new SqlParameter("@ProductID", SqlDbType.Int,4),
 					new SqlParameter("@ProductName", SqlDbType.NVarChar,50),
-					new SqlParameter("@Content", SqlDbType.Text)};
+					new SqlParameter("@Content", SqlDbType.NText)};
 			parameters[0].Value = model.ID;
 			parameters[1].Value = model.UserID;
 			parameters[2].Value = model.UserName;
@@ -57,20 +57,19 @@ namespace YS_WEB.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update YS_Comment set ");
-			strSql.Append("ID=@ID,");
 			strSql.Append("UserID=@UserID,");
 			strSql.Append("UserName=@UserName,");
 			strSql.Append("ProductID=@ProductID,");
 			strSql.Append("ProductName=@ProductName,");
 			strSql.Append("Content=@Content");
-			strSql.Append(" where ");
+            strSql.Append(" where ID=@ID ");
 			SqlParameter[] parameters = {
 					new SqlParameter("@ID", SqlDbType.Int,4),
 					new SqlParameter("@UserID", SqlDbType.Int,4),
 					new SqlParameter("@UserName", SqlDbType.NVarChar,50),
 					new SqlParameter("@ProductID", SqlDbType.Int,4),
 					new SqlParameter("@ProductName", SqlDbType.NVarChar,50),
-					new SqlParameter("@Content", SqlDbType.Text)};
+					new SqlParameter("@Content", SqlDbType.NText)};
 			parameters[0].Value = model.ID;
 			parameters[1].Value = model.UserID;
 			parameters[2].Value = model.UserName;
@@ -92,14 +91,16 @@ namespace YS_WEB.DAL
 		/// <summary>
 		/// 删除一条数据
 		/// </summary>
-		public bool Delete()
+		public bool Delete(int id)
 		{
 			//该表无主键信息，请自定义主键/条件字段
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("delete from YS_Comment ");
-			strSql.Append(" where ");
-			SqlParameter[] parameters = {
+            strSql.Append(" where ID=@ID ");
+            SqlParameter[] parameters = {
+                new SqlParameter("@ID", SqlDbType.Int,4)
 			};
+            parameters[0].Value = id;
 
 			int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -112,7 +113,31 @@ namespace YS_WEB.DAL
 			}
 		}
 
+        /// <summary>
+        /// 得到一个对象实体
+        /// </summary>
+        public YS_WEB.Model.YS_Comment GetModel(int id)
+        {
+            //该表无主键信息，请自定义主键/条件字段
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select  top 1 ID,UserID,UserName,ProductID,ProductName,Content from YS_Comment ");
+            strSql.Append(" where ID=@ID");
+            SqlParameter[] parameters = {
+                new SqlParameter("@ID", SqlDbType.Int,4)
+			};
+            parameters[0].Value = id;
 
+            YS_WEB.Model.YS_Comment model = new YS_WEB.Model.YS_Comment();
+            DataSet ds = DbHelperSQL.Query(strSql.ToString(), parameters);
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                return DataRowToModel(ds.Tables[0].Rows[0]);
+            }
+            else
+            {
+                return null;
+            }
+        }
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
