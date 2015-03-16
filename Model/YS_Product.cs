@@ -29,6 +29,8 @@ namespace YS_WEB.Model
 		private string _productaddress;
 		private string _productxinjiu;
 		private string _pricerange;
+        private int _userid;
+        private string _username;
 		/// <summary>
 		/// 
 		/// </summary>
@@ -181,6 +183,22 @@ namespace YS_WEB.Model
 			set{ _pricerange=value;}
 			get{return _pricerange;}
 		}
+        /// <summary>
+        /// 用户ID
+        /// </summary>
+        public int UserID
+        {
+            set { _userid = value; }
+            get { return _userid; }
+        }
+        /// <summary>
+        /// 用户名
+        /// </summary>
+        public string UserName
+        {
+            set { _username = value; }
+            get { return _username; }
+        }
 		#endregion Model
 
 	}

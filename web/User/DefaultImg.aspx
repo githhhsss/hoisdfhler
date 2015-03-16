@@ -21,6 +21,7 @@
     .my-left-bottom ul li a{  display:block;color:#000; height:70px; width:255px;margin:0 30px; line-height:70px; font-size:23px;border-top:1px solid #ccc; text-decoration:none;}
     .my-left-bottom ul li a:hover{color:#ccc;}
     .my-left-bottom ul li .set-top{border-top:none;}
+    .my-left-bottom .active{ color:Red;}
     
     .my-right{float:left; width:930px;}
     .u-right{margin-top:85px;margin-bottom:35px; background:#fff;}
@@ -57,7 +58,7 @@
             </div>
             <div class="my-left-bottom">
                 <ul>
-                <li><a href="MyOrder.aspx" class="set-top">个人设置</a></li>
+                <li><a href="MyOrder.aspx" class="set-top active">个人设置</a></li>
                 <li><a href="MyOrder.aspx">我的发布</a></li>
                 <li><a href="MyOrder.aspx">我的购物车</a></li>
                 <li><a href="MyOrder.aspx">我的订单</a></li>

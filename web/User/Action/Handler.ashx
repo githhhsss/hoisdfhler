@@ -201,6 +201,205 @@ public class Handler : IHttpHandler
             return;
         }
     }
+
+
+    //发布摄影信息
+    public void AddProduct(HttpContext context)
+    {
+        string ProductName = context.Request["txt1"];//拍摄类型
+        DateTime StartTime = DateTime.Now;
+        try
+        {
+            StartTime = Convert.ToDateTime(context.Request["txt2"]);//拍摄时间
+        }
+        catch 
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"拍摄时间格式错误\"}");
+            return;
+        }
+        string ProductAddress = context.Request["txt3"];//拍摄地点
+        string Price = context.Request["txt4"];//价&nbsp;&nbsp;格：
+        string ProductMan = context.Request["txt5"];//联系人
+        string ProductPhone = context.Request["txt6"];//联系电话
+        string Description = context.Request["txt7"];//详细描述
+
+        if (string.IsNullOrEmpty(ProductName))
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"拍摄类型不能为空\"}");
+            return;
+        }
+        if (!PageValidate.IsDecimal(Price))
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"价格格式不对\"}");
+            return;
+        }
+        
+
+        YS_ProductBLL probll = new YS_ProductBLL();
+        YS_Product pro = new YS_Product();
+        pro.Description = Description;
+        pro.InputTime = DateTime.Now;
+        pro.IsHot = true;
+        pro.OverTime = new DateTime(9999, 12, 30);
+        pro.Price = Convert.ToDecimal(Price);
+        pro.PriceRange = "";
+        pro.ProductAddress = ProductAddress;
+        pro.ProductKey = "";
+        pro.ProductMan = "";
+        pro.ProductName = ProductName;
+        pro.ProductPhone = ProductPhone;
+        pro.ProductType = YS_Enum.ProductType.拍摄外单;
+        pro.ProductXinJiu = "";
+        pro.Promotion = 0 ;
+        pro.Sales = 0;
+        pro.StartTime = StartTime;
+        pro.State = YS_Enum.ProductState.默认;
+        pro.Stock = 0;
+
+        pro.UserID = Convert.ToInt32(Tool.CookieGet("UserID"));
+        pro.UserName = Tool.CookieGet("UserName");
+
+        try
+        {
+            if (probll.Add(pro))
+            {
+                context.Response.Write("{\"flag\":\"true\",\"msg\":\"拍摄任务添加成功\"}");
+                return;
+            }
+            else
+            {
+                context.Response.Write("{\"flag\":\"false\",\"msg\":\"未知错误\"}");
+                return;
+            }
+
+        }
+        catch
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"数据库异常\"}");
+            return;
+        }
+
+    }
+    //发布二手器材
+    public void AddProduct2(HttpContext context)
+    {
+        string ProductName = context.Request["txt1"];//器材名称
+        string ProductXinJiu = context.Request["txt2"];//新旧程度
+        string Price = context.Request["txt3"];//价&nbsp;&nbsp;格
+        string ProductAddress = context.Request["txt4"];//所在城市
+        string ProductMan = context.Request["txt5"];//联系人
+        string ProductPhone = context.Request["txt6"];//联系电话
+        string Description = context.Request["txt7"];//详细描述
+
+        if (string.IsNullOrEmpty(ProductName))
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"器材名称不能为空\"}");
+            return;
+        }
+        if (!PageValidate.IsDecimal(Price))
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"价格格式不对\"}");
+            return;
+        }
+
+
+        YS_ProductBLL probll = new YS_ProductBLL();
+        YS_Product pro = new YS_Product();
+        pro.Description = Description;
+        pro.InputTime = DateTime.Now;
+        pro.IsHot = true;
+        pro.OverTime = new DateTime(9999, 12, 30);
+        pro.Price = Convert.ToDecimal(Price);
+        pro.PriceRange = "";
+        pro.ProductAddress = ProductAddress;
+        pro.ProductKey = "";
+        pro.ProductMan = "";
+        pro.ProductName = ProductName;
+        pro.ProductPhone = ProductPhone;
+        pro.ProductType = YS_Enum.ProductType.二手;
+        pro.ProductXinJiu = ProductXinJiu;
+        pro.Promotion = 0;
+        pro.Sales = 0;
+        pro.StartTime = DateTime.Now ;
+        pro.State = YS_Enum.ProductState.默认;
+        pro.Stock = 0;
+
+        pro.UserID = Convert.ToInt32(Tool.CookieGet("UserID"));
+        pro.UserName = Tool.CookieGet("UserName");
+
+        try
+        {
+            if (probll.Add(pro))
+            {
+                context.Response.Write("{\"flag\":\"true\",\"msg\":\"二手器材发布成功\"}");
+                return;
+            }
+            else
+            {
+                context.Response.Write("{\"flag\":\"false\",\"msg\":\"未知错误\"}");
+                return;
+            }
+
+        }
+        catch
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"数据库异常\"}");
+            return;
+        }
+
+    }
+    //发布推荐视频
+    public void AddProduct3(HttpContext context)
+    {
+        string ProductAddress = context.Request["txt1"];//视频地址 
+        string Description = context.Request["txt7"];//推荐理由 
+
+
+        YS_ProductBLL probll = new YS_ProductBLL();
+        YS_Product pro = new YS_Product();
+        pro.Description = Description;
+        pro.InputTime = DateTime.Now;
+        pro.IsHot = true;
+        pro.OverTime = new DateTime(9999, 12, 30);
+        pro.Price =0;
+        pro.PriceRange = "";
+        pro.ProductAddress = ProductAddress;
+        pro.ProductKey = "";
+        pro.ProductMan = "";
+        pro.ProductName = "推荐视频"; 
+        pro.ProductPhone = "";
+        pro.ProductType = YS_Enum.ProductType.视频;
+        pro.ProductXinJiu = ""; ;
+        pro.Promotion = 0;
+        pro.Sales = 0;
+        pro.StartTime = DateTime.Now;
+        pro.State = YS_Enum.ProductState.默认;
+        pro.Stock = 0;
+
+        pro.UserID = Convert.ToInt32(Tool.CookieGet("UserID"));
+        pro.UserName = Tool.CookieGet("UserName");
+
+        try
+        {
+            if (probll.Add(pro))
+            {
+                context.Response.Write("{\"flag\":\"true\",\"msg\":\"推荐视频发布成功\"}");
+                return;
+            }
+            else
+            {
+                context.Response.Write("{\"flag\":\"false\",\"msg\":\"未知错误\"}");
+                return;
+            }
+
+        }
+        catch
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"数据库异常\"}");
+            return;
+        }
+
+    }
     
     public bool IsReusable
     {

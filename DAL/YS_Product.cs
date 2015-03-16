@@ -23,9 +23,9 @@ namespace YS_WEB.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into YS_Product(");
-			strSql.Append("ProductType,ProductName,Price,Promotion,State,Description,Stock,InputTime,StartTime,OverTime,Sales,ProductKey,IsHot,ProductMan,ProductPhone,ProductAddress,ProductXinJiu,PriceRange)");
+			strSql.Append("ProductType,ProductName,Price,Promotion,State,Description,Stock,InputTime,StartTime,OverTime,Sales,ProductKey,IsHot,ProductMan,ProductPhone,ProductAddress,ProductXinJiu,PriceRange,UserID,UserName)");
 			strSql.Append(" values (");
-			strSql.Append("@ProductType,@ProductName,@Price,@Promotion,@State,@Description,@Stock,@InputTime,@StartTime,@OverTime,@Sales,@ProductKey,@IsHot,@ProductMan,@ProductPhone,@ProductAddress,@ProductXinJiu,@PriceRange)");
+            strSql.Append("@ProductType,@ProductName,@Price,@Promotion,@State,@Description,@Stock,@InputTime,@StartTime,@OverTime,@Sales,@ProductKey,@IsHot,@ProductMan,@ProductPhone,@ProductAddress,@ProductXinJiu,@PriceRange,@UserID,@UserName)");
 			SqlParameter[] parameters = {
 					new SqlParameter("@ID", SqlDbType.Int,4),
 					new SqlParameter("@ProductType", SqlDbType.Int,4),
@@ -45,7 +45,9 @@ namespace YS_WEB.DAL
 					new SqlParameter("@ProductPhone", SqlDbType.NVarChar,12),
 					new SqlParameter("@ProductAddress", SqlDbType.NVarChar,300),
 					new SqlParameter("@ProductXinJiu", SqlDbType.NVarChar,50),
-					new SqlParameter("@PriceRange", SqlDbType.NVarChar,100)};
+					new SqlParameter("@PriceRange", SqlDbType.NVarChar,100),
+                    new SqlParameter("@UserID", SqlDbType.Int,4),
+					new SqlParameter("@UserName", SqlDbType.NVarChar,50)};
 			parameters[0].Value = model.ID;
 			parameters[1].Value = model.ProductType;
 			parameters[2].Value = model.ProductName;
@@ -65,6 +67,8 @@ namespace YS_WEB.DAL
 			parameters[16].Value = model.ProductAddress;
 			parameters[17].Value = model.ProductXinJiu;
 			parameters[18].Value = model.PriceRange;
+            parameters[19].Value = model.UserID;
+            parameters[20].Value = model.UserName;
 
 			int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -101,6 +105,8 @@ namespace YS_WEB.DAL
 			strSql.Append("ProductAddress=@ProductAddress,");
 			strSql.Append("ProductXinJiu=@ProductXinJiu,");
 			strSql.Append("PriceRange=@PriceRange");
+            strSql.Append("UserID=@UserID,");
+            strSql.Append("UserName=@UserName");
             strSql.Append(" where ID=@ID");
 			SqlParameter[] parameters = {
 					new SqlParameter("@ID", SqlDbType.Int,4),
@@ -121,7 +127,9 @@ namespace YS_WEB.DAL
 					new SqlParameter("@ProductPhone", SqlDbType.NVarChar,12),
 					new SqlParameter("@ProductAddress", SqlDbType.NVarChar,300),
 					new SqlParameter("@ProductXinJiu", SqlDbType.NVarChar,50),
-					new SqlParameter("@PriceRange", SqlDbType.NVarChar,100)};
+					new SqlParameter("@PriceRange", SqlDbType.NVarChar,100),
+                    new SqlParameter("@UserID", SqlDbType.Int,4),
+					new SqlParameter("@UserName", SqlDbType.NVarChar,50)};
 			parameters[0].Value = model.ID;
 			parameters[1].Value = model.ProductType;
 			parameters[2].Value = model.ProductName;
@@ -141,6 +149,8 @@ namespace YS_WEB.DAL
 			parameters[16].Value = model.ProductAddress;
 			parameters[17].Value = model.ProductXinJiu;
 			parameters[18].Value = model.PriceRange;
+            parameters[19].Value = model.UserID;
+            parameters[20].Value = model.UserName;
 
 			int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -185,7 +195,7 @@ namespace YS_WEB.DAL
         {
             //该表无主键信息，请自定义主键/条件字段
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select  top 1 ID,ProductType,ProductName,Price,Promotion,State,Description,Stock,InputTime,StartTime,OverTime,Sales,ProductKey,IsHot,ProductMan,ProductPhone,ProductAddress,ProductXinJiu,PriceRange from YS_Product ");
+            strSql.Append("select  top 1 ID,ProductType,ProductName,Price,Promotion,State,Description,Stock,InputTime,StartTime,OverTime,Sales,ProductKey,IsHot,ProductMan,ProductPhone,ProductAddress,ProductXinJiu,PriceRange,UserID,UserName from YS_Product ");
             strSql.Append(" where ID=@ID");
             SqlParameter[] parameters = {
                 new SqlParameter("@ID", SqlDbType.Int,4)
@@ -209,7 +219,7 @@ namespace YS_WEB.DAL
 		{
 			//该表无主键信息，请自定义主键/条件字段
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select  top 1 ID,ProductType,ProductName,Price,Promotion,State,Description,Stock,InputTime,StartTime,OverTime,Sales,ProductKey,IsHot,ProductMan,ProductPhone,ProductAddress,ProductXinJiu,PriceRange from YS_Product ");
+            strSql.Append("select  top 1 ID,ProductType,ProductName,Price,Promotion,State,Description,Stock,InputTime,StartTime,OverTime,Sales,ProductKey,IsHot,ProductMan,ProductPhone,ProductAddress,ProductXinJiu,PriceRange,UserID,UserName from YS_Product ");
 			strSql.Append(" where ID=@ID");
 			SqlParameter[] parameters = {
 			};
@@ -318,6 +328,14 @@ namespace YS_WEB.DAL
 				{
 					model.PriceRange=row["PriceRange"].ToString();
 				}
+                if (row["UserID"] != null && row["UserID"].ToString() != "")
+                {
+                    model.UserID = int.Parse(row["UserID"].ToString());
+                }
+                if (row["UserName"] != null)
+                {
+                    model.UserName = row["UserName"].ToString();
+                }
 			}
 			return model;
 		}
@@ -328,7 +346,7 @@ namespace YS_WEB.DAL
 		public DataSet GetList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID,ProductType,ProductName,Price,Promotion,State,Description,Stock,InputTime,StartTime,OverTime,Sales,ProductKey,IsHot,ProductMan,ProductPhone,ProductAddress,ProductXinJiu,PriceRange ");
+            strSql.Append("select ID,ProductType,ProductName,Price,Promotion,State,Description,Stock,InputTime,StartTime,OverTime,Sales,ProductKey,IsHot,ProductMan,ProductPhone,ProductAddress,ProductXinJiu,PriceRange,UserID,UserName ");
 			strSql.Append(" FROM YS_Product ");
 			if(strWhere.Trim()!="")
 			{
@@ -348,7 +366,7 @@ namespace YS_WEB.DAL
 			{
 				strSql.Append(" top "+Top.ToString());
 			}
-			strSql.Append(" ID,ProductType,ProductName,Price,Promotion,State,Description,Stock,InputTime,StartTime,OverTime,Sales,ProductKey,IsHot,ProductMan,ProductPhone,ProductAddress,ProductXinJiu,PriceRange ");
+            strSql.Append(" ID,ProductType,ProductName,Price,Promotion,State,Description,Stock,InputTime,StartTime,OverTime,Sales,ProductKey,IsHot,ProductMan,ProductPhone,ProductAddress,ProductXinJiu,PriceRange,UserID,UserName ");
 			strSql.Append(" FROM YS_Product ");
 			if(strWhere.Trim()!="")
 			{

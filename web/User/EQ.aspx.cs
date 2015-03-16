@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using YS_WEB.BLL;
 using YS_WEB.Model;
 
-public partial class User_Shooting : System.Web.UI.Page
+public partial class User_EQ : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -16,16 +16,16 @@ public partial class User_Shooting : System.Web.UI.Page
 
         }
         else
-        {
+        {  
             int id = 0;
             int.TryParse(Request["itemid"].ToString(), out id);
             YS_ProductBLL bll = new YS_ProductBLL();
             YS_Product p = bll.GetModel(id);
 
             this.RegisteruserNameTxt.Value = p.ProductName;
-            this.Registerpassword.Value = p.StartTime.ToString("yyyy-MM-dd");
-            this.Registerpassword2.Value = p.ProductAddress;
-            this.RegisterText4.Value = p.Price.ToString("f2"); 
+            this.Registerpassword.Value = p.ProductXinJiu;
+            this.Registerpassword2.Value = p.Price.ToString("f2");
+            this.RegisterText4.Value = p.ProductAddress;
             this.RegisterText5.Value = p.ProductMan;
             this.RegisterText6.Value = p.ProductPhone;
             this.RegisterText7.Value = p.Description;

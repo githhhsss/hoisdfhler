@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="User_Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="IssusingManager.aspx.cs" Inherits="User_IssusingManager" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -39,6 +39,31 @@
     
     .right-form ul li .btn{ display:block ;background:url("../Images/btnbj.png") no-repeat center center; width:150px; height:40px;background-size:cover; font-size:18px; text-align:center; line-height:40px; margin-left:432px;}
     
+    
+    /*列表数据*/
+     .right-form ul li span{  float:left;display:block; margin:0; padding:0 ;text-align:center; line-height:30px ;height:30px; border:1px solid #CCC;overflow:hidden;text-overflow:ellipsis;-o-text-overflow: ellipsis;white-space:nowrap;width:100%;}
+    .right-form .u-th-1{ width:40px; color:#1ea78d;line-height:40px ;height:40px; font-size:16px;}
+    .right-form .u-th-2{ width:360px; color:#1ea78d;line-height:40px ;height:40px; font-size:16px;}
+    .right-form .u-th-3{width:120px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
+    .right-form .u-th-4{width:120px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
+    .right-form .u-th-5{width:80px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
+    .right-form .u-th-6{width:100px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
+    .right-form .u-th-7{width:100px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
+    .right-form .u-th-do{width:210px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
+    
+    .right-form .odd { background:#F9F9F9;}
+    
+    .right-form .u-td-1{width:40px;}
+    .right-form .u-td-2{width:360px;}
+    .right-form .u-td-3{width:120px;}
+    .right-form .u-td-4{width:120px;}
+    .right-form .u-td-5{width:80px;}
+    .right-form .u-td-6{width:100px;}
+    .right-form .u-td-7{width:100px;}
+    .right-form .u-td-do{width:210px;}
+    .right-form .u-td-do a{ display:block; float:left; margin-left:3px;margin-top:3px ;background:url("../Images/btnbj.png") no-repeat center center; width:66px; height:24px;background-size:cover; font-size:12px; text-align:center; line-height:24px;}
+    
+    
     </style>
     <myControls:WebScript id="WebScript1" runat="server" />
 </head>
@@ -65,8 +90,8 @@
             </div>
             <div class="my-left-bottom">
                 <ul>
-                <li><a href="Default.aspx" class="set-top active">个人设置</a></li>
-                <li><a href="IssusingManager.aspx">我的发布</a></li>
+                <li><a href="Default.aspx" class="set-top">个人设置</a></li>
+                <li><a href="IssusingManager.aspx" class="active">我的发布</a></li>
                 <li><a href="MyOrder.aspx">我的购物车</a></li>
                 <li><a href="MyOrder.aspx">我的订单</a></li>
                 </ul>
@@ -76,21 +101,36 @@
             <div class="u-right">
 
             <div class="orderTitle">
-                <a class="sel" href="Default.aspx">个人信息</a> 
-                <a href="DefaultPasswrod.aspx">修改密码</a> 
-                <a href="DefaultImg.aspx">更改头像</a>
+                <a class="sel" href="IssusingManager.aspx">发布列表</a> 
+                <a href="Issuing.aspx">我要发布</a> 
             </div>
 
             <!--信息-->
-            <div class="data-edit">
+           <div class="data-edit">
                 <form id="form1" runat="server">
                 <div class="right-form">
                     <ul>
-                        <li><span class="form-title">用户名：</span><input class="form-txt form-readonly" id="mynametxt" type="text" runat="server" readonly ="readonly" /></li>
-                        <li><span class="form-title">真实姓名：</span><input class="form-txt" id="myreadnametxt" runat="server" type="text" /></li>
-                        <li><span class="form-title">地址：</span><input class="form-txt" id="myaddresstxt" runat="server" type="text" /></li>
-                        <li><span class="form-title">e-mail：</span><input class="form-txt" id="myemailtxt" runat="server" type="text" /></li>
-                        <li><a id="ChangeMyInformation" class="btn" href="javascript:;">确认修改</a></li>
+                        <li>
+                            <span class="u-th-1">序号</span>
+                            <span class="u-th-2">标题</span>
+                            <span class="u-th-4">类型</span>
+                            <span class="u-th-7">发布时间</span>
+                            <span  class="u-th-do">操作</span>
+                        </li>
+                        <asp:Repeater ID="Repeater1" runat="server">
+                            <ItemTemplate>
+                            <li>
+                                <span class="u-td-1 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Container.ItemIndex+1 %></span>
+                                <span class="u-td-2 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Eval("ProductName")%></span>
+                                <span class="u-td-4 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# (YS_WEB.Model.YS_Enum.ProductType)Enum.Parse(typeof(YS_WEB.Model.YS_Enum.ProductType), Eval("ProductType").ToString()) %></span>
+                                <span class="u-td-7 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Convert.ToDateTime(Eval("InputTime")).ToString("yyyy-MM-dd hh:mm")%></span>
+                                <span  class="u-td-do <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>">
+                                    <a href="/Shop/ProductItem.aspx?itemid=<%# Eval("ID")%>">查看</a>
+                                    <a href='<%# Convert.ToInt32(Eval("ProductType"))==2 ?"EQ.aspx":Convert.ToInt32(Eval("ProductType"))==3?"Shooting.aspx":"Vrecommendation.aspx" %>?itemid=<%# Eval("ID")%>'>编辑</a>
+                                    <a href="javascript:;" onclick='deletePro(<%# Eval("ID")%>)'>删除</a></span>
+                            </li>
+                            </ItemTemplate>
+                        </asp:Repeater>
                     </ul>
                 </div>
                 </form>
@@ -125,6 +165,24 @@
                 };
             });
         })
+        function deletePro(pid) {
+            if (confirm("确定要删除用户吗?")) {
+                yscom.ajax({
+                    url: "Action/Handler.ashx?cmd=DeletePro",
+                    data: {
+                        "ID": pid
+                    },
+                    success: function (data) {
+                        if (data.flag == "true") {
+                            alert(data.msg);
+                            window.location = 'ProductManager.aspx';
+                        } else {
+                            alert(data.msg);
+                        }
+                    }
+                });
+            }
+        }
     </script>
 </body>
 </html>
