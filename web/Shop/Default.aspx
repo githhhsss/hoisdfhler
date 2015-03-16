@@ -12,7 +12,7 @@
        .sc-title{ height:160px;background:url('/images/shop/sc.png') center bottom no-repeat; margin-bottom:30px;}
        
        /*定宽980px*/
-       .sc-width{left:0px;right:0px;margin-left:auto; margin-right:auto; height:100%;width:980px; overflow:hidden;position:relative; }
+       .sc-width{left:0px;right:0px;margin-left:auto; margin-right:auto;width:980px; overflow:hidden;position:relative; }
        
        /*轮播图片*/
        .slides img{ height:516px; width:1366px;}
@@ -27,6 +27,16 @@
        .sc-meun .sc-a-1{ display:inline-block; width:117px; height:46px; margin: 55px 0px 59px 16px; }
        .sc-meun .sc-a-2{ display:inline-block; width:117px; height:46px; margin: 55px 0px 59px 32px;}
        .sc-meun .sc-a-3{ display:inline-block; width:117px; height:46px; margin: 55px 0px 59px 32px;}
+       
+       /*中间固定8栏*/
+       .sc-center{ margin:0px; padding:0px;}
+       .sc-center ul li{ list-style:none; float:left; height:260px;}
+       .sc-center ul li .sc-center-img{ width:341px; height:260px;}
+       .sc-center ul li .sc-center-img1{width:342px;height:260px;}
+       
+       /*产品列表*/
+       .sc-centent{}
+       .sc-centent a{ color:Red;}
        
        /*合作伙伴链接*/
        .sc-bottom{ padding-top:60px; padding-bottom:60px;}
@@ -66,6 +76,51 @@
                 <a href="javascript:;" class="sc-a-3">旗舰店</a>
             </div>
             <div class="sc-meun-right"></div>
+        </div>
+
+        <div class="sc-center">
+            <ul>
+                <li><a href="#"><img class="sc-center-img sc-center-img1" src="../Images/shop/yt.jpg" /></a></li>
+                <li><a href="#"><img class="sc-center-img" src="../Images/shop/yt.jpg" /></a></li>
+                <li><a href="#"><img class="sc-center-img" src="../Images/shop/yt.jpg" /></a></li>
+                <li><a href="#"><img class="sc-center-img sc-center-img1" src="../Images/shop/yt.jpg" /></a></li>
+                <li><a href="#"><img class="sc-center-img sc-center-img1" src="../Images/shop/yt.jpg" /></a></li>
+                <li><a href="#"><img class="sc-center-img" src="../Images/shop/yt.jpg" /></a></li>
+                <li><a href="#"><img class="sc-center-img" src="../Images/shop/yt.jpg" /></a></li>
+                <li><a href="#"><img class="sc-center-img sc-center-img1" src="../Images/shop/yt.jpg" /></a></li>
+            </ul>
+        </div>
+
+        <div class="sc-centent sc-width">
+            <div class="sc-centent-1"><span>所有分类</span> <a href="../Default.aspx">首页</a> &gt; <a href="Default.aspx">商城</a></div>
+            <div class="sc-centent-2">
+                <ul>
+                    <li><span></span>综合</li>
+                    <li><span></span>销量</li>
+                    <li><span></span>价格从低到高</li>
+                    <li><span></span>价格从高到底</li>
+                    <li>
+                        <span></span><input id="scText1" type="text" /></li>
+                </ul>
+            </div>
+            <div class="sc-centent-3">
+                <ul>
+                    <li><span>分类：</span></ li>
+                    <li><span>摄像机/相机</span></ li>
+                    <li><span>镜头</span></ li>
+                    <li><span>辅助设备</span></ li>
+                    <li><span>我的购物车</span></li>
+                </ul>
+            </div>
+            <div class="sc-centent-4">
+                <ul>
+                    <asp:Repeater ID="Repeater1" runat="server">
+                    <ItemTemplate>
+                    <li><a href="ProductItem.aspx?itemid=<%# Eval("ID") %>"><div><img src="/ProductImg/<%# Eval("ProductAddress") %>" /><span><%# Eval("ProductName")%></span><span>$<%# Eval("Price")%></span></div></a></li>
+                    </ItemTemplate>
+                    </asp:Repeater>
+                </ul>
+            </div>
         </div>
 
         <div class="sc-bottom sc-width">
