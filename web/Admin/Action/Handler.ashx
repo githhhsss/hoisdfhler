@@ -385,6 +385,12 @@ public class Handler : IHttpHandler
         pro.StartTime = DateTime.Now;
         pro.State = (YS_Enum.ProductState)Enum.Parse(typeof(YS_Enum.ProductState), State);
         pro.Stock = Convert.ToInt32(Stock);
+        
+        string username = Tool.CookieGet("UserName");
+        YS_UserBLL userbll = new YS_UserBLL();
+        YS_User user = userbll.GetModel(username);
+        pro.UserID = user.ID;
+        pro.UserName = user.UserName;
 
         try
         {
@@ -517,6 +523,11 @@ public class Handler : IHttpHandler
         pro.StartTime = DateTime.Now;
         pro.State = YS_Enum.ProductState.默认;
         pro.Stock = 0;
+        string username = Tool.CookieGet("UserName");
+        YS_UserBLL userbll = new YS_UserBLL();
+        YS_User user = userbll.GetModel(username);
+        pro.UserID = user.ID;
+        pro.UserName = user.UserName;
 
         try
         {
@@ -631,6 +642,11 @@ public class Handler : IHttpHandler
         pro.StartTime = DateTime.Now;
         pro.State = YS_Enum.ProductState.默认;
         pro.Stock = 0;
+        string username = Tool.CookieGet("UserName");
+        YS_UserBLL userbll = new YS_UserBLL();
+        YS_User user = userbll.GetModel(username);
+        pro.UserID = user.ID;
+        pro.UserName = user.UserName;
 
         try
         {
