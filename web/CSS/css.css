@@ -4,7 +4,7 @@ body{font-size: 12px;font-family: 宋体, Arial, Helvetica, sans-serif;color: #3
 img{border-style: none;padding: 0px;margin: 0px;}
 
 /*商城头部样式*/
-.web-top{ left:0px;right:0px;margin-left:auto; margin-right:auto; height:55px;width:1366px; overflow:hidden;position:relative;background:rgb(16,22,54); filter:alpha(opacity=50); background:rgba(16,22,54,0.5); z-index:99999; }
+.web-top{ left:0px;right:0px;top:0px;margin-left:auto; margin-right:auto; height:55px;width:1366px; overflow:hidden;position:relative;background:rgb(16,22,54); filter:alpha(opacity=50); background:rgba(16,22,54,0.5); z-index:99999; }
 .web-top .web-top-left{position:absolute;left:0px;width:160px;height:55px;overflow:hidden;}
 .web-top .web-top-left img{ margin-top:10px; margin-left:25px;}
 .web-top .web-top-jgx{position:absolute;left:160px;width:3px;overflow:hidden; }
