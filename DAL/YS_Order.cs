@@ -158,7 +158,7 @@ namespace YS_WEB.DAL
 			strSql.Append("select  top 1 ID,UserID,UserName,DeliveryName,DeliverPhone,DeliverSheng,DeliverCity,DeliverZipCode,DeliverAddress,Price,Promotion,State,AddTime from YS_Order ");
             strSql.Append(" where UserID=@UserID Order By AddTime DESC");
 			SqlParameter[] parameters = {
-                new SqlParameter("@ID", SqlDbType.Int,4)
+                new SqlParameter("@UserID", SqlDbType.Int,4)
 			};
             parameters[0].Value = UserID;
 
