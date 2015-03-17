@@ -7,6 +7,7 @@ using YS_WEB.BLL;
 using System.Data;
 using Maticsoft.Common.DEncrypt;
 using Maticsoft.Common;
+using System.Text;
 
 public class Handler : IHttpHandler
 {
@@ -76,7 +77,7 @@ public class Handler : IHttpHandler
         {
             if (cbll.Add(c))
             {
-                context.Response.Write("{\"flag\":\"true\",\"msg\":\"成功添加到购物车\",\"num\":\"" + c.Number + "\",\"snum\":\"" + (c.Number*c.Price).ToString("f2") + "\"}");
+                context.Response.Write("{\"flag\":\"true\",\"msg\":\"成功添加到购物车\",\"num\":\"" + c.Number + "\",\"snum\":\"" + (c.Number * c.Price).ToString("f2") + "\"}");
                 return;
             }
             else
@@ -189,7 +190,7 @@ public class Handler : IHttpHandler
 
         YS_OrderBLL obll = new YS_OrderBLL();
         YS_Order o = new YS_Order();
-        
+
         YS_OrderItemBLL oibll = new YS_OrderItemBLL();
         YS_OrderItem oi = new YS_OrderItem();
 
@@ -197,11 +198,11 @@ public class Handler : IHttpHandler
 
         var clist = cbll.GetModelList("userid = " + Convert.ToInt32(Tool.CookieGet("UserID")));
         decimal sum = 0;
-        foreach(var c in clist)
+        foreach (var c in clist)
         {
             sum += c.Number * c.Price;
         }
-        
+
         o.AddTime = DateTime.Now;
         o.DeliverAddress = DeliverAddress;
         o.DeliverCity = DeliverSheng;
@@ -226,7 +227,7 @@ public class Handler : IHttpHandler
         {
             oi.OrderID = o.ID;
             oi.ProductID = c.ProductID;
-            
+
             if (!oibll.Add(oi))
             {
                 context.Response.Write("{\"flag\":\"false\",\"msg\":\"数据库处理异常\"}");
@@ -240,9 +241,33 @@ public class Handler : IHttpHandler
             }
         }
         context.Response.Write("{\"flag\":\"true\",\"msg\":\"订单提交成功!\"}");
-        
+
     }
-    
+    public void GetProducts(HttpContext context)
+    {
+        YS_ProductBLL pbll = new YS_ProductBLL();
+        int sItem = Convert.ToInt32(context.Request["sItem"]);
+        StringBuilder sb = new StringBuilder();
+        try
+        {
+            DataSet ds = pbll.GetListByPage("ProductType in(0,1)", "id desc", sItem, sItem+1);
+            foreach (DataRow item in ds.Tables[0].Rows)
+            {
+                sb.Append("<a href='ProductItem.aspx?itemid=" + item["ID"] + "'>");
+                sb.Append("<div class='sc-centent-4-div " + (sItem % 3 == 1 ? "h-first" : "") + "'>");
+                sb.Append("<img  src='/ProductImg/" + item["ProductAddress"] + "' />");
+                sb.Append("<span>" + item["ProductName"] + "</span>");
+                sb.Append("<span style='margin-top:10px;'>$" + Convert.ToDecimal(item["Price"]).ToString("f2") + "</span>");
+                sb.Append("</div>");
+                sb.Append("</a>");
+            }
+            context.Response.Write("{\"flag\":\"true\",\"msg\":\"" + sb.ToString() + "\"}");
+        }
+        catch
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"数据库处理异常!\"}");
+        }
+    }
     public bool IsReusable
     {
         get
