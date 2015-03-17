@@ -40,6 +40,14 @@ namespace YS_WEB.BLL
 			return dal.Delete();
 		}
 
+        /// <summary>
+        /// 得到一个对象实体
+        /// </summary>
+        public YS_WEB.Model.YS_Delivery GetModelForUser(int userID)
+        {
+            //该表无主键信息，请自定义主键/条件字段
+            return dal.GetModelForUser(userID);
+        }
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>

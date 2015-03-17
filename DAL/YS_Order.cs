@@ -151,14 +151,16 @@ namespace YS_WEB.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public YS_WEB.Model.YS_Order GetModel()
+		public YS_WEB.Model.YS_Order GetModel(int UserID)
 		{
 			//该表无主键信息，请自定义主键/条件字段
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select  top 1 ID,UserID,UserName,DeliveryName,DeliverPhone,DeliverSheng,DeliverCity,DeliverZipCode,DeliverAddress,Price,Promotion,State,AddTime from YS_Order ");
-			strSql.Append(" where ");
+            strSql.Append(" where UserID=@UserID Order By AddTime DESC");
 			SqlParameter[] parameters = {
+                new SqlParameter("@ID", SqlDbType.Int,4)
 			};
+            parameters[0].Value = UserID;
 
 			YS_WEB.Model.YS_Order model=new YS_WEB.Model.YS_Order();
 			DataSet ds=DbHelperSQL.Query(strSql.ToString(),parameters);
