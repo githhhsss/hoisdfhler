@@ -63,7 +63,6 @@ namespace YS_WEB.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update YS_Car set ");
-			strSql.Append("ID=@ID,");
 			strSql.Append("UserID=@UserID,");
 			strSql.Append("UserName=@UserName,");
 			strSql.Append("ProductID=@ProductID,");
@@ -72,7 +71,7 @@ namespace YS_WEB.DAL
 			strSql.Append("Price=@Price,");
 			strSql.Append("Promotion=@Promotion,");
 			strSql.Append("IsCan=@IsCan");
-			strSql.Append(" where ");
+            strSql.Append(" where ID=@ID");
 			SqlParameter[] parameters = {
 					new SqlParameter("@ID", SqlDbType.Int,4),
 					new SqlParameter("@UserID", SqlDbType.Int,4),
@@ -107,14 +106,16 @@ namespace YS_WEB.DAL
 		/// <summary>
 		/// 删除一条数据
 		/// </summary>
-		public bool Delete()
+		public bool Delete(int id)
 		{
 			//该表无主键信息，请自定义主键/条件字段
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("delete from YS_Car ");
-			strSql.Append(" where ");
-			SqlParameter[] parameters = {
+            strSql.Append(" where ID = @ID");
+            SqlParameter[] parameters = {
+                new SqlParameter("@ID", SqlDbType.Int,4)
 			};
+            parameters[0].Value = id;
 
 			int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
