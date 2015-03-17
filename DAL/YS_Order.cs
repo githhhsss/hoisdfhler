@@ -173,6 +173,29 @@ namespace YS_WEB.DAL
 				return null;
 			}
 		}
+        /// <summary>
+        /// 得到一个对象实体
+        /// </summary>
+        public YS_WEB.Model.YS_Order GetModel()
+        {
+            //该表无主键信息，请自定义主键/条件字段
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select  top 1 ID,UserID,UserName,DeliveryName,DeliverPhone,DeliverSheng,DeliverCity,DeliverZipCode,DeliverAddress,Price,Promotion,State,AddTime from YS_Order ");
+            strSql.Append(" where ");
+            SqlParameter[] parameters = {
+			};
+
+            YS_WEB.Model.YS_Order model = new YS_WEB.Model.YS_Order();
+            DataSet ds = DbHelperSQL.Query(strSql.ToString(), parameters);
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                return DataRowToModel(ds.Tables[0].Rows[0]);
+            }
+            else
+            {
+                return null;
+            }
+        }
 
 
 		/// <summary>

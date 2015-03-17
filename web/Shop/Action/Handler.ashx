@@ -131,6 +131,112 @@ public class Handler : IHttpHandler
 
     }
 
+    //添加订单 
+    //收货信息
+    public void AddOrder(HttpContext context)
+    {
+        if (string.IsNullOrEmpty(Tool.CookieGet("UserID")))
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"登陆超时。请重新登陆\"}");
+            return;
+        }
+        string DeliveryName = context.Request["shText1"];
+        string DeliverPhone = context.Request["shText2"];
+        string DeliverSheng = context.Request["shText3"];
+        string DeliverAddress = context.Request["shText4"];
+        string DeliverZipCode = context.Request["shText5"];
+
+        bool isAdd = true;
+
+        YS_DeliveryBLL dbll = new YS_DeliveryBLL();
+        YS_Delivery d = dbll.GetModelForUser(Convert.ToInt32(Tool.CookieGet("UserID")));
+        if (d != null)
+        {
+            isAdd = false;
+        }
+        else
+        {
+            d = new YS_Delivery();
+        }
+
+        d.DeliverAddress = DeliverAddress;
+        d.DeliverCity = DeliverSheng;
+        d.DeliverPhone = DeliverPhone;
+        d.DeliverSheng = DeliverSheng;
+        d.DeliveryName = DeliveryName;
+        d.DeliverZipCode = DeliverZipCode;
+        d.UserID = Convert.ToInt32(Tool.CookieGet("UserID"));
+        d.UserName = Tool.CookieGet("UserName");
+
+
+        if (isAdd)
+        {
+            if (!dbll.Add(d))
+            {
+                context.Response.Write("{\"flag\":\"false\",\"msg\":\"数据库处理异常\"}");
+                return;
+            }
+
+        }
+        else
+        {
+            if (!dbll.Update(d))
+            {
+                context.Response.Write("{\"flag\":\"false\",\"msg\":\"数据库处理异常\"}");
+                return;
+            }
+        }
+
+        YS_OrderBLL obll = new YS_OrderBLL();
+        YS_Order o = new YS_Order();
+        
+        YS_OrderItemBLL oibll = new YS_OrderItemBLL();
+        YS_OrderItem oi = new YS_OrderItem();
+
+        YS_CarBLL cbll = new YS_CarBLL();
+
+        var clist = cbll.GetModelList("userid = " + Convert.ToInt32(Tool.CookieGet("UserID")));
+        decimal sum = 0;
+        foreach(var c in clist)
+        {
+            sum += c.Number * c.Price;
+        }
+        
+        o.AddTime = DateTime.Now;
+        o.DeliverAddress = DeliverAddress;
+        o.DeliverCity = DeliverSheng;
+        o.DeliverPhone = DeliverPhone;
+        o.DeliverSheng = DeliverSheng;
+        o.DeliveryName = DeliveryName;
+        o.DeliverZipCode = DeliverZipCode;
+        o.Price = sum;
+        o.Promotion = 1;
+        o.State = YS_Enum.OrderState.待发货;
+        o.UserID = Convert.ToInt32(Tool.CookieGet("UserID"));
+        o.UserName = Tool.CookieGet("UserName");
+        if (!obll.Add(o))
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"数据库处理异常\"}");
+            return;
+        }
+
+        o = obll.GetModel(Convert.ToInt32(Tool.CookieGet("UserID")));
+
+        foreach (var c in clist)
+        {
+            oi.OrderID = o.ID;
+            oi.ProductID = c.ProductID;
+            
+            if (!oibll.Add(oi))
+            {
+                context.Response.Write("{\"flag\":\"false\",\"msg\":\"数据库处理异常\"}");
+                return;
+            } 
+        }
+        context.Response.Write("{\"flag\":\"true\",\"msg\":\"订单提交成功!\"}");
+        
+    }
+    
     public bool IsReusable
     {
         get

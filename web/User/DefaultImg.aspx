@@ -58,10 +58,11 @@
             </div>
             <div class="my-left-bottom">
                 <ul>
-                <li><a href="MyOrder.aspx" class="set-top active">个人设置</a></li>
-                <li><a href="MyOrder.aspx">我的发布</a></li>
-                <li><a href="MyOrder.aspx">我的购物车</a></li>
+                <li><a href="Default.aspx" class="set-top active">个人设置</a></li>
+                <li><a href="IssusingManager.aspx">我的发布</a></li>
+                <li><a href="../Shop/MyCar.aspx">我的购物车</a></li>
                 <li><a href="MyOrder.aspx">我的订单</a></li>
+                <li><a href="GoodsReceipt.aspx">我的收货地址</a></li>
                 </ul>
             </div>
         </div>

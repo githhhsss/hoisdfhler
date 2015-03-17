@@ -175,13 +175,13 @@ public class Handler : IHttpHandler
         string readname = context.Request["readname"];
         string address = context.Request["address"];
         string e_mail = context.Request["e_mail"];
-        
+
         YS_UserBLL userbll = new YS_UserBLL();
         YS_User user = userbll.GetModel(username);
         if (user != null)
         {
             user.ReadName = readname;
-            user.E_Mail =  e_mail;
+            user.E_Mail = e_mail;
             user.Address = address;
             if (userbll.Update(user))
             {
@@ -212,7 +212,7 @@ public class Handler : IHttpHandler
         {
             StartTime = Convert.ToDateTime(context.Request["txt2"]);//拍摄时间
         }
-        catch 
+        catch
         {
             context.Response.Write("{\"flag\":\"false\",\"msg\":\"拍摄时间格式错误\"}");
             return;
@@ -233,7 +233,7 @@ public class Handler : IHttpHandler
             context.Response.Write("{\"flag\":\"false\",\"msg\":\"价格格式不对\"}");
             return;
         }
-        
+
 
         YS_ProductBLL probll = new YS_ProductBLL();
         YS_Product pro = new YS_Product();
@@ -250,7 +250,7 @@ public class Handler : IHttpHandler
         pro.ProductPhone = ProductPhone;
         pro.ProductType = YS_Enum.ProductType.拍摄外单;
         pro.ProductXinJiu = "";
-        pro.Promotion = 0 ;
+        pro.Promotion = 0;
         pro.Sales = 0;
         pro.StartTime = StartTime;
         pro.State = YS_Enum.ProductState.默认;
@@ -320,7 +320,7 @@ public class Handler : IHttpHandler
         pro.ProductXinJiu = ProductXinJiu;
         pro.Promotion = 0;
         pro.Sales = 0;
-        pro.StartTime = DateTime.Now ;
+        pro.StartTime = DateTime.Now;
         pro.State = YS_Enum.ProductState.默认;
         pro.Stock = 0;
 
@@ -361,12 +361,12 @@ public class Handler : IHttpHandler
         pro.InputTime = DateTime.Now;
         pro.IsHot = true;
         pro.OverTime = new DateTime(9999, 12, 30);
-        pro.Price =0;
+        pro.Price = 0;
         pro.PriceRange = "";
         pro.ProductAddress = ProductAddress;
         pro.ProductKey = "";
         pro.ProductMan = "";
-        pro.ProductName = "推荐视频"; 
+        pro.ProductName = "推荐视频";
         pro.ProductPhone = "";
         pro.ProductType = YS_Enum.ProductType.视频;
         pro.ProductXinJiu = ""; ;
@@ -550,7 +550,7 @@ public class Handler : IHttpHandler
     //修改推荐视频
     public void EditProduct3(HttpContext context)
     {
-        int pid =  Convert.ToInt32(context.Request["itemid"]);
+        int pid = Convert.ToInt32(context.Request["itemid"]);
         string ProductAddress = context.Request["txt1"];//视频地址 
         string Description = context.Request["txt7"];//推荐理由 
 
@@ -627,6 +627,74 @@ public class Handler : IHttpHandler
             return;
         }
     }
+
+    //收货信息
+    public void AddressUpdate(HttpContext context)
+    {
+        if (string.IsNullOrEmpty(Tool.CookieGet("UserID")))
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"登陆超时。请重新登陆\"}");
+            return;
+        }
+        string DeliveryName = context.Request["shText1"];
+        string DeliverPhone = context.Request["shText2"];
+        string DeliverSheng = context.Request["shText3"];
+        string DeliverAddress = context.Request["shText4"];
+        string DeliverZipCode = context.Request["shText5"];
+
+        bool isAdd = true;
+        
+        YS_DeliveryBLL dbll = new YS_DeliveryBLL();
+        YS_Delivery d = dbll.GetModelForUser(Convert.ToInt32(Tool.CookieGet("UserID")));
+        if (d != null)
+        {
+            isAdd = false;
+        }
+        else
+        {
+            d = new YS_Delivery();
+        }
+
+        d.DeliverAddress = DeliverAddress;
+        d.DeliverCity = DeliverSheng;
+        d.DeliverPhone = DeliverPhone;
+        d.DeliverSheng = DeliverSheng;
+        d.DeliveryName = DeliveryName;
+        d.DeliverZipCode = DeliverZipCode;
+        d.UserID = Convert.ToInt32(Tool.CookieGet("UserID"));
+        d.UserName = Tool.CookieGet("UserName");
+
+        
+        if (isAdd)
+        {
+            if (dbll.Add(d))
+            {
+                context.Response.Write("{\"flag\":\"true\",\"msg\":\"收货信息设置成功\"}");
+                return;
+            }
+            else
+            {
+                context.Response.Write("{\"flag\":\"false\",\"msg\":\"数据库处理异常\"}");
+                return;
+            }
+
+        }
+        else
+        {
+            if (dbll.Update(d))
+            {
+                context.Response.Write("{\"flag\":\"true\",\"msg\":\"收货信息设置成功\"}");
+                return;
+            }
+            else
+            {
+                context.Response.Write("{\"flag\":\"false\",\"msg\":\"数据库处理异常\"}");
+                return;
+            }
+        }
+    }
+
+
     public bool IsReusable
     {
         get
