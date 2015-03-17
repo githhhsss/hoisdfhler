@@ -55,7 +55,7 @@
             </asp:Repeater>
        </table>
        
-        </div><div class="btn"> <a class="sci_divA" href="Order.aspx">提交</a> </div>
+        </div><div class="btn"> <a class="sci_divA" href="javascript:;">提交</a> </div>
      </div>
      <mycontrols:webFoot id="WebFoot1" runat="server"/>
      <script type="text/javascript">
@@ -86,7 +86,7 @@
                          success: function (data) {
                              if (data.flag == "true") {
                                  alert(data.msg);
-                                 window.location = '/User/MyOrder.aspx';
+                                 window.location = '../User/MyOrder.aspx';
                              } else {
                                  alert(data.msg);
                              }

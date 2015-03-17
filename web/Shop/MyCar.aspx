@@ -44,7 +44,7 @@
                         </div>
                     </td>
                     <td><%# Convert.ToDecimal(Eval("Price")).ToString("f2")%></td>
-                    <td><%# (Convert.ToDecimal(Eval("Price")) * Convert.ToInt32( Eval("Number"))).ToString("f2")%></td>
+                    <td class="sPrice-<%# Eval("ProductID")%>"><%# (Convert.ToDecimal(Eval("Price")) * Convert.ToInt32( Eval("Number"))).ToString("f2")%></td>
                     <td><a class="deletecar" rel='<%# Eval("ProductID")%>' href="javascript:;">删除</a></td></tr>
              </ItemTemplate>
             </asp:Repeater>
@@ -62,11 +62,12 @@
                         url: "Action/Handler.ashx?cmd=CarAdd",
                         data: {
                             "itemid": itemid,
-                            "num": Number($(".number-" + itemid).val())+Number(1)
+                            "num": Number($(".number-" + itemid).val()) + Number(1)
                         },
                         success: function (data) {
                             if (data.flag == "true") {
                                 $(".number-" + itemid).val(data.num);
+                                $(".sPrice-" + itemid).html(data.snum);
                             } else {
                                 alert(data.msg);
                             }
@@ -89,6 +90,7 @@
                         success: function (data) {
                             if (data.flag == "true") {
                                 $(".number-" + itemid).val(data.num);
+                                $(".sPrice-" + itemid).html(data.snum);
                             } else {
                                 alert(data.msg);
                             }

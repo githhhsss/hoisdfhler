@@ -76,7 +76,7 @@ public class Handler : IHttpHandler
         {
             if (cbll.Add(c))
             {
-                context.Response.Write("{\"flag\":\"true\",\"msg\":\"成功添加到购物车\",\"num\":\""+c.Number+"\"}");
+                context.Response.Write("{\"flag\":\"true\",\"msg\":\"成功添加到购物车\",\"num\":\"" + c.Number + "\",\"snum\":\"" + (c.Number*c.Price).ToString("f2") + "\"}");
                 return;
             }
             else
@@ -90,7 +90,7 @@ public class Handler : IHttpHandler
         {
             if (cbll.Update(c))
             {
-                context.Response.Write("{\"flag\":\"true\",\"msg\":\"成功添加到购物车\",\"num\":\"" + c.Number + "\"}");
+                context.Response.Write("{\"flag\":\"true\",\"msg\":\"成功添加到购物车\",\"num\":\"" + c.Number + "\",\"snum\":\"" + (c.Number * c.Price).ToString("f2") + "\"}");
                 return;
             }
             else
@@ -231,7 +231,13 @@ public class Handler : IHttpHandler
             {
                 context.Response.Write("{\"flag\":\"false\",\"msg\":\"数据库处理异常\"}");
                 return;
-            } 
+            }
+
+            if (!cbll.Delete(c.ID))
+            {
+                context.Response.Write("{\"flag\":\"false\",\"msg\":\"数据库处理异常\"}");
+                return;
+            }
         }
         context.Response.Write("{\"flag\":\"true\",\"msg\":\"订单提交成功!\"}");
         
