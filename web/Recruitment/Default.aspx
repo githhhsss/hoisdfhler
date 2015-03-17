@@ -14,10 +14,10 @@
     .Recruitment-img1{ width:100%; height:16px; text-align:center;}
     .Recruitment-img1 img{ src:url('/images/Recruitment/x.png'); height:14px; width:194px;}
     .Recruitment-SO{ height:20px; margin-left:373px; margin-top:65px;}
-    .Recruitment-SO ul{font-family:造字工房雅圆（非商用）常规体; height:20px; }
+    .Recruitment-SO ul{font-family:造字工房雅圆（非商用）常规体; height:43px; width:700px; }
     .Recruitment-SO ul li{list-style:none; float:left; padding:0px;}
-    .Recruitment-SO-ul-li1{ font-size:16px; font-weight:bold; margin-right:50px;}
-    .Recruitment-SO-ul-input{ width:460px; height:20px; border:0px; color:#bbbbc0;font-weight:bold;}
+    .Recruitment-SO-ul-li1{ font-size:16px; font-weight:bold; margin-right:50px; margin-top:13px;}
+    .Recruitment-SO-ul-input{ border-style: none;border-color: inherit;border-width: 0px;width:556px; height:43px; color:#bbbbc0;font-weight:bold; background:url('/images/zpjd/ss.png') center bottom no-repeat;}
     
     .Recruitment-city{ height:20px; margin-left:373px; margin-top:65px;}
     .Recruitment-city ul{font-family:造字工房雅圆（非商用）常规体; height:20px; }
