@@ -739,7 +739,7 @@ public class Handler : IHttpHandler
         {
             if (pbll.Delete(pro.ID))
             {
-                context.Response.Write("{\"flag\":\"true\",\"msg\":\"用户删除成功\"}");
+                context.Response.Write("{\"flag\":\"true\",\"msg\":\"信息删除成功\"}");
                 return;
             }
             else
