@@ -97,7 +97,6 @@
                                  $("#ProductUl").append($("<li></li>").html("<div class='fgx'><div>"));
                              }
                              sItem += 1;
-                             alert(sItem);
                          } else {
                              alert(data.msg);
                          }
