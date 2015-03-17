@@ -23,7 +23,7 @@
     .my-left-bottom ul li .set-top{border-top:none;}
     .my-left-bottom .active{ color:Red;}
     
-    .my-right{float:left; width:930px;}
+    .my-right{float:left; width:930px;margin-bottom:35px;}
     .u-right{margin-top:85px;margin-bottom:35px; background:#fff;}
     .my-right .u-right .orderTitle{ height:70px; width:100%; background:#ebebeb; border-bottom:1px solid #DDDDDD;}
     .my-right .u-right .orderTitle a{ display:block; float:left; height:69px; line-height:69px; width:180px;border-right:1px solid #DDDDDD; text-align:center; font-size:23px;text-decoration:none; color:#000000;}
@@ -128,7 +128,7 @@
                             <li>
                                 <span class="u-td-1 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Container.ItemIndex+1 %></span>
                                 <span class="u-td-2 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Eval("ProductName")%></span>
-                                <span class="u-td-3 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Eval("Price")%></span>
+                                <span class="u-td-3 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Convert.ToDecimal(Eval("Price")).ToString("f2")%></span>
                                 <span class="u-td-4 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Eval("Stock")%></span>
                                 <span class="u-td-5 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# (YS_WEB.Model.YS_Enum.ProductState)Eval("State")%></span>
                                 <span class="u-td-6 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Eval("Promotion")%></span>

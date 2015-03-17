@@ -29,7 +29,7 @@
     .my-right .u-right .orderTitle a{ display:block; float:left; height:69px; line-height:69px; width:180px;border-right:1px solid #DDDDDD; text-align:center; font-size:23px;text-decoration:none; color:#000000;}
     .my-right .u-right .orderTitle .sel{border-top:5px solid #1ea78d; height:65px; background:#FFF; line-height:60px;}
     
-    .my-right .u-right .data-edit{ height:1450px;}
+    .my-right .u-right .data-edit{ height:1550px;}
     .my-right .u-right .data-edit ul li{ list-style:none;}
     
     .right-form{ margin-top:40px; margin-left:50px;}
@@ -100,7 +100,7 @@
                 <div class="right-form">
                     <ul>
                         <li><span class="form-say">产品图像</span></li>
-                            <li><img id="pimg" src="../ProductImg/pro.jpg" runat="server" style=" width:720px; height:450px;" /></li>
+                            <li><img id="pimg" src="../ProductImg/pro.jpg" runat="server" style=" width:700px; height:500px;" /></li>
                             <li><span class="form-title">图片目录：</span><input class="form-txt" id="ppText1" type="text" runat="server" value="pro.jpg" /></li>
                         <li><span class="form-say">产品基本信息</span></li>
                         <li><span class="form-title">商品名称：</span><input class="form-txt" id="ptxt1" type="text" runat="server" /></li>

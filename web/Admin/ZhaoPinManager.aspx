@@ -23,7 +23,7 @@
     .my-left-bottom ul li .set-top{border-top:none;}
     .my-left-bottom .active{ color:Red;}
     
-    .my-right{float:left; width:930px;}
+    .my-right{float:left; width:930px;margin-bottom:35px;}
     .u-right{margin-top:85px;margin-bottom:35px; background:#fff;}
     .my-right .u-right .orderTitle{ height:70px; width:100%; background:#ebebeb; border-bottom:1px solid #DDDDDD;}
     .my-right .u-right .orderTitle a{ display:block; float:left; height:69px; line-height:69px; width:180px;border-right:1px solid #DDDDDD; text-align:center; font-size:23px;text-decoration:none; color:#000000;}
