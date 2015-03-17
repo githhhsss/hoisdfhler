@@ -8,6 +8,7 @@
     <myControls:WebScript id="WebScript1" runat="server" />
     <myControls:WebStyle id="WebStyle1" runat="server" />
     <style type="text/css">
+       .web-page{ background:#FFF;}
         /*商城标题*/
        .sc-title{ height:160px;background:url('/images/shop/sc.png') center bottom no-repeat; margin-bottom:30px;}
        
@@ -36,23 +37,37 @@
        
        /*产品列表*/
        .sc-centent{ }
-       sc-centent sc-width{ }
+       .sc-centent sc-width{ }
        .sc-centent a{ color:Black;}
-       .sc-content-1-fl{ font-weight:bold; font-size:25px;}
-      .sc-centent-1{ margin-top:55px;width:980px;}
-       .sc-centent-2{ margin-top:28px; height:44px;width:980px;background:url('/images/shop/shoptitle.png') center bottom no-repeat;}
+       .sc-content-1-fl{ font-weight:bold; font-size:25px; margin-right:80px;}
+       .sc-centent-1{ margin-top:55px;width:980px;}
+       
+       .sc-centent-2{ position:relative ;margin-top:28px; height:38px;width:978px; border:1px solid #CCC; background:#f7f7f7; text-align:center; line-height:38px;
+                      -moz-border-radius: 5px;/* Gecko browsers */ 
+                      -webkit-border-radius: 5px;/* Webkit browsers */
+                      border-radius:5px;/* W3C syntax */}
        .sc-centent-2 ul{ font-size:12px;}
-       .sc-centent-2 ul li { list-style:none;padding:0;float:left;  margin:16px 20px 0px 20px;}
-     .sc-centent-2 .sc-centent-2-li{ margin-left:440px;}
-       .sc-centent-3{margin-top:18px;height:44px;width:980px;background:url('/images/shop/fltitle.png') center bottom no-repeat;}
-       .sc-centent-3 ul{ font-size:12px; color:#0eb493;font-weight:bold;}
-       .sc-centent-3 ul li { list-style:none;padding:0;float:left; margin:16px 20px 0px 20px;}
-      .sc-centent-3 .sc-centent-3-li{color:#7f7e7e;margin-left:480px;}
-       .sc-centent-4{margin-top:26px; width:980px;height:968px;}
-       .sc-centent-4-div{background:url('/images/shop/k.png') center bottom no-repeat; width:303px;height:367px; margin-bottom:117px; text-align:center;}
-        .sc-centent-4 ul li { list-style:none;padding:0;float:left; margin:16px 20px 0px 20px;}
-       .sc-centent-4-div span{ font-family:OpenSans; font-size:16px;}
-       .sc-centent-4-div img{ width:273px; height:277px; margin:15px 15px 15px 15px;}
+       .sc-centent-2 ul li { list-style:none;float:left;}
+       .sc-centent-2 ul li a{ display:block; float:left; width:80px; height:38px;}
+       .sc-centent-2 ul li .active{ border-right:1px solid #CCC;color:#0eb493; background:#FFF; border-radius:5px;-webkit-border-radius: 5px;-moz-border-radius: 5px;}
+       .sc-centent-2 ul li input{ position:absolute;height:34px; width:154px; background:url(/images/shop/input.png) center center no-repeat; border:none; right:20px; top:3px; padding-left:30px;}
+       
+       .sc-centent-3{ position:relative;margin-top:18px;height:38px;width:978px;border:1px solid #CCC;color:#0eb493;font-weight:bold;text-align:center; line-height:38px;
+                      -moz-border-radius: 5px;/* Gecko browsers */ 
+                      -webkit-border-radius: 5px;/* Webkit browsers */
+                      border-radius:5px;/* W3C syntax */}}
+       .sc-centent-3 ul{ font-size:12px; }
+       .sc-centent-3 ul li { list-style:none;float:left;}
+       .sc-centent-3 ul li span{ margin-left:27px;}
+       .sc-centent-3 ul li a{ position:absolute;color:#7f7e7e; display:block; width:120px; height:38px; background:url(/images/shop/car.png) center right no-repeat; text-align:left; right:20px;}
+       
+       .sc-centent-4{margin-top:26px; width:980px;}
+       .sc-centent-4 .sc-centent-4-div{ border:6px #f7f6f6 solid; width:290px;height:370px;text-align:center; margin-left:37px;}
+       .sc-centent-4 .h-first{ margin-left:0;}
+       .sc-centent-4 .fgx{ height:100px; width:980px; background:url(/images/shop/hx2.png) center center no-repeat;}
+       .sc-centent-4 ul li { list-style:none;float:left;}
+       .sc-centent-4-div img{ width:280px; height:220px; margin:15px 5px 35px;}
+       .sc-centent-4-div span{ display:block ;font-family:OpenSans; font-size:16px; color:#717171;}
        
        /*合作伙伴链接*/
        .sc-bottom{ padding-top:60px; padding-bottom:60px;}
@@ -108,15 +123,15 @@
         </div>
 
         <div class="sc-centent sc-width">
-            <div class="sc-centent-1"><span class="sc-content-1-fl">所有分类</span>&nbsp;&nbsp;&nbsp; <a href="../Default.aspx">首页</a> &gt; <a href="Default.aspx">商城</a></div>
+            <div class="sc-centent-1">
+                <span class="sc-content-1-fl">所有分类</span> <a href="../Default.aspx">首页</a> &gt; <a href="Default.aspx">商城</a></div>
             <div class="sc-centent-2">
                 <ul>
-                    <li><span>综合</span></li>
-                    <li><span>销量</span></li>
-                    <li><span>价格从低到高</span></li>
-                    <li><span>价格从高到底</span></li>
-                    <li class="sc-centent-2-li">
-                        <span ><input id="scText1" type="text" /></span></li>
+                    <li><a class="active" href="javascript:;">综合</a></li>
+                    <li><a href="javascript:;">销量</a></li>
+                    <li><a style=" width:120px" href="javascript:;">价格从低到高</a></li>
+                    <li><a style=" width:120px" href="javascript:;">价格从高到底</a></li>
+                    <li><input id="scText1" type="text" /></li>
                 </ul>
             </div>
             <div class="sc-centent-3">
@@ -125,14 +140,22 @@
                     <li><span>摄像机/相机</span></ li>
                     <li><span>镜头</span></ li>
                     <li><span>辅助设备</span></ li>
-                    <li class="sc-centent-3-li"><span>我的购物车</span></li>
+                    <li><a href="javascript:;">我的购物车</a></li>
                 </ul>
             </div>
             <div class="sc-centent-4">
                 <ul>
                     <asp:Repeater ID="Repeater1" runat="server">
                     <ItemTemplate>
-                    <li><a href="ProductItem.aspx?itemid=<%# Eval("ID") %>"><div class="sc-centent-4-div"><img  src="/ProductImg/<%# Eval("ProductAddress") %>" /></br><span><%# Eval("ProductName")%></span></br><span>$<%# Eval("Price")%></span></div></a></li>
+                    <li>
+                        <a href="ProductItem.aspx?itemid=<%# Eval("ID") %>">
+                            <div class="sc-centent-4-div <%# (Container.ItemIndex+1)%3 == 1?"h-first":"" %>">
+                                <img  src="/ProductImg/<%# Eval("ProductAddress") %>" />
+                                <span><%# Eval("ProductName")%></span>
+                                <span style="margin-top:10px;">$<%# Convert.ToDecimal(Eval("Price")).ToString("f2")%></span>
+                            </div>
+                        </a></li>
+                        <%# (Container.ItemIndex+1)%3 == 0?"<li><div class='fgx'><div></li>":"" %>
                     </ItemTemplate>
                     </asp:Repeater>
                 </ul>

@@ -6,25 +6,35 @@
     <title></title>
     <myControls:WebStyle id="WebStyle1" runat="server" />
     <style type="text/css">
-       a{ color:Red;}
-       .web-page{ height:900px;}
-       #pro_img{ width:661px; height:383px;}
-       .sci-left{ margin-top:119px; float:left;}
-       .sci-right{margin-top:119px; float:left; margin-left:150px;}
-       .sci-right .sci_divA{ line-height:39px;  text-align:center;  width:174px; height:39px;float:left;background:url('/images/shop/btnbj.png') center bottom no-repeat;}
-       .sci-right .sci_divB{ line-height:39px; margin-left:20px; text-align:center; width:174px; height:39px; float:left;background:url('/images/shop/btnbj.png') center bottom no-repeat;}
-       .sci-right a{font-family:造字工房雅圆（非商用）常规体; font-size:20px; font-weight:bold; color:White;}
-       #sci_name{ font-family:造字工房雅圆（非商用）常规体; font-size:37px;}
-       #sci_say{font-family:造字工房雅圆（非商用）常规体; font-size:12px;}
-       #sci_price{font-family:造字工房雅圆（非商用）常规体; font-size:37px;}
-       #sci_stock{font-family:造字工房雅圆（非商用）常规体; font-size:37px;}
-      .web-page .sci-item .sci-right ul li{list-style:none;padding:0; margin-bottom:20px;}
-      .web-page .sci-item .sci-right #buy{ margin-top:150px;}
-      .sci-tab{ position:absolute; height:55px; width:100%;top:553px;}
-       .sci-tab ul{ width:100%;}
-      .sci-tab ul li{list-style:none; float:left;padding:0; margin-left:216px;}
-      .sci-tab #xq a{ font-family:造字工房雅圆（非商用）常规体; font-size:24px; color:#1ea78d;}
-       .sci-tab #pj a{ font-family:造字工房雅圆（非商用）常规体; font-size:24px; color:#848484;}
+       
+       /*产品图像*/
+       .web-page .sci-left{ margin-top:100px; float:left; width:750px; height:650px;position:relative;}
+       .web-page .sci-left #pro_img{height:500px; width:700px; position:absolute; right:25px; top:0px;}
+       
+       /*产品信息*/
+       .web-page .sci-right{margin-top:150px; float:left; width:616px; height:600px;position:relative;}
+       .web-page .sci-right .sci_divA{ display:block;line-height:39px; float:left; text-align:center; width:174px; height:39px; background:url('/images/shop/btnbj.png') center bottom no-repeat;}
+       .web-page .sci-right .sci_divB{ display:block;line-height:39px; float:left; margin-left:15px;text-align:center; width:174px; height:39px; background:url('/images/shop/btnbj.png') center bottom no-repeat;}
+       .web-page .sci-right a{font-family:造字工房雅圆（非商用）常规体; font-size:20px; font-weight:bold; color:White;}
+       .web-page .sci-right #sci_name{ font-family:造字工房雅圆（非商用）常规体; font-size:37px;}
+       .web-page .sci-right #sci_say{font-family:造字工房雅圆（非商用）常规体; font-size:12px;}
+       .web-page .sci-right #sci_price{font-family:造字工房雅圆（非商用）常规体; font-size:37px; line-height:65px;}
+       .web-page .sci-right #sci_stock{font-family:造字工房雅圆（非商用）常规体; font-size:37px; line-height:65px;}
+       .web-page .sci-item .sci-right ul li{list-style:none;padding:0; margin-bottom:20px;}
+       .web-page .sci-item .sci-right #buy{  position:absolute; bottom:130px;}
+       
+       /*详细/评价按钮*/
+       .web-page .sci-tab{ position:absolute; height:55px; width:100%;top:653px;}
+       .web-page .sci-tab ul{ width:100%;}
+       .web-page .sci-tab ul li{list-style:none; float:left;padding:0; margin-left:216px;}
+       .web-page .sci-tab #xq a{ font-family:造字工房雅圆（非商用）常规体; font-size:24px; color:#1ea78d;}
+       .web-page .sci-tab #pj a{ font-family:造字工房雅圆（非商用）常规体; font-size:24px; color:#848484;}
+       
+       /*详细*/
+
+       /*评价*/
+       .sci-centent-Comment{ display:none;}
+       
     </style>
      <myControls:WebScript id="WebScript1" runat="server" />
 </head>
@@ -38,11 +48,12 @@
             <div class="sci-right">
                 <ul>
                     <li><span id="sci_name" runat="server"></span></li>
-                    <li><span id="sci_say" runat="server"></span></li>
+                    <li><span id="sci_say" runat="server">加入购物车后可以选择购买数量</span></li>
                     <li><span id="sci_price" runat="server"></span></li>
                     <li><span id="sci_stock" runat="server"></span></li>
-                    <li id="buy"><div class="sci_divA"><a href="javascript:;">立即购买</a></div><div class="sci_divB"><a href="javascript:;">加入购物车</a></div></li>
+                    <li id="buy"><a class="sci_divA" href="javascript:;">立即购买</a><a class="sci_divB" href="javascript:;">加入购物车</a></li>
                 </ul>
+                <div class="clear"></div>
             </div>
         </div>
         <div class="sci-tab">
@@ -72,7 +83,20 @@
                 </div>
             </div>
         </div>
+        <div style=" height:100px; width:100%;"></div>
     </div>
     <mycontrols:webFoot id="WebFoot1" runat="server"/>
+    <script type="text/javascript">
+        $(function () {
+            $("#xq").click(function () {
+                $(".sci-centent_1").show();
+                $(".sci-centent-Comment").hide();
+            });
+            $("#pj").click(function () {
+                $(".sci-centent_1").hide();
+                $(".sci-centent-Comment").show();
+            });
+        })
+    </script>
 </body>
 </html>
