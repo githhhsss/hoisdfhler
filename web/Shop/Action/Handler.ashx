@@ -251,6 +251,11 @@ public class Handler : IHttpHandler
         try
         {
             DataSet ds = pbll.GetListByPage("ProductType in(0,1)", "id desc", sItem, sItem);
+            if (ds.Tables[0].Rows.Count <= 0)
+            {
+                context.Response.Write("{\"flag\":\"true\",\"msg\":\"加载完\"}");
+                return;
+            }
             foreach (DataRow item in ds.Tables[0].Rows)
             {
                 sb.Append("<a href='ProductItem.aspx?itemid=" + item["ID"] + "'>");
@@ -262,10 +267,12 @@ public class Handler : IHttpHandler
                 sb.Append("</a>");
             }
             context.Response.Write("{\"flag\":\"true\",\"msg\":\"" + sb.ToString() + "\"}");
+            return;
         }
         catch
         {
             context.Response.Write("{\"flag\":\"false\",\"msg\":\"数据库处理异常!\"}");
+            return;
         }
     }
     public bool IsReusable

@@ -83,28 +83,34 @@
              });
          });
          var sItem = 1;
+         var isadd = true;
          $(window).scroll(function () {
-             if ($(window).scrollTop() + 400 >= $(document).height() - $(window).height()) {
-                 $.ajax({
-                     type: "POST",
-                     dataType: "json",
-                     url: "Action/Handler.ashx?cmd=GetProducts",
-                     data: { "sItem": sItem },
-                     success: function (data) {
-                         if (data.flag == "true") {
-                             $("#ProductUl").append($("<li></li>").html(data.msg));
-                             if (sItem % 3 == 0) {
-                                 $("#ProductUl").append($("<li></li>").html("<div class='fgx'><div>"));
+             if (isadd == true) {
+                 if ($(window).scrollTop() + 400 >= $(document).height() - $(window).height()) {
+                     isadd = false;
+                     $.ajax({
+                         type: "POST",
+                         dataType: "json",
+                         url: "Action/Handler.ashx?cmd=GetProducts",
+                         data: { "sItem": sItem },
+                         success: function (data) {
+                             if (data.flag == "true") {
+                                 if (data.msg != "加载完") {
+                                     $("#ProductUl").append($("<li></li>").html(data.msg)); isadd = true;
+                                     if (sItem % 3 == 0) {
+                                         $("#ProductUl").append($("<li></li>").html("<div class='fgx'><div>"));
+                                     }
+                                     sItem += 1;
+                                 }
+                             } else {
+                                 alert(data.msg);
                              }
-                             sItem += 1;
-                         } else {
-                             alert(data.msg);
+                         },
+                         error: function (data, textStatus, errorThrown) {
+                             $.messager.alert('错误', errorThrown);
                          }
-                     },
-                     error: function (data, textStatus, errorThrown) {
-                         $.messager.alert('错误', errorThrown);
-                     }
-                 });
+                     });
+                 } 
              }
          })
     </script>
