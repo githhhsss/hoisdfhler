@@ -250,7 +250,7 @@ public class Handler : IHttpHandler
         StringBuilder sb = new StringBuilder();
         try
         {
-            DataSet ds = pbll.GetListByPage("ProductType in(0,1)", "id desc", sItem, sItem+1);
+            DataSet ds = pbll.GetListByPage("ProductType in(0,1)", "id desc", sItem, sItem);
             foreach (DataRow item in ds.Tables[0].Rows)
             {
                 sb.Append("<a href='ProductItem.aspx?itemid=" + item["ID"] + "'>");
