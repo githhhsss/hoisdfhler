@@ -45,7 +45,44 @@
                 $("#index-list-1").hide();
                 $("#index-list-3").show();
             });
+            UpdateIndex1();
+            UpdateIndex2();
+            UpdateIndex3();
         })
+
+        function UpdateIndex1() {
+            yscom.ajax({
+                url: "Handler.ashx?cmd=UpdateIndex1",
+                data: {},
+                success: function (data) {
+                    if (data.flag == "true") {
+                        $("#index-list-1-centent").html(data.msg);
+                    } 
+                }
+            });
+        }
+        function UpdateIndex2() {
+            yscom.ajax({
+                url: "Handler.ashx?cmd=UpdateIndex2",
+                data: {},
+                success: function (data) {
+                    if (data.flag == "true") {
+                        $("#index-list-2-centent").html(data.msg);
+                    } 
+                }
+            });
+        }
+        function UpdateIndex3() {
+            yscom.ajax({
+                url: "Handler.ashx?cmd=UpdateIndex3",
+                data: {},
+                success: function (data) {
+                    if (data.flag == "true") {
+                        $("#index-list-3-centent").html(data.msg);
+                    } 
+                }
+            });
+        }
     </script>
     <style type="text/css">
         /*轮播图片*/
@@ -78,6 +115,8 @@
         .index-list-text h3 a:hover{text-decoration: none;}
         .index-list-text span{color:#062033; font-family:Myriad Pro; line-height:}
         #index-list-1,#index-list-2,#index-list-3{ display:none; padding-bottom:50px;}
+         #index-list-1 a,#index-list-2 a,#index-list-3 a{  color:#666;}
+        #index-list-1 a:hover,#index-list-2 a:hover,#index-list-3 a:hover{ text-decoration:underline;}
     </style>
 </head>
 <body>
@@ -104,8 +143,10 @@
             </div>
             <div class="clear"></div>
             <%--最新资讯--%>
-            <div id ="index-list-1">
-            <div class="index-list">
+            <div id ="index-list-1" style = " position:relative;">
+            <a href="javascript:;"  onclick="UpdateIndex1()" style =" position:absolute; left:1100px;">换一批</a>
+            <div id="index-list-1-centent">
+            <%--<div class="index-list">
                 <div class="index-list-img fl">
                     <img src="Images/index/index_2.jpg" alt="" />
                 </div>
@@ -116,35 +157,14 @@
                     <div class="index-list-text-bottom"></div>
                 </div>
                 <div class="index-list-tottom clear"></div>
-            </div>
-            <div class="index-list">
-                <div class="index-list-img fl">
-                    <img src="Images/index/index_2.jpg" alt="" />
-                </div>
-                <div class="index-list-text fl">
-                    <h2>幽默讽刺短片《我妈妈的摩托车》</h2>
-                    <h3><a href="#">创意</a> <a href="#">励志</a> <a href="#">MV</a> <a href="#">科幻/奇幻</a><span class="index-list-text-time"></span></h3>
-                    <span>短片《My mom’s motorcycle》（我妈妈的摩托车）作为My Rode Reel  短片比赛的参赛作品，以幽默的手法讲述了一个男孩的妈妈如何成为他摩托车主人的故事短片取材于导演Douglas Ga . . .</span>
-                    <div class="index-list-text-bottom"></div>
-                </div>
-                <div class="index-list-tottom clear"></div>
-            </div>
-            <div class="index-list">
-                <div class="index-list-img fl">
-                    <img src="Images/index/index_2.jpg" alt="" />
-                </div>
-                <div class="index-list-text fl">
-                    <h2>幽默讽刺短片《我妈妈的摩托车》</h2>
-                    <h3><a href="#">创意</a> <a href="#">励志</a> <a href="#">MV</a> <a href="#">科幻/奇幻</a><span class="index-list-text-time"></span></h3>
-                    <span>短片《My mom’s motorcycle》（我妈妈的摩托车）作为My Rode Reel  短片比赛的参赛作品，以幽默的手法讲述了一个男孩的妈妈如何成为他摩托车主人的故事短片取材于导演Douglas Ga . . .</span>
-                    <div class="index-list-text-bottom"></div>
-                </div>
-                <div class="index-list-tottom clear"></div>
+            </div>--%>
             </div>
             </div>
             <%--行业动态--%>
-            <div id ="index-list-2">
-            <div class="index-list">
+            <div id ="index-list-2" style = " position:relative;">
+            <a href="javascript:;" onclick="UpdateIndex2()" style =" position:absolute; left:1100px;">换一批</a>
+            <div id="index-list-2-centent">
+            <%--<div class="index-list">
                 <div class="index-list-img fl">
                     <img src="Images/index/index_1.jpg" alt="" />
                 </div>
@@ -155,35 +175,14 @@
                     <div class="index-list-text-bottom"></div>
                 </div>
                 <div class="index-list-tottom clear"></div>
-            </div>
-            <div class="index-list">
-                <div class="index-list-img fl">
-                    <img src="Images/index/index_1.jpg" alt="" />
-                </div>
-                <div class="index-list-text fl">
-                    <h2>幽默讽刺短片《我妈妈的摩托车》</h2>
-                    <h3><a href="#">创意</a> <a href="#">励志</a> <a href="#">MV</a> <a href="#">科幻/奇幻</a><span class="index-list-text-time"></span></h3>
-                    <span>短片《My mom’s motorcycle》（我妈妈的摩托车）作为My Rode Reel  短片比赛的参赛作品，以幽默的手法讲述了一个男孩的妈妈如何成为他摩托车主人的故事短片取材于导演Douglas Ga . . .</span>
-                    <div class="index-list-text-bottom"></div>
-                </div>
-                <div class="index-list-tottom clear"></div>
-            </div>
-            <div class="index-list">
-                <div class="index-list-img fl">
-                    <img src="Images/index/index_1.jpg" alt="" />
-                </div>
-                <div class="index-list-text fl">
-                    <h2>幽默讽刺短片《我妈妈的摩托车》</h2>
-                    <h3><a href="#">创意</a> <a href="#">励志</a> <a href="#">MV</a> <a href="#">科幻/奇幻</a><span class="index-list-text-time"></span></h3>
-                    <span>短片《My mom’s motorcycle》（我妈妈的摩托车）作为My Rode Reel  短片比赛的参赛作品，以幽默的手法讲述了一个男孩的妈妈如何成为他摩托车主人的故事短片取材于导演Douglas Ga . . .</span>
-                    <div class="index-list-text-bottom"></div>
-                </div>
-                <div class="index-list-tottom clear"></div>
+            </div>--%>
             </div>
             </div>
             <%--推荐视频--%>
-            <div id ="index-list-3">
-            <div class="index-list">
+            <div id ="index-list-3" style = " position:relative;">
+            <a href="javascript:;" onclick="UpdateIndex3()" style =" position:absolute; left:1100px;">换一批</a>
+            <div id="index-list-3-centent">
+                <%--<div class="index-list">
                 <div class="index-list-img fl">
                     <img src="Images/index/index_3.jpg" alt="" />
                 </div>
@@ -194,30 +193,7 @@
                     <div class="index-list-text-bottom"></div>
                 </div>
                 <div class="index-list-tottom clear"></div>
-            </div>
-            <div class="index-list">
-                <div class="index-list-img fl">
-                    <img src="Images/index/index_3.jpg" alt="" />
-                </div>
-                <div class="index-list-text fl">
-                    <h2>幽默讽刺短片《我妈妈的摩托车》</h2>
-                    <h3><a href="#">创意</a> <a href="#">励志</a> <a href="#">MV</a> <a href="#">科幻/奇幻</a><span class="index-list-text-time"></span></h3>
-                    <span>短片《My mom’s motorcycle》（我妈妈的摩托车）作为My Rode Reel  短片比赛的参赛作品，以幽默的手法讲述了一个男孩的妈妈如何成为他摩托车主人的故事短片取材于导演Douglas Ga . . .</span>
-                    <div class="index-list-text-bottom"></div>
-                </div>
-                <div class="index-list-tottom clear"></div>
-            </div>
-            <div class="index-list">
-                <div class="index-list-img fl">
-                    <img src="Images/index/index_3.jpg" alt="" />
-                </div>
-                <div class="index-list-text fl">
-                    <h2>幽默讽刺短片《我妈妈的摩托车》</h2>
-                    <h3><a href="#">创意</a> <a href="#">励志</a> <a href="#">MV</a> <a href="#">科幻/奇幻</a><span class="index-list-text-time"></span></h3>
-                    <span>短片《My mom’s motorcycle》（我妈妈的摩托车）作为My Rode Reel  短片比赛的参赛作品，以幽默的手法讲述了一个男孩的妈妈如何成为他摩托车主人的故事短片取材于导演Douglas Ga . . .</span>
-                    <div class="index-list-text-bottom"></div>
-                </div>
-                <div class="index-list-tottom clear"></div>
+            </div>--%>
             </div>
             </div>
         </div>
