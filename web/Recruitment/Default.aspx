@@ -8,11 +8,11 @@
       <myControls:WebScript id="WebScript1" runat="server" />
     <title>影视圈求职</title>
     <style type="text/css">
-    .web-page{ height:1081px; margin-top:52px;}
+    .web-page{  margin-top:52px;}
     .Recruitment-imgtitle{ width:100%; height:515px; background:url('/images/Recruitment/title.png') center bottom no-repeat; }
     .Recruitment-wordtitle{ width:100%; height:39px; margin-top:38px; text-align:center; color:#0eb493; font-family:造字工房雅圆（非商用）常规体; font-size:38px; font-weight:bold;}
     .Recruitment-img1{ width:100%; height:16px; text-align:center;}
-    .Recruitment-img1 img{ src:url('/images/Recruitment/x.png'); height:14px; width:194px;}
+    .Recruitment-img1 img{  height:14px; width:194px;}
     .Recruitment-SO{ height:20px; margin-left:373px; margin-top:65px;}
     .Recruitment-SO ul{font-family:造字工房雅圆（非商用）常规体; height:43px; width:700px; }
     .Recruitment-SO ul li{list-style:none; float:left; padding:0px;}
@@ -35,6 +35,7 @@
   .Recruitment-context ul{height:25px;}
   .Recruitment-context ul li{list-style:none; padding:0px;font-family:造字工房雅圆（非商用）常规体;height:25px;}
   .Recruitment-context .Recruitment-context-time{ margin-top:10px;}
+  #xllist a{ color:#000;}
     </style>
 </head>
 <body>
@@ -42,7 +43,7 @@
     <div class="web-page">
     <div class="Recruitment-imgtitle"></div>
     <div class="Recruitment-wordtitle">影视圈招聘</div>
-    <div class="Recruitment-img1"><img  /></div>
+    <div class="Recruitment-img1"><img src="../Images/Recruitment/x.png"  /></div>
     <div class="Recruitment-SO">
     <ul>
     <li class="Recruitment-SO-ul-li1">关键词|</li>
@@ -61,21 +62,29 @@
     
     </div>
     <div class="Recruitment-line"><hr /></div>
-        <div class="Recruitment-title">
-    <ul>
-    <li class="Recruitment-title-name">摄像师</li>
-    <li class="Recruitment-title-city">（上海）</li>
-    <li class="Recruitment-title-Salary">月薪3K-8K</li>
-    </ul>
-    </div>
-    <div class="Recruitment-context">
-    <ul>
-    <li>职位吸引力：对影像工作有梦想，欢迎加入XX电影制作团队</li>
-    <li>发布机构：XX电影制作&nbsp;&nbsp;&nbsp;类型：影视制作公司&nbsp;&nbsp;&nbsp;公司规模：10-50人</li>
-    <li>公司地址：上海松江区三心北路900弄1560号</li>
-    <li class="Recruitment-context-time">3分钟前发布</li>
-    </ul>
-    </div>
+    <div id="xllist">
+        
+    
+        <asp:Repeater ID="Repeater1" runat="server">
+            <ItemTemplate>
+            <a href='detail.aspx?pid=<%# Eval("ID")%>'>
+                <div class="Recruitment-title">
+                    <ul>
+                        <li class="Recruitment-title-name"><%# Eval("ProductName")%></li>
+                        <li class="Recruitment-title-city">（<%# Eval("ProductXinJiu")%>）</li>
+                        <li class="Recruitment-title-Salary">月薪<%# Eval("PriceRange")%></li>
+                    </ul>
+                </div>
+                <div class="Recruitment-context">
+                    <ul>
+                        <li>发布机构：<%# Eval("ProductMan")%>&nbsp;&nbsp;&nbsp;</li>
+                        <li>公司地址：<%# Eval("ProductAddress")%></li>
+                        <li class="Recruitment-context-time"><%# Convert.ToDateTime( Eval("InputTime")).ToString("yyyy-MM-dd HH:mm")%></li>
+                    </ul>
+                </div></a>
+            </ItemTemplate>
+        </asp:Repeater>
+        </div>
     </div>
 
         <mycontrols:webFoot id="WebFoot1" runat="server"/>

@@ -21,9 +21,12 @@ public partial class User_Default : System.Web.UI.Page
 
         YS_UserBLL userbll = new YS_UserBLL();
         YS_User user = userbll.GetModel(Tool.CookieGet("UserName"));
-
         if (user.UserType != YS_Enum.UserType.公司机构)
             this.zhaopin.Visible = false;
+        if (user.UserType != YS_Enum.UserType.管理员)
+        {
+            Response.Redirect("Login.aspx");
+        }
 
         this.jifen.InnerText = user.Score.ToString();
 
@@ -39,9 +42,9 @@ public partial class User_Default : System.Web.UI.Page
         this.name.InnerText = user.UserName;
         this.city.InnerText = user.UserType.ToString();
 
-        this.mynametxt.Value = user.UserName;
-        this.myreadnametxt.Value = user.ReadName;
-        this.myaddresstxt.Value = user.Address;
-        this.myemailtxt.Value = user.E_Mail;
+        /*资讯列表*/
+        YS_ProductBLL productbll = new YS_ProductBLL();
+        Repeater1.DataSource = productbll.GetList("ProductType in(4)");//默认和器材管理
+        Repeater1.DataBind();
     }
 }

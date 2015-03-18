@@ -28,38 +28,24 @@
 <body>
      <myControls:WebTop id="WebTop1" runat="server" />
     <div class="web-page">
-    <div class="detail-top">影视摄影师</div>
+    <div class="detail-top" id="zptxt0" runat="server">影视摄影师</div>
     <div class="detail-left">
     <div class="detail-left-context">
         <ul>
-    <li><span class="detail-left-left-span">招聘公司：</span><span class="detail-left-right-span">广州九著电子科技有限公司</span></li>
-    <li><span class="detail-left-left-span">工作地点：</span><span class="detail-left-right-span">天河区珠江新城华明路13号华普广场懂1301</span></li>
-    <li><span class="detail-left-left-span">薪资范围：</span><span class="detail-left-right-span">3K-4K</span></li>
-    <li class="detail-left-time"><span class="detail-left-left-span">2014-10-31 11:38</span></li>
+    <li><span class="detail-left-left-span">招聘公司：</span><span class="detail-left-right-span" id="zptxt1" runat="server"></span></li>
+    <li><span class="detail-left-left-span">工作地点：</span><span class="detail-left-right-span" id="zptxt2" runat="server"></span></li>
+    <li><span class="detail-left-left-span">薪资范围：</span><span class="detail-left-right-span" id="zptxt3" runat="server"></span></li>
+    <li class="detail-left-time"><span class="detail-left-left-span"  id="zptxt4" runat="server"></span></li>
     </ul>
     </div>
-    <div class="detail-left-description">
-    <div class="detail-left-title">职业描述：</div>
-    <div class="detail-left-description-context">
-    1、负责拍摄公司相关产品的视频、照片
-    </br>
-    2、熟悉摄像器材，能适应各种拍摄条件，可独立完成拍摄任务。
-    </div>
-    </div>
-      <div class="detail-left-description">
-    <div class="detail-left-title">职业要求：</div>
-    <div class="detail-left-description-context">
-    1、热爱摄影
-    </br>
-    2、有较强的美术功底。
-    </div>
+    <div class="detail-left-description"  id="zptxt5" runat="server">
+
     </div>
     </div>
     <div class="detail-right">
-    <div class="detail-right-title">广州九著电子科技公司</div>
-    <div class="detail-right-context">
-    WENPOD稳拍，是广州九著电子科技有限公司自主研发的全系列智能产品，采用全球独创的电子增稳专利技术，为移动拍摄维持稳定，让画面始终保持水平，适配主流智能手机、卡片机、微单、数码单反、家用DV、GoPro运动相机等，可应用于户外活动、旅行、聚会、儿童成长、婚礼现场、新闻采访、商业广告、微电影等需要移动拍摄增稳的各类场合。
-公司研发的“智能稳拍”系列智能稳定产品，拥有美国和中国市场多项发明专利，并获得2013东京CEATEC数码影像大奖。
+    <div class="detail-right-title" id="zptxt6" runat="server"></div>
+    <div class="detail-right-context" id="zptxt7" runat="server">
+   
     </div>
     </div>
     </div>

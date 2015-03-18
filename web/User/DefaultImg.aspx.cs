@@ -21,7 +21,8 @@ public partial class User_Default : System.Web.UI.Page
 
         YS_UserBLL userbll = new YS_UserBLL();
         YS_User user = userbll.GetModel(Tool.CookieGet("UserName"));
-
+        if (user.UserType != YS_Enum.UserType.公司机构)
+            this.zhaopin.Visible = false;
         this.jifen.InnerText = user.Score.ToString();
 
         this.fensi.InnerText = DbHelperSQL.GetSingle("select count(*) from YS_Attention where attentionID = " + user.ID + "").ToString();

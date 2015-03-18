@@ -92,8 +92,10 @@
                 <ul>
                 <li><a href="Default.aspx" class="set-top">个人设置</a></li>
                 <li><a href="IssusingManager.aspx" class="active">我的发布</a></li>
-                <li><a href="MyOrder.aspx">我的购物车</a></li>
+                <li id="zhaopin" runat="server"><a href="ZhaoPinManager.aspx" >招聘信息</a></li>
+                <li><a href="../Shop/MyCar.aspx">我的购物车</a></li>
                 <li><a href="MyOrder.aspx">我的订单</a></li>
+                <li><a href="GoodsReceipt.aspx">我的收货地址</a></li>
                 </ul>
             </div>
         </div>
