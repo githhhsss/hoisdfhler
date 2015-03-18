@@ -25,9 +25,9 @@
        <div class="zx-wz"></div>
        <div class="zx-body">
             <ul>
-                <li><div><img src="../Images/Consultation/yt.jpg" /></div><div><a href="#" style="background:url('/images/Consultation/psfw.png') center center no-repeat"></a></div></li>
-                <li><div><img src="../Images/Consultation/yt.jpg" /></div><div><a href="#" style="background:url('/images/Consultation/wyjd.png') center center no-repeat"></a></div></li>
-                <li><div><img src="../Images/Consultation/yt.jpg" /></div><div><a href="#" style="background:url('/images/Consultation/esqc.png') center center no-repeat"></a></div></li>
+                <li><div><img src="../Images/Consultation/yt.jpg" /></div><div><a href="/Order/Photography.aspx" style="background:url('/images/Consultation/psfw.png') center center no-repeat"></a></div></li>
+                <li><div><img src="../Images/Consultation/yt.jpg" /></div><div><a href="/Order/Orders.aspx" style="background:url('/images/Consultation/wyjd.png') center center no-repeat"></a></div></li>
+                <li><div><img src="../Images/Consultation/yt.jpg" /></div><div><a href="/Order/Secondary.aspx" style="background:url('/images/Consultation/esqc.png') center center no-repeat"></a></div></li>
             </ul>
        </div>
     </div>
