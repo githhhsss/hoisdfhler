@@ -92,6 +92,7 @@
                 <li><a href="Default.aspx" class="set-top">个人设置</a></li>
                 <li><a href="UserManager.aspx">用户管理</a></li>
                 <li><a href="ProductManager.aspx">商品管理</a></li>
+                <li><a href="FWProductManager.aspx">摄影服务</a></li>
                 <li><a href="OrderManager.aspx">订单管理</a></li>
                 <li><a href="ZhaoPinManager.aspx">招聘信息</a></li>
                 <li><a href="ZiXunManager.aspx" class="active">资讯文章</a></li>

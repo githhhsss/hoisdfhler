@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="UserManager.aspx.cs" Inherits="User_Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="FWProductManager.aspx.cs" Inherits="User_Default" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -39,25 +39,30 @@
     
     .right-form ul li .btn{ display:block ;background:url("../Images/btnbj.png") no-repeat center center; width:150px; height:40px;background-size:cover; font-size:18px; text-align:center; line-height:40px; margin-left:432px;}
     
-    .right-form ul li span{  float:left;display:block; margin:0; padding:0 ;text-align:center; line-height:30px ;height:30px; border:1px solid #CCC;overflow:hidden;text-overflow:ellipsis;-o-text-overflow: ellipsis;white-space:nowrap;width:100%;}
-    .right-form .u-th-num{ width:40px; color:#1ea78d;line-height:40px ;height:40px; font-size:16px;}
-    .right-form .u-th-name{ width:140px; color:#1ea78d;line-height:40px ;height:40px; font-size:16px;}
-    .right-form .u-th-rname{width:140px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
-    .right-form .u-th-type{width:80px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
-    .right-form .u-th-email{width:180px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
-    .right-form .u-th-time{width:100px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
-    .right-form .u-th-do{width:150px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
+    
+    /*列表数据*/
+     .right-form ul li span{  float:left;display:block; margin:0; padding:0 ;text-align:center; line-height:30px ;height:30px; border:1px solid #CCC;overflow:hidden;text-overflow:ellipsis;-o-text-overflow: ellipsis;white-space:nowrap;width:100%;}
+    .right-form .u-th-1{ width:40px; color:#1ea78d;line-height:40px ;height:40px; font-size:16px;}
+    .right-form .u-th-2{ width:140px; color:#1ea78d;line-height:40px ;height:40px; font-size:16px;}
+    .right-form .u-th-3{width:80px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
+    .right-form .u-th-4{width:80px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
+    .right-form .u-th-5{width:80px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
+    .right-form .u-th-6{width:100px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
+    .right-form .u-th-7{width:100px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
+    .right-form .u-th-do{width:210px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
     
     .right-form .odd { background:#F9F9F9;}
     
-    .right-form .u-td-num{width:40px;}
-    .right-form .u-td-name{width:140px;}
-    .right-form .u-td-rname{width:140px;}
-    .right-form .u-td-type{width:80px;}
-    .right-form .u-td-email{width:180px;}
-    .right-form .u-td-time{width:100px;}
-    .right-form .u-td-do{width:150px;}
-    .right-form .u-td-do a{ display:block; float:left; margin-left:3px;margin-top:3px ;background:url("../Images/btnbj.png") no-repeat center center; width:70px; height:24px;background-size:cover; font-size:12px; text-align:center; line-height:24px;}
+    .right-form .u-td-1{width:40px;}
+    .right-form .u-td-2{width:140px;}
+    .right-form .u-td-3{width:80px;}
+    .right-form .u-td-4{width:80px;}
+    .right-form .u-td-5{width:80px;}
+    .right-form .u-td-6{width:100px;}
+    .right-form .u-td-7{width:100px;}
+    .right-form .u-td-do{width:210px;}
+    .right-form .u-td-do a{ display:block; float:left; margin-left:3px;margin-top:3px ;background:url("../Images/btnbj.png") no-repeat center center; width:66px; height:24px;background-size:cover; font-size:12px; text-align:center; line-height:24px;}
+    
     
     </style>
     <myControls:WebScript id="WebScript1" runat="server" />
@@ -86,9 +91,9 @@
             <div class="my-left-bottom">
                 <ul>
                 <li><a href="Default.aspx" class="set-top">个人设置</a></li>
-                <li><a href="UserManager.aspx" class="active">用户管理</a></li>
+                <li><a href="UserManager.aspx">用户管理</a></li>
                 <li><a href="ProductManager.aspx">商品管理</a></li>
-                <li><a href="FWProductManager.aspx">摄影服务</a></li>
+                <li><a href="FWProductManager.aspx" class="active">摄影服务</a></li>
                 <li><a href="OrderManager.aspx">订单管理</a></li>
                 <li><a href="ZhaoPinManager.aspx">招聘信息</a></li>
                 <li><a href="ZiXunManager.aspx">资讯文章</a></li>
@@ -99,35 +104,40 @@
             <div class="u-right">
 
             <div class="orderTitle">
-                <a class="sel" href="UserManager.aspx">用户列表</a> 
-                <a href="UserAdd.aspx">新增用户</a>
+                <a class="sel" href="FWProductManager.aspx">商品列表</a> 
+                <a href="FWProductAdd.aspx">增加商品</a> 
+                <a href="FWProductUpdate.aspx">修改商品</a>
             </div>
 
             <!--信息-->
-            <div class="data-edit">
+           <div class="data-edit">
                 <form id="form1" runat="server">
                 <div class="right-form">
                     <ul>
                         <li>
-                            <span class="u-th-num">序号</span>
-                            <span class="u-th-name">用户名</span>
-                            <span class="u-th-rname">真实姓名</span>
-                            <span class="u-th-type">用户类型</span>
-                            <span class="u-th-email">e-mail</span>
-                            <span class="u-th-time">注册时间</span>
+                            <span class="u-th-1">序号</span>
+                            <span class="u-th-2">商品名称</span>
+                            <span class="u-th-3">价格</span>
+                            <span class="u-th-4">库存</span>
+                            <span class="u-th-5">状态</span>
+                            <span class="u-th-6">折扣</span>
+                            <span class="u-th-7">录入时间</span>
                             <span  class="u-th-do">操作</span>
                         </li>
                         <asp:Repeater ID="Repeater1" runat="server">
                             <ItemTemplate>
                             <li>
-                                <span class="u-td-num <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Container.ItemIndex+1 %></span>
-                                <span class="u-td-name <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Eval("UserName")%></span>
-                                <span class="u-td-rname <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Eval("ReadName")%></span>
-                                <span class="u-td-type <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# (YS_WEB.Model.YS_Enum.UserType)Eval("UserType")%></span>
-                                <span class="u-td-email <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Eval("E_Mail")%></span>
-                                <span class="u-td-time <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Convert.ToDateTime(Eval("Birthday")).ToString("yyyy-MM-dd hh:mm")%></span>
-                                <span  class="u-td-do <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><a href="javascript:;" onclick='updatePassword(<%# Eval("ID") %>)'>重置密码</a>
-                                                       <a href="javascript:;" onclick='deleteUser(<%# Eval("ID")%>)'>删除用户</a></span>
+                                <span class="u-td-1 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Container.ItemIndex+1 %></span>
+                                <span class="u-td-2 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Eval("ProductName")%></span>
+                                <span class="u-td-3 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Convert.ToDecimal(Eval("Price")).ToString("f2")%></span>
+                                <span class="u-td-4 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Eval("Stock")%></span>
+                                <span class="u-td-5 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# (YS_WEB.Model.YS_Enum.ProductState)Eval("State")%></span>
+                                <span class="u-td-6 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Eval("Promotion")%></span>
+                                <span class="u-td-7 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Convert.ToDateTime(Eval("InputTime")).ToString("yyyy-MM-dd hh:mm")%></span>
+                                <span  class="u-td-do <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>">
+                                    <a href="/Shop/ProductItem.aspx?itemid=<%# Eval("ID")%>">查看</a>
+                                    <a href="FWProductUpdate.aspx?itemid=<%# Eval("ID")%>">编辑</a>
+                                    <a href="javascript:;" onclick='deletePro(<%# Eval("ID")%>)'>删除</a></span>
                             </li>
                             </ItemTemplate>
                         </asp:Repeater>
@@ -143,34 +153,39 @@
 
     <mycontrols:webFoot id="WebFoot1" runat="server"/>
     <script type="text/javascript">
-        function deleteUser(userId) {
-            if (confirm("确定要删除用户吗?")) {
-                yscom.ajax({
-                    url: "Action/Handler.ashx?cmd=DeleteUser",
-                    data: {
-                        "ID": userId
-                    },
-                    success: function (data) {
-                        if (data.flag == "true") {
-                            alert(data.msg);
-                            window.location = 'UserManager.aspx';
-                        } else {
-                            alert(data.msg);
+        $(function () {
+            $("#ChangeMyInformation").click(function () {
+                if (confirm("确定要修改信息吗？")) {
+                    yscom.ajax({
+                        url: "Action/Handler.ashx?cmd=ChangeMyInformation",
+                        data: {
+                            "username": $("#mynametxt").val(),
+                            "readname": $("#myreadnametxt").val(),
+                            "address": $("#myaddresstxt").val(),
+                            "e_mail": $("#myemailtxt").val()
+                        },
+                        success: function (data) {
+                            if (data.flag == "true") {
+                                alert(data.msg);
+                            } else {
+                                alert(data.msg);
+                            }
                         }
-                    }
-                });
-            }
-        }
-        function updatePassword(userId) {
-            if (confirm("确定要重置用户密码吗?")) {
+                    });
+                };
+            });
+        })
+        function deletePro(pid) {
+            if (confirm("确定要删除信息吗?")) {
                 yscom.ajax({
-                    url: "Action/Handler.ashx?cmd=UpdatePassword",
+                    url: "Action/Handler.ashx?cmd=DeletePro",
                     data: {
-                        "ID": userId
+                        "ID": pid
                     },
                     success: function (data) {
                         if (data.flag == "true") {
                             alert(data.msg);
+                            window.location = 'ProductManager.aspx';
                         } else {
                             alert(data.msg);
                         }

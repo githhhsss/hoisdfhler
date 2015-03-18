@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ZiXunAdd.aspx.cs" Inherits="User_Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="FWProductUpdate.aspx.cs" Inherits="User_Default" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -29,7 +29,7 @@
     .my-right .u-right .orderTitle a{ display:block; float:left; height:69px; line-height:69px; width:180px;border-right:1px solid #DDDDDD; text-align:center; font-size:23px;text-decoration:none; color:#000000;}
     .my-right .u-right .orderTitle .sel{border-top:5px solid #1ea78d; height:65px; background:#FFF; line-height:60px;}
     
-    .my-right .u-right .data-edit{ height:1000px;}
+    .my-right .u-right .data-edit{ height:1550px;}
     .my-right .u-right .data-edit ul li{ list-style:none;}
     
     .right-form{ margin-top:40px; margin-left:50px;}
@@ -47,8 +47,13 @@
     <myControls:WebScript id="WebScript1" runat="server" />
     <script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.all.min.js"> </script>
+   <script type="text/javascript">
+       function setBaidu() {
+           UE.getEditor('editor').setContent("<%= GetEditor()%>");
+       }
+        </script>
 </head>
-<body>
+<body onload="setBaidu()">
     <myControls:WebTop id="WebTop1" runat="server" />
 
     <div class="web-page">
@@ -74,10 +79,10 @@
                 <li><a href="Default.aspx" class="set-top">个人设置</a></li>
                 <li><a href="UserManager.aspx">用户管理</a></li>
                 <li><a href="ProductManager.aspx">商品管理</a></li>
-                <li><a href="FWProductManager.aspx">摄影服务</a></li>
+                <li><a href="FWProductManager.aspx" class="active">摄影服务</a></li>
                 <li><a href="OrderManager.aspx">订单管理</a></li>
                 <li><a href="ZhaoPinManager.aspx">招聘信息</a></li>
-                <li><a href="ZiXunManager.aspx" class="active">资讯文章</a></li>
+                <li><a href="ZiXunManager.aspx">资讯文章</a></li>
                 </ul>
             </div>
         </div>
@@ -85,10 +90,9 @@
             <div class="u-right">
 
             <div class="orderTitle">
-                <a href="ZiXunManager.aspx">资讯文章</a> 
-                <a class="sel" href="ZiXunAdd.aspx">添加资讯</a> 
-                <a target="_blank" href="ZiXunQuery.aspx">查看资讯</a>
-                <a href="ZiXunUpdate.aspx">修改资讯</a>
+                <a href="FWProductManager.aspx">商品列表</a> 
+                <a href="FWProductAdd.aspx">增加商品</a> 
+                <a class="sel" href="FWProductUpdate.aspx">修改商品</a>
             </div>
 
             <!--信息-->
@@ -96,14 +100,20 @@
                 <form id="form1" runat="server">
                 <div class="right-form">
                     <ul>
-                        <li><span class="form-say">产品基本信息</span></li>
-                        <li><span class="form-title">标题：</span><input class="form-txt" id="ptxt1" type="text" runat="server" /></li>
-                        <li><span class="form-title">关键字：</span><input class="form-txt" id="ptxt4" runat="server" type="text" /></li>
-                       <li><span class="form-say">内容</span>
+                        <li><span class="form-say">图像</span></li>
+                            <li><img id="pimg" src="../ProductImg/pro.jpg" runat="server" style=" width:700px; height:500px;" /></li>
+                            <li><span class="form-title">图片目录：</span><input class="form-txt" id="ppText1" type="text" runat="server" value="pro.jpg" /></li>
+                        <li><span class="form-say">服务基本信息</span></li>
+                        <li><span class="form-title">服务名称：</span><input class="form-txt" id="ptxt1" type="text" runat="server" /></li>
+                        <li><span class="form-title">价格：</span><input class="form-txt" id="ptxt2" runat="server" type="text" /></li>
+                        <li><span class="form-title">联系人：</span><input class="form-txt" id="ptxt4" runat="server" type="text" /></li>
+                        <li><span class="form-title">联系电话：</span><input class="form-txt" id="ptxt5" runat="server" type="text" /></li>
+                        <li><span class="form-title">关键字：</span><input class="form-txt" id="ptxt3" runat="server" type="text" /></li>
+                       <li><span class="form-say">产品详细描述</span>
                                <script id="editor" type="text/plain" style="width:830px; height:500px;" ></script>
                        </li>
                        <li><span style=" display:inline-block;height:5px;"></span></li>
-                        <li><a id="AddPro" class="btn" href="javascript:;">确认添加</a></li>
+                        <li><a id="editPro" class="btn" href="javascript:;">确认修改</a></li>
                     </ul>
                 </div>
                 </form>
@@ -123,13 +133,21 @@
     </script>
     <script type="text/javascript">
         $(function () {
-            $("#AddPro").click(function () {
-                if (confirm("确定要添加信息吗？")) {
+            $("#ppText1").change(function () {
+                $("#pimg").attr("src", "/ProductImg/" + $("#ppText1").val());
+            });
+            $("#editPro").click(function () {
+                if (confirm("确定要修改信息吗？")) {
                     yscom.ajax({
-                        url: "Action/Handler.ashx?cmd=AddZiXun",
+                        url: "Action/Handler.ashx?cmd=EditFWPro",
                         data: {
+                            "pid":yscom.getParams("itemid"),
                             "txt1": $("#ptxt1").val(),
+                            "txt2": $("#ptxt2").val(),
+                            "txt3": $("#ptxt3").val(),
                             "txt4": $("#ptxt4").val(),
+                            "txt5": $("#ptxt5").val(),
+                            "pimg": $("#ppText1").val(),
                             "txt6": UE.getEditor('editor').getContent()
                         },
                         success: function (data) {

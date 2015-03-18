@@ -838,7 +838,141 @@ public class Handler : IHttpHandler
             }
         }
     }
+    //添加服务
+    public void AddFWProduct(HttpContext context)
+    {
+        string ProductName = context.Request["txt1"];
+        string Price = context.Request["txt2"];
+        string ProductPhone = context.Request["txt5"];
+        string Description = context.Request["txt6"];
+        string ProductKey = context.Request["txt3"];
+        string ProductMan = context.Request["txt4"];
+        string pimg = context.Request["pimg"];
 
+        if (string.IsNullOrEmpty(ProductName))
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"产品名称不能为空\"}");
+            return;
+        }
+        if (!PageValidate.IsDecimal(Price))
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"价格格式不对\"}");
+            return;
+        }
+
+        YS_ProductBLL probll = new YS_ProductBLL();
+        YS_Product pro = new YS_Product();
+        pro.Description = Description;
+        pro.InputTime = DateTime.Now;
+        pro.IsHot = true;
+        pro.OverTime = new DateTime(9999, 12, 30);
+        pro.Price = Convert.ToDecimal(Price);
+        pro.PriceRange = "";
+        pro.ProductAddress = pimg;
+        pro.ProductKey = ProductKey;
+        pro.ProductMan = ProductMan;
+        pro.ProductName = ProductName;
+        pro.ProductPhone = ProductPhone;
+        pro.ProductType = YS_Enum.ProductType.摄影服务;
+        pro.ProductXinJiu = "";
+        pro.Promotion = 1;
+        pro.Sales = 0;
+        pro.StartTime = DateTime.Now;
+        pro.State = YS_Enum.ProductState.在售;
+        pro.Stock = 0;
+
+        string username = Tool.CookieGet("UserName");
+        YS_UserBLL userbll = new YS_UserBLL();
+        YS_User user = userbll.GetModel(username);
+        pro.UserID = user.ID;
+        pro.UserName = user.UserName;
+
+        try
+        {
+            if (probll.Add(pro))
+            {
+                context.Response.Write("{\"flag\":\"true\",\"msg\":\"服务添加成功\"}");
+                return;
+            }
+            else
+            {
+                context.Response.Write("{\"flag\":\"false\",\"msg\":\"未知错误\"}");
+                return;
+            }
+
+        }
+        catch
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"数据库异常\"}");
+            return;
+        }
+
+    }
+    //修改服务
+    public void EditFWPro(HttpContext context)
+    {
+        int pid = Convert.ToInt32(context.Request["pid"]);
+        string ProductName = context.Request["txt1"];
+        string Price = context.Request["txt2"];
+        string ProductPhone = context.Request["txt5"];
+        string Description = context.Request["txt6"];
+        string ProductKey = context.Request["txt3"];
+        string ProductMan = context.Request["txt4"];
+        string pimg = context.Request["pimg"];
+
+        if (string.IsNullOrEmpty(ProductName))
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"产品名称不能为空\"}");
+            return;
+        }
+        if (!PageValidate.IsDecimal(Price))
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"价格格式不对\"}");
+            return;
+        }
+
+        YS_ProductBLL probll = new YS_ProductBLL();
+        YS_Product pro = probll.GetModel(pid);
+        pro.Description = Description;
+        pro.InputTime = DateTime.Now;
+        pro.IsHot = true;
+        pro.OverTime = new DateTime(9999, 12, 30);
+        pro.Price = Convert.ToDecimal(Price);
+        pro.PriceRange = "";
+        pro.ProductAddress = pimg;
+        pro.ProductKey = ProductKey;
+        pro.ProductMan = ProductMan;
+        pro.ProductName = ProductName;
+        pro.ProductPhone = ProductPhone;
+        pro.ProductType = YS_Enum.ProductType.摄影服务;
+        pro.ProductXinJiu = "";
+        pro.Promotion = 1;
+        pro.Sales = 0;
+        pro.StartTime = DateTime.Now;
+        pro.State = YS_Enum.ProductState.在售;
+        pro.Stock = 0;
+
+        try
+        {
+            if (probll.Update(pro))
+            {
+                context.Response.Write("{\"flag\":\"true\",\"msg\":\"服务修改成功\"}");
+                return;
+            }
+            else
+            {
+                context.Response.Write("{\"flag\":\"false\",\"msg\":\"未知错误\"}");
+                return;
+            }
+
+        }
+        catch
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"数据库异常\"}");
+            return;
+        }
+
+    }
     /// <summary>
     /// 转义json特殊字符
     /// </summary>
