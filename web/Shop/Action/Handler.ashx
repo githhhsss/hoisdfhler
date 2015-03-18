@@ -227,6 +227,7 @@ public class Handler : IHttpHandler
         {
             oi.OrderID = o.ID;
             oi.ProductID = c.ProductID;
+            oi.Num = c.Number;
 
             if (!oibll.Add(oi))
             {

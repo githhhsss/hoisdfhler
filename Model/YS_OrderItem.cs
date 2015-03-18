@@ -13,6 +13,7 @@ namespace YS_WEB.Model
 		private int _id;
 		private int _orderid;
 		private int _productid;
+        private int _num;
 		/// <summary>
 		/// 
 		/// </summary>
@@ -37,6 +38,14 @@ namespace YS_WEB.Model
 			set{ _productid=value;}
 			get{return _productid;}
 		}
+        /// <summary>
+        /// 
+        /// </summary>
+        public int Num
+        {
+            set { _num = value; }
+            get { return _num; }
+        }
 		#endregion Model
 
 	}

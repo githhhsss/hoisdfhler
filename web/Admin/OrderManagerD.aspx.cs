@@ -43,11 +43,11 @@ public partial class User_Default : System.Web.UI.Page
 
 
 
-           
-            List<YS_Order> orderList = new YS_OrderBLL().GetModelList("1=1 order by addtime desc");
-            Repeater1.DataSource = orderList;
-            Repeater1.DataBind();
-        
+
+        List<YS_Order> orderList = new YS_OrderBLL().GetModelList("State=2 order by addtime desc");
+        Repeater1.DataSource = orderList;
+        Repeater1.DataBind();
+
 
     }
 }

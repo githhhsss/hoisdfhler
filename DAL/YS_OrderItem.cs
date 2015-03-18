@@ -23,16 +23,18 @@ namespace YS_WEB.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into YS_OrderItem(");
-			strSql.Append("OrderID,ProductID)");
+			strSql.Append("OrderID,ProductID,Num)");
 			strSql.Append(" values (");
-			strSql.Append("@OrderID,@ProductID)");
+			strSql.Append("@OrderID,@ProductID,@Num)");
 			SqlParameter[] parameters = {
 					new SqlParameter("@ID", SqlDbType.Int,4),
 					new SqlParameter("@OrderID", SqlDbType.Int,4),
-					new SqlParameter("@ProductID", SqlDbType.Int,4)};
+					new SqlParameter("@ProductID", SqlDbType.Int,4),
+                    new SqlParameter("@Num", SqlDbType.Int,4)};
 			parameters[0].Value = model.ID;
 			parameters[1].Value = model.OrderID;
 			parameters[2].Value = model.ProductID;
+            parameters[3].Value = model.Num;
 
 			int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -54,14 +56,17 @@ namespace YS_WEB.DAL
 			strSql.Append("ID=@ID,");
 			strSql.Append("OrderID=@OrderID,");
 			strSql.Append("ProductID=@ProductID");
+            strSql.Append("Num=@Num");
 			strSql.Append(" where ");
 			SqlParameter[] parameters = {
 					new SqlParameter("@ID", SqlDbType.Int,4),
 					new SqlParameter("@OrderID", SqlDbType.Int,4),
-					new SqlParameter("@ProductID", SqlDbType.Int,4)};
-			parameters[0].Value = model.ID;
-			parameters[1].Value = model.OrderID;
-			parameters[2].Value = model.ProductID;
+					new SqlParameter("@ProductID", SqlDbType.Int,4),
+                    new SqlParameter("@Num", SqlDbType.Int,4)};
+            parameters[0].Value = model.ID;
+            parameters[1].Value = model.OrderID;
+            parameters[2].Value = model.ProductID;
+            parameters[3].Value = model.Num;
 
 			int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -105,7 +110,7 @@ namespace YS_WEB.DAL
 		{
 			//该表无主键信息，请自定义主键/条件字段
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select  top 1 ID,OrderID,ProductID from YS_OrderItem ");
+			strSql.Append("select  top 1 ID,OrderID,ProductID,Num from YS_OrderItem ");
 			strSql.Append(" where ");
 			SqlParameter[] parameters = {
 			};
@@ -153,7 +158,7 @@ namespace YS_WEB.DAL
 		public DataSet GetList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID,OrderID,ProductID ");
+			strSql.Append("select ID,OrderID,ProductID,Num ");
 			strSql.Append(" FROM YS_OrderItem ");
 			if(strWhere.Trim()!="")
 			{
@@ -173,7 +178,7 @@ namespace YS_WEB.DAL
 			{
 				strSql.Append(" top "+Top.ToString());
 			}
-			strSql.Append(" ID,OrderID,ProductID ");
+			strSql.Append(" ID,OrderID,ProductID,Num ");
 			strSql.Append(" FROM YS_OrderItem ");
 			if(strWhere.Trim()!="")
 			{

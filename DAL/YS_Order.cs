@@ -71,7 +71,6 @@ namespace YS_WEB.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update YS_Order set ");
-			strSql.Append("ID=@ID,");
 			strSql.Append("UserID=@UserID,");
 			strSql.Append("UserName=@UserName,");
 			strSql.Append("DeliveryName=@DeliveryName,");
@@ -84,7 +83,7 @@ namespace YS_WEB.DAL
 			strSql.Append("Promotion=@Promotion,");
 			strSql.Append("State=@State,");
 			strSql.Append("AddTime=@AddTime");
-			strSql.Append(" where ");
+            strSql.Append(" where ID=@ID");
 			SqlParameter[] parameters = {
 					new SqlParameter("@ID", SqlDbType.Int,4),
 					new SqlParameter("@UserID", SqlDbType.Int,4),
@@ -147,6 +146,31 @@ namespace YS_WEB.DAL
 			}
 		}
 
+        /// <summary>
+        /// 得到一个对象实体
+        /// </summary>
+        public YS_WEB.Model.YS_Order GetModel(int OID,bool isoid)
+        {
+            //该表无主键信息，请自定义主键/条件字段
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select  top 1 ID,UserID,UserName,DeliveryName,DeliverPhone,DeliverSheng,DeliverCity,DeliverZipCode,DeliverAddress,Price,Promotion,State,AddTime from YS_Order ");
+            strSql.Append(" where ID=@ID");
+            SqlParameter[] parameters = {
+                new SqlParameter("@ID", SqlDbType.Int,4)
+			};
+            parameters[0].Value = OID;
+
+            YS_WEB.Model.YS_Order model = new YS_WEB.Model.YS_Order();
+            DataSet ds = DbHelperSQL.Query(strSql.ToString(), parameters);
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                return DataRowToModel(ds.Tables[0].Rows[0]);
+            }
+            else
+            {
+                return null;
+            }
+        }
 
 		/// <summary>
 		/// 得到一个对象实体

@@ -385,7 +385,7 @@ public class Handler : IHttpHandler
         pro.StartTime = DateTime.Now;
         pro.State = (YS_Enum.ProductState)Enum.Parse(typeof(YS_Enum.ProductState), State);
         pro.Stock = Convert.ToInt32(Stock);
-        
+
         string username = Tool.CookieGet("UserName");
         YS_UserBLL userbll = new YS_UserBLL();
         YS_User user = userbll.GetModel(username);
@@ -502,7 +502,7 @@ public class Handler : IHttpHandler
             context.Response.Write("{\"flag\":\"false\",\"msg\":\"标题名称不能为空\"}");
             return;
         }
-        
+
         YS_ProductBLL probll = new YS_ProductBLL();
         YS_Product pro = new YS_Product();
         pro.Description = Description;
@@ -621,7 +621,7 @@ public class Handler : IHttpHandler
             context.Response.Write("{\"flag\":\"false\",\"msg\":\"标题名称不能为空\"}");
             return;
         }
-        
+
         YS_ProductBLL probll = new YS_ProductBLL();
         YS_Product pro = new YS_Product();
         pro.Description = Description;
@@ -755,6 +755,88 @@ public class Handler : IHttpHandler
             return;
         }
     }
+
+    //发货
+    public void FH(HttpContext context)
+    {
+        int oid = 0;
+        int.TryParse(context.Request["oid"], out oid);
+        YS_OrderBLL obll = new YS_OrderBLL();
+        YS_Order o = obll.GetModel(oid,true);
+        if (o != null)
+        {
+            if (o.State == YS_Enum.OrderState.待发货)
+            {
+                o.State = YS_Enum.OrderState.已发货;
+                if (obll.Update(o))
+                {
+                    context.Response.Write("{\"flag\":\"true\",\"msg\":\"发货完成!请按订单明细发送货品! \"}");
+                    return;
+                }
+                else
+                {
+                    context.Response.Write("{\"flag\":\"false\",\"msg\":\"数据库异常\"}");
+                    return;
+                }
+            }
+            else if(o.State == YS_Enum.OrderState.已发货)
+            {
+                context.Response.Write("{\"flag\":\"false\",\"msg\":\"订单已经出货。无需重复出货\"}");
+                return;
+            }
+            else if (o.State == YS_Enum.OrderState.已完成)
+            {
+                context.Response.Write("{\"flag\":\"false\",\"msg\":\"订单已完成。无需重复出货\"}");
+                return;
+            }
+            else if (o.State == YS_Enum.OrderState.待支付)
+            {
+                context.Response.Write("{\"flag\":\"false\",\"msg\":\"订单未支付。无需出货\"}");
+                return;
+            }
+        }
+    }
+    //收货
+    public void SH(HttpContext context)
+    {
+        int oid = 0;
+        int.TryParse(context.Request["oid"], out oid);
+        YS_OrderBLL obll = new YS_OrderBLL();
+        YS_Order o = obll.GetModel(oid, true);
+        if (o != null)
+        {
+            if (o.State == YS_Enum.OrderState.已发货)
+            {
+                o.State = YS_Enum.OrderState.已完成;
+                if (obll.Update(o))
+                {
+                    context.Response.Write("{\"flag\":\"true\",\"msg\":\"已经确认签收货品，欢迎再次购买! \"}");
+                    return;
+                }
+                else
+                {
+                    context.Response.Write("{\"flag\":\"false\",\"msg\":\"数据库异常\"}");
+                    return;
+                }
+            }
+            else if (o.State == YS_Enum.OrderState.待发货)
+            {
+                context.Response.Write("{\"flag\":\"false\",\"msg\":\"订单暂未出货。无法确认收货\"}");
+                return;
+            }
+            else if (o.State == YS_Enum.OrderState.已完成)
+            {
+                context.Response.Write("{\"flag\":\"false\",\"msg\":\"订单已完成。不能重复确认收货\"}");
+                return;
+            }
+            else if (o.State == YS_Enum.OrderState.待支付)
+            {
+                context.Response.Write("{\"flag\":\"false\",\"msg\":\"订单未支付。\"}");
+                return;
+            }
+        }
+    }
+
     /// <summary>
     /// 转义json特殊字符
     /// </summary>

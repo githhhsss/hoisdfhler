@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="OrderManager.aspx.cs" Inherits="User_Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="OrderManagerD.aspx.cs" Inherits="User_Default" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -39,19 +39,14 @@
     
     .right-form ul li .btn{ display:block ;background:url("../Images/btnbj.png") no-repeat center center; width:150px; height:40px;background-size:cover; font-size:18px; text-align:center; line-height:40px; margin-left:432px;}
     
-     .zx-body a{ color:#1ea78d;}
+     .zx-body a{ color:Red;}
     .zx-body  table{width:830px; border: 1px solid #9a9a9a;}
        .zx-body  table th{background:#e7e7e7; line-height:45px;border-left: 1px solid #FFFFFF; border-right: 1px solid #FFFFFF;  }
-       .zx-body  table td{ text-align:center; color:#1ea78d; border-bottom: 1px solid #9a9a9a;border-top: 1px solid #9a9a9a; padding:15px 5px; }
+       .zx-body  table td{ text-align:center; color:Red; border-bottom: 1px solid #9a9a9a;border-top: 1px solid #9a9a9a;; padding:15px 5px; }
        .zx-body table td div{left:0px;right:0px;margin-left:auto; margin-right:auto; height:auto; width:71px; height:25px;background:url('/images/user/sl.png') center center no-repeat;position:relative;}
        .zx-body table td div input{ position:absolute ; left:5px; top:0px; width:49px; height:25px; text-align:center; line-height:25px; ; border:none; background:none;}
        .zx-body table td div a{ display:block; position:absolute; }
     
-    
-    .zx-body  table .red td {color:red;}
-    .zx-body  table .red td a{color:Red;}
-    
-        
     
     </style>
     <myControls:WebScript id="WebScript1" runat="server" />
@@ -92,8 +87,8 @@
             <div class="u-right">
 
             <div class="orderTitle">
-                <a class="sel" href="OrderManager.aspx">订单列表</a> 
-                <a href="OrderManagerD.aspx">待发货订单</a> 
+                <a href="OrderManager.aspx">订单列表</a> 
+                <a class="sel" href="OrderManagerD.aspx">待发货订单</a> 
             </div>
 
             <!--信息-->
@@ -106,7 +101,7 @@
                 <th> 操作</th></tr>
              <asp:Repeater ID="Repeater1" runat="server">
                 <ItemTemplate>
-                    <tr class='<%# Convert.ToInt32(Eval("State")) == 2 ?"red":""%>'><td><%# Convert.ToDateTime(Eval("AddTime")).ToString("yyyy-MM-dd HH:mm")%></td>
+                    <tr><td><%# Convert.ToDateTime(Eval("AddTime")).ToString("yyyy-MM-dd HH:mm")%></td>
                     <td><%# Eval("DeliveryName")%></td>
                     <td><%# Convert.ToDecimal( Eval("Price")).ToString("f2")%></td>
                     <td><%# (YS_WEB.Model.YS_Enum.OrderState)Eval("State")%></td>
@@ -126,6 +121,7 @@
 
     <mycontrols:webFoot id="WebFoot1" runat="server"/>
     <script type="text/javascript">
+        
         function query(oid) {
             $('#orderItem').show();
             yscom.ajax({
@@ -147,7 +143,7 @@
                     success: function (data) {
                         if (data.flag == "true") {
                             alert(data.msg);
-                            window.location = 'OrderManager.aspx';
+                            window.location = 'OrderManagerD.aspx';
                         }
                         else {
                             alert(data.msg);
@@ -158,7 +154,6 @@
 
         }
     </script>
-
     <div id="orderItem" style=" display:none;z-index:100; position:fixed; left:0px;right:0px;top:100px;margin-left:auto; margin-right:auto; height:600px;width:800px; overflow:auto; background:#FFF; border:5px solid #1ea78d;">
         <div style=" height:40px; border-bottom: 1px solid #CCC; text-align:center; line-height:40px; background:#eee;"> 订单明细
             <a onclick="$('#orderItem').hide();$('#orderItemhtml').html('')" href="javascript:;" style=" display:block ; position:absolute; right:5px; top:5px;height:30px; width:30px; background:red; color:#FFF; font-size:30px; text-align:center; line-height:30px; font-weight:bold;">×</a>
