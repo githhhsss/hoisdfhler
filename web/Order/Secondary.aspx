@@ -8,7 +8,7 @@
       <myControls:WebScript id="WebScript1" runat="server" />
     <title></title>
     <style type="text/css">
-        .web-page{ height:1000px;}
+        .web-page{ }
     .Secondary-imgtitle{ background:url('/images/zpjd/bgm.png') center bottom no-repeat; width:1366px; height:545px; }
     .Secondary-imgtype{ background:url('/images/zpjd/esqc.png') center bottom no-repeat; width:727px; height:65px; margin-left:320px; margin-top:60px; }
     .Secondary-context{ margin-top:30px; margin-left:300px; width:733px; height:219px;}
@@ -17,6 +17,7 @@
     .Secondary-context .Secondary-context-li {margin-left:50px; margin-top:70px;}
     .Secondary-context .Secondary-context-li .Secondary-context-li-title{ color:#376d97; font-size:22px; font-weight:bold; margin-bottom:20px;}
     .Secondary-context-line{ margin-top:10px;}
+    #fwlist a{ color:#000;}
     </style>
 </head>
 <body>
@@ -25,21 +26,30 @@
     <div class="Secondary-imgtitle"></div>
     <div class="Secondary-imgtype"></div>
      <%--数据加载开始--%>
-    <div class="Secondary-context">
+     <div id="fwlist">
+            <asp:Repeater ID="Repeater1" runat="server">
+                <ItemTemplate>
+                    <div class="Secondary-context">
     <ul>
     <li><img style="background:url('/images/index/index_1.jpg') center bottom no-repeat; width:332px; height:219px;" /></li>
-    <li class="Secondary-context-li">
-    <span class="Secondary-context-li-title">Iphone6（九成新）</span>
+    <li class="Secondary-context-li"><a href='Secondary_detail.aspx?pid=<%# Eval("ID") %>'>
+    <span class="Secondary-context-li-title"><%# Eval("ProductName") %></span>
     <br />
     <br />
-    <span>价格：￥5800&nbsp;&nbsp;成色：9成新&nbsp;&nbsp;区域：广州</span>
+    <span>价格：￥<%#Convert.ToDecimal( Eval("Price")).ToString("f2")%>&nbsp;&nbsp;成色：<%# Eval("ProductXinJiu") %>&nbsp;&nbsp;区域：<%# Eval("ProductAddress")%></span>
     <br />
     <br />
-    <span>联系人：屎生&nbsp;&nbsp;电话：1380013800</span>
+    <span>联系人：<%# Eval("ProductMan")%>&nbsp;&nbsp;电话：<%# Eval("ProductPhone")%></span></a>
     </li>
     </ul>
      <div class="Secondary-context-line"><hr /></div>
     </div>
+                </ItemTemplate>
+            </asp:Repeater>
+        </div>
+        <div style=" height:50px;"></div>
+
+    
               <%--数据加载结束--%>
     </div>
    <mycontrols:webFoot id="WebFoot1" runat="server"/>
