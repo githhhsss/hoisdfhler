@@ -10,8 +10,8 @@ public partial class Order_Secondary : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        YS_ProductBLL pbll = new YS_ProductBLL();
-        Repeater1.DataSource = pbll.GetModelList("ProductType in (2)");
-        Repeater1.DataBind();
+        //YS_ProductBLL pbll = new YS_ProductBLL();
+        //Repeater1.DataSource = pbll.GetModelList("ProductType in (2)");
+        //Repeater1.DataBind();
     }
 }

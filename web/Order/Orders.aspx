@@ -172,6 +172,64 @@
         }
         #fwlist a{ color:#000;}
     </style>
+    <script type="text/javascript">
+        var sItem = 1;
+        var isadd = true;
+        $(function () {
+            if (isadd == true) {
+                if ($(window).scrollTop() + 500 >= $(document).height() - $(window).height()) {
+                    isadd = false;
+                    $.ajax({
+                        type: "POST",
+                        dataType: "json",
+                        url: "Action/Handler.ashx?cmd=GetProducts1",
+                        data: { "sItem": sItem },
+                        success: function (data) {
+                            if (data.flag == "true") {
+                                if (data.msg != "加载完") {
+                                    $("#fwlist").html($("#fwlist").html() + data.msg);
+                                    isadd = true;
+                                    sItem += 1;
+                                }
+                            } else {
+                                alert(data.msg);
+                            }
+                        },
+                        error: function (data, textStatus, errorThrown) {
+                            $.messager.alert('错误', errorThrown);
+                        }
+                    });
+                }
+            }
+        })
+        $(window).scroll(function () {
+            if (isadd == true) {
+                if ($(window).scrollTop() + 500 >= $(document).height() - $(window).height()) {
+                    isadd = false;
+                    $.ajax({
+                        type: "POST",
+                        dataType: "json",
+                        url: "Action/Handler.ashx?cmd=GetProducts1",
+                        data: { "sItem": sItem },
+                        success: function (data) {
+                            if (data.flag == "true") {
+                                if (data.msg != "加载完") {
+                                    $("#fwlist").html($("#fwlist").html() + data.msg);
+                                    isadd = true;
+                                    sItem += 1;
+                                }
+                            } else {
+                                alert(data.msg);
+                            }
+                        },
+                        error: function (data, textStatus, errorThrown) {
+                            $.messager.alert('错误', errorThrown);
+                        }
+                    });
+                }
+            }
+        })
+    </script>
 </head>
 <body>
     <myControls:WebTop ID="WebTop1" runat="server" />
@@ -204,7 +262,7 @@
             <hr />
         </div>
         <div id="fwlist">
-            <asp:Repeater ID="Repeater1" runat="server">
+            <%--<asp:Repeater ID="Repeater1" runat="server">
                 <ItemTemplate>
                 <a href='Orders_Detail.aspx?pid=<%# Eval("ID") %>'>
                     <div class="Recruitment-title">
@@ -222,7 +280,7 @@
                         </ul>
                     </div></a>
                 </ItemTemplate>
-            </asp:Repeater>
+            </asp:Repeater>--%>
         </div>
         <div style="height: 50px;">
         </div>

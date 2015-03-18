@@ -16,7 +16,8 @@ public partial class Order_Photography_detail : System.Web.UI.Page
         YS_ProductBLL pbll = new YS_ProductBLL();
         YS_Product p = pbll.GetModel(pid);
 
-      
+
+        hsimg.Src = "/ProductImg/"+p.ProductAddress;
         this.zptxt1.InnerText = p.ProductName;
 
         this.zptxt2.InnerText = p.Price.ToString("f2");

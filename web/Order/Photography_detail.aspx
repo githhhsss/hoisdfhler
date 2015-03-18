@@ -8,9 +8,9 @@
       <myControls:WebScript id="WebScript1" runat="server" />
     <title></title>
     <style type="text/css">
-    .web-page{ height:1430px; background-color:#d4d4d4; position:relative;}
+    .web-page{ height:2000px; background-color:#d4d4d4; position:relative;}
     .Photography_detail-imgtitle{ top:70px; left:450px; height:103px;width:450px; position:absolute;background:url('/images/shop/bj_title.png') center bottom no-repeat; z-index:1000; line-height:103px; text-align:center; font-size:42px; color:White; font-weight:bold;}
-    .Photography_detail-whitebox{ background-color:White; width:1196px; position:absolute;top:91px;left:85px; height:1300px;}
+    .Photography_detail-whitebox{ background-color:White; width:1196px; position:absolute;top:91px;left:85px; height:1800px;}
     .Photography_detail-whitebox-left{ width:460px; height:460px; background:url('/images/img.png') center bottom no-repeat; position:absolute;top:202px; left:120px; }
     .Photography_detail-whitebox-right{ position:absolute;top:212px; left:685px;}
     .Photography_detail-name{ width:100%; font-size:37px;font-family:造字工房雅圆（非商用）常规体; font-weight:bold; margin-bottom:30px; }
@@ -29,7 +29,7 @@
     <div class="web-page">
     <div class="Photography_detail-imgtitle">拍摄服务</div>
     <div class="Photography_detail-whitebox">
-    <div class="Photography_detail-whitebox-left"><img /></div>
+    <div class="Photography_detail-whitebox-left"><img src="" id="hsimg" runat="server" /></div>
     <div class="Photography_detail-whitebox-right">
     <div class="Photography_detail-name"  id="zptxt1" runat="server">巴厘岛婚纱摄影</div>
     <div class="Photography_detail-name-detailed">
