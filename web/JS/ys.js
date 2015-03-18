@@ -24,7 +24,7 @@
                 jsonData.success(data);
             },
             error: function (data, textStatus, errorThrown) {
-                $.messager.alert('错误', errorThrown);
+               alert('错误');
             }
         });
     },
