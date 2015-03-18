@@ -615,6 +615,7 @@ public class Handler : IHttpHandler
         string ProductPhone = context.Request["txt4"];
         string ProductAddress = context.Request["txt3"];
         string Description = context.Request["txt6"];
+        string txt9 = context.Request["txt9"];
 
         if (string.IsNullOrEmpty(ProductName))
         {
@@ -636,7 +637,7 @@ public class Handler : IHttpHandler
         pro.ProductName = ProductName;
         pro.ProductPhone = ProductPhone;
         pro.ProductType = YS_Enum.ProductType.职位;
-        pro.ProductXinJiu = "";
+        pro.ProductXinJiu = txt9;
         pro.Promotion = 0;
         pro.Sales = 0;
         pro.StartTime = DateTime.Now;
@@ -679,6 +680,7 @@ public class Handler : IHttpHandler
         string ProductPhone = context.Request["txt4"];
         string ProductAddress = context.Request["txt3"];
         string Description = context.Request["txt6"];
+        string txt9 = context.Request["txt9"];
 
         if (string.IsNullOrEmpty(ProductName))
         {
@@ -700,7 +702,7 @@ public class Handler : IHttpHandler
         pro.ProductName = ProductName;
         pro.ProductPhone = ProductPhone;
         pro.ProductType = YS_Enum.ProductType.职位;
-        pro.ProductXinJiu = "";
+        pro.ProductXinJiu = txt9;
         pro.Promotion = 0;
         pro.Sales = 0;
         pro.StartTime = DateTime.Now;

@@ -53,7 +53,8 @@ public partial class User_Default : System.Web.UI.Page
             this.ptxt2.Value = pro.ProductName;
             this.ptxt3.Value = pro.ProductAddress;
             this.ptxt4.Value = pro.ProductPhone; ;
-            this.Select3.Value = ((YS_Enum.ProductState)pro.State).ToString();
+            this.ptxt9.Value = pro.ProductXinJiu;
+            this.Select3.Value = pro.PriceRange;
             editor = StringToJson(pro.Description);
         }
         else

@@ -132,7 +132,7 @@
                                 <span class="u-td-5 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Eval("ProductPhone")%></span>
                                 <span class="u-td-7 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Convert.ToDateTime(Eval("InputTime")).ToString("yyyy-MM-dd hh:mm")%></span>
                                 <span  class="u-td-do <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>">
-                                    <a href="ZiXunUpdate.aspx?itemid=<%# Eval("ID")%>">查看</a>
+                                    <a href="ZhaoPinUpdate.aspx?itemid=<%# Eval("ID")%>">查看</a>
                                     <a href="ZhaoPinUpdate.aspx?itemid=<%# Eval("ID")%>">编辑</a>
                                     <a href="javascript:;" onclick='deletePro(<%# Eval("ID")%>)'>删除</a></span>
                             </li>
@@ -182,7 +182,7 @@
                     success: function (data) {
                         if (data.flag == "true") {
                             alert(data.msg);
-                            window.location = 'ZiXunManager.aspx';
+                            window.location = 'ZhaoPinManager.aspx';
                         } else {
                             alert(data.msg);
                         }

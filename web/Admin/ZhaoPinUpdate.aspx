@@ -102,6 +102,7 @@
                     <ul>
                         <li><span class="form-say">基本信息</span></li>
                         <li><span class="form-title">公司：</span><input class="form-txt" id="ptxt1" type="text" runat="server" /></li>
+                        <li><span class="form-title">工作地区：</span><input class="form-txt" id="ptxt9" type="text" runat="server" /></li>
                         <li><span class="form-title">职位：</span><input class="form-txt" id="ptxt2" type="text" runat="server" /></li>
                         <li><span class="form-title">薪酬：</span>
                             <select id="Select3" runat="server" class="form-txt">
@@ -124,7 +125,7 @@
                                <script id="editor" type="text/plain" style="width:830px; height:500px;" ></script>
                        </li>
                        <li><span style=" display:inline-block;height:5px;"></span></li>
-                        <li><a id="AddPro" class="btn" href="javascript:;">确认添加</a></li>
+                        <li><a id="AddPro" class="btn" href="javascript:;">确认修改</a></li>
                     </ul>
                 </div>
                 </form>
@@ -151,6 +152,7 @@
                         data: {
                             "pid":yscom.getParams("itemid"),
                             "txt1": $("#ptxt1").val(),
+                            "txt9": $("#ptxt9").val(),
                             "txt2": $("#ptxt2").val(),
                             "txt3": $("#ptxt3").val(),
                             "txt4": $("#ptxt4").val(),

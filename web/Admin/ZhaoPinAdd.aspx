@@ -97,6 +97,7 @@
                     <ul>
                         <li><span class="form-say">基本信息</span></li>
                         <li><span class="form-title">公司：</span><input class="form-txt" id="ptxt1" type="text" runat="server" /></li>
+                        <li><span class="form-title">工作地区：</span><input class="form-txt" id="ptxt9" type="text" runat="server" /></li>
                         <li><span class="form-title">职位：</span><input class="form-txt" id="ptxt2" type="text" runat="server" /></li>
                         <li><span class="form-title">薪酬：</span>
                             <select id="Select3" class="form-txt">
@@ -145,6 +146,7 @@
                         url: "Action/Handler.ashx?cmd=AddZhaoPin",
                         data: {
                             "txt1": $("#ptxt1").val(),
+                            "txt9": $("#ptxt9").val(),
                             "txt2": $("#ptxt2").val(),
                             "txt3": $("#ptxt3").val(),
                             "txt4": $("#ptxt4").val(),
