@@ -37,6 +37,37 @@
   .Recruitment-context .Recruitment-context-time{ margin-top:10px;}
   #xllist a{ color:#000;}
     </style>
+    <script type="text/javascript">
+        var sItem = 1;
+        var isadd = true;
+        $(window).scroll(function () {
+            if (isadd == true) {
+                if ($(window).scrollTop() + 500 >= $(document).height() - $(window).height()) {
+                    isadd = false;
+                    $.ajax({
+                        type: "POST",
+                        dataType: "json",
+                        url: "Action/Handler.ashx?cmd=GetProducts",
+                        data: { "sItem": sItem },
+                        success: function (data) {
+                            if (data.flag == "true") {
+                                if (data.msg != "加载完") {
+                                    $("#xllist").html($("#xllist").html() + data.msg);
+                                    isadd = true;
+                                    sItem += 1;
+                                }
+                            } else {
+                                alert(data.msg);
+                            }
+                        },
+                        error: function (data, textStatus, errorThrown) {
+                            $.messager.alert('错误', errorThrown);
+                        }
+                    });
+                }
+            }
+        })
+    </script>
 </head>
 <body>
  <myControls:WebTop id="WebTop1" runat="server" />
@@ -65,7 +96,7 @@
     <div id="xllist">
         
     
-        <asp:Repeater ID="Repeater1" runat="server">
+        <%--<asp:Repeater ID="Repeater1" runat="server">
             <ItemTemplate>
             <a href='detail.aspx?pid=<%# Eval("ID")%>'>
                 <div class="Recruitment-title">
@@ -83,7 +114,7 @@
                     </ul>
                 </div></a>
             </ItemTemplate>
-        </asp:Repeater>
+        </asp:Repeater>--%>
         </div>
     </div>
 
