@@ -117,6 +117,64 @@
         #index-list-1,#index-list-2,#index-list-3{ display:none; padding-bottom:50px;}
          #index-list-1 a,#index-list-2 a,#index-list-3 a{  color:#666;}
         #index-list-1 a:hover,#index-list-2 a:hover,#index-list-3 a:hover{ text-decoration:underline;}
+        
+        .Recruitment-title
+        {
+            margin-left: 343px;
+            margin-top: 33px;
+            height: 38px;
+        }
+        .Recruitment-title ul
+        {
+            height: 25px;
+        }
+        .Recruitment-title ul li
+        {
+            list-style: none;
+            float: left;
+            padding: 0px;
+            font-family: 造字工房雅圆（非商用）常规体;
+            height: 25px;
+        }
+        .Recruitment-title .Recruitment-title-name
+        {
+            color: #376d97;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        .Recruitment-title .Recruitment-title-city
+        {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        .Recruitment-title .Recruitment-title-Salary
+        {
+            font-size: 16px;
+            margin-top: 5px;
+        }
+        .Recruitment-context
+        {
+            margin-left: 343px;
+            margin-top: 20px;
+            height: 165px;
+        }
+        .Recruitment-context ul
+        {
+            height: 25px;
+        }
+        .Recruitment-context ul li
+        {
+            list-style: none;
+            padding: 0px;
+            font-family: 造字工房雅圆（非商用）常规体;
+            height: 25px;
+        }
+        .Recruitment-context .Recruitment-context-time
+        {
+            margin-top: 10px;
+        }
+        
     </style>
 </head>
 <body>
