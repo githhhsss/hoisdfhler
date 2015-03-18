@@ -24,7 +24,7 @@ public partial class User_Default : System.Web.UI.Page
         YS_User user = userbll.GetModel(Tool.CookieGet("UserName"));
         if (user.UserType != YS_Enum.UserType.公司机构)
             this.zhaopin.Visible = false;
-        if (user.UserType != YS_Enum.UserType.管理员)
+        if (user.UserType == YS_Enum.UserType.商城用户)
         {
             Response.Redirect("Login.aspx");
         }
