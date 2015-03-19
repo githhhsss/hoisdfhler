@@ -55,7 +55,7 @@
        .sc-centent-3{ position:relative;margin-top:18px;height:38px;width:978px;border:1px solid #CCC;color:#0eb493;font-weight:bold;text-align:center; line-height:38px;
                       -moz-border-radius: 5px;/* Gecko browsers */ 
                       -webkit-border-radius: 5px;/* Webkit browsers */
-                      border-radius:5px;/* W3C syntax */}}
+                      border-radius:5px;/* W3C syntax */}
        .sc-centent-3 ul{ font-size:12px; }
        .sc-centent-3 ul li { list-style:none;float:left;}
        .sc-centent-3 ul li span{ margin-left:27px;}

@@ -35,6 +35,9 @@
        /*评价*/
        .sci-centent-Comment{ display:none;}
        
+       .CommentMan{ text-indent:50px;line-height:40px;}
+       .CommentContent{ margin:0 100px; line-height:40px; font-size:14px;}
+       
     </style>
      <myControls:WebScript id="WebScript1" runat="server" />
 </head>
@@ -76,8 +79,9 @@
                 <div id="sci-Comment">
                     <asp:Repeater ID="Repeater1" runat="server">
                         <ItemTemplate>
-                            <div class="CommentMan"><span><%# Eval("UserName")%></span></div>
+                            <div class="CommentMan"><span><%# Eval("UserName")%>：</span></div>
                             <div class="CommentContent"><%# Eval("Content")%></div>
+                            <hr />
                         </ItemTemplate>
                     </asp:Repeater>
                 </div>
