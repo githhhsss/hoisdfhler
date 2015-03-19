@@ -148,7 +148,7 @@ public class Handler : IHttpHandler
         string DeliverZipCode = context.Request["shText5"];
 
         bool isAdd = true;
-
+        YS_ProductBLL pbll = new YS_ProductBLL();
         YS_DeliveryBLL dbll = new YS_DeliveryBLL();
         YS_Delivery d = dbll.GetModelForUser(Convert.ToInt32(Tool.CookieGet("UserID")));
         if (d != null)
@@ -200,6 +200,14 @@ public class Handler : IHttpHandler
         decimal sum = 0;
         foreach (var c in clist)
         {
+
+            YS_Product p = pbll.GetModel(c.ProductID);
+            if (p.Stock <= c.Number)
+            {
+                context.Response.Write("{\"flag\":\"false\",\"msg\":\"你选购的商品无货。请查看。\"}");
+                return;
+            }
+                
             sum += c.Number * c.Price;
         }
 
@@ -229,6 +237,15 @@ public class Handler : IHttpHandler
             oi.ProductID = c.ProductID;
             oi.Num = c.Number;
 
+            //更新产品售量
+            
+            YS_Product p = pbll.GetModel(c.ProductID);
+            if (p != null)
+            {
+                p.Sales += c.Number;
+                p.Stock -= c.Number;
+                pbll.Update(p);
+            }
             if (!oibll.Add(oi))
             {
                 context.Response.Write("{\"flag\":\"false\",\"msg\":\"数据库处理异常\"}");
