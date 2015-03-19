@@ -265,10 +265,12 @@ public class Handler : IHttpHandler
     {
         YS_ProductBLL pbll = new YS_ProductBLL();
         int sItem = Convert.ToInt32(context.Request["sItem"]);
+        string searchPro = context.Request["searchPro"];
+        string oder_by = context.Request["oder_by"];
         StringBuilder sb = new StringBuilder();
         try
         {
-            DataSet ds = pbll.GetListByPage("ProductType in(0,1)", "id desc", sItem, sItem);
+            DataSet ds = pbll.GetListByPage("ProductType in(0,1) and (ProductName like '%" + searchPro + "%' or ProductKey like '%" + searchPro + "%')", oder_by, sItem, sItem);
             if (ds.Tables[0].Rows.Count <= 0)
             {
                 context.Response.Write("{\"flag\":\"true\",\"msg\":\"加载完\"}");

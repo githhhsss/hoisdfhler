@@ -49,7 +49,10 @@
        .sc-centent-2 ul{ font-size:12px;}
        .sc-centent-2 ul li { list-style:none;float:left;}
        .sc-centent-2 ul li a{ display:block; float:left; width:80px; height:38px;}
-       .sc-centent-2 ul li .active{ border-right:1px solid #CCC;color:#0eb493; background:#FFF; border-radius:5px;-webkit-border-radius: 5px;-moz-border-radius: 5px;}
+       .sc-centent-2 ul li .active{ border-right:1px solid #CCC;color:#0eb493; background:#FFF;border-left:1px solid #CCC;color:#0eb493;  -moz-border-radius: 5px;/* Gecko browsers */ 
+                      -webkit-border-radius: 5px;/* Webkit browsers */
+                      border-radius:5px;/* W3C syntax */}
+       .sc-centent-2 ul li .orderbybtn1{border-left:none;}
        .sc-centent-2 ul li input{ position:absolute;height:34px; width:154px; background:url(/images/shop/input.png) center center no-repeat; border:none; right:20px; top:3px; padding-left:30px;}
        
        .sc-centent-3{ position:relative;margin-top:18px;height:38px;width:978px;border:1px solid #CCC;color:#0eb493;font-weight:bold;text-align:center; line-height:38px;
@@ -92,7 +95,11 @@
                          type: "POST",
                          dataType: "json",
                          url: "Action/Handler.ashx?cmd=GetProducts",
-                         data: { "sItem": sItem },
+                         data: {
+                             "sItem": sItem,
+                             "searchPro": $("#scText1").val(),
+                             "oder_by": $("#order_by_item").text()
+                         },
                          success: function (data) {
                              if (data.flag == "true") {
                                  if (data.msg != "加载完") {
@@ -110,13 +117,27 @@
                              $.messager.alert('错误', errorThrown);
                          }
                      });
-                 } 
+                 }
              }
+         })
+         function SearchPro() {
+             $("#ProductUl li").remove();
+             sItem = 1;
+             isadd = true;
+         }
+         $(function () {
+             $(".orderbybtn").click(function () {
+                 $(".orderbybtn").removeClass("active");
+                 $(this).addClass("active");
+                 $("#order_by_item").text($(this).attr("rel"));
+                 SearchPro();
+             });
          })
     </script>
 </head>
 <body>
     <myControls:WebTop id="WebTop1" runat="server" />
+    <span id="order_by_item" style=" display:none;">id desc</span>
     <div class="web-page">
         <div class="sc-title"></div>
         <div class="sc-ban">
@@ -158,19 +179,20 @@
                 <span class="sc-content-1-fl">所有分类</span> <a href="../Default.aspx">首页</a> &gt; <a href="Default.aspx">商城</a></div>
             <div class="sc-centent-2">
                 <ul>
-                    <li><a class="active" href="javascript:;">综合</a></li>
-                    <li><a href="javascript:;">销量</a></li>
-                    <li><a style=" width:120px" href="javascript:;">价格从低到高</a></li>
-                    <li><a style=" width:120px" href="javascript:;">价格从高到底</a></li>
-                    <li><input id="scText1" type="text" /></li>
+                    <li><a class="orderbybtn orderbybtn1 active" rel="id desc" href="javascript:;">综合</a></li>
+                    <li><a class="orderbybtn" rel="Sales desc" href="javascript:;">销量</a></li>
+                    <li><a class="orderbybtn" rel="price" style=" width:120px" href="javascript:;">价格从低到高</a></li>
+                    <li><a class="orderbybtn" rel="price desc" style=" width:120px" href="javascript:;">价格从高到底</a></li>
+                    <li><input id="scText1" type="text" onkeydown='javascript:if(event.keyCode==13) SearchPro($("#scText1").val())' /></li>
                 </ul>
             </div>
             <div class="sc-centent-3">
                 <ul>
-                    <li><span>分类：</span></ li>
-                    <li><span>摄像机/相机</span></ li>
-                    <li><span>镜头</span></ li>
-                    <li><span>辅助设备</span></ li>
+                    <li><span >分类：</span></ li>
+                    <li><span style=" cursor: pointer;" onclick='javascript:$("#scText1").val("摄像机"); SearchPro()'>摄像机</span></ li>
+                    <li><span style=" cursor: pointer;" onclick='javascript:$("#scText1").val("相机");SearchPro()'>相机</span></ li>
+                    <li><span style=" cursor: pointer;" onclick='javascript:$("#scText1").val("镜头");SearchPro()'>镜头</span></ li>
+                    <li><span style=" cursor: pointer;" onclick='javascript:$("#scText1").val("辅助设备");SearchPro()'>辅助设备</span></ li>
                     <li><a href="MyCar.aspx">我的购物车</a></li>
                 </ul>
             </div>
