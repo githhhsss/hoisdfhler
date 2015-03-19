@@ -36,6 +36,8 @@
   .Recruitment-context ul li{list-style:none; padding:0px;font-family:造字工房雅圆（非商用）常规体;height:25px;}
   .Recruitment-context .Recruitment-context-time{ margin-top:10px;}
   #xllist a{ color:#000;}
+  .diqa{ color:#000;}
+  .active{ color:Red;}
     </style>
     <script type="text/javascript">
         var sItem = 1;
@@ -48,7 +50,10 @@
                         type: "POST",
                         dataType: "json",
                         url: "Action/Handler.ashx?cmd=GetProducts",
-                        data: { "sItem": sItem },
+                        data: { 
+                            "sItem": sItem,
+                            "searchPro": $("#scText1").val() == "输入职业关键词,如：摄影师" ? "" : $("#scText1").val()
+                             },
                         success: function (data) {
                             if (data.flag == "true") {
                                 if (data.msg != "加载完") {
@@ -67,10 +72,24 @@
                 }
             }
         })
+        function SearchPro() {
+            $("#xllist").html("");
+            sItem = 1;
+            isadd = true;
+        }
+        $(function () {
+            $(".diqa").click(function () {
+                $(".diqa").removeClass("active");
+                $(this).addClass("active");
+                $("#order_by_item").text($(this).attr("rel"));
+                SearchPro();
+            });
+        })
     </script>
 </head>
 <body>
  <myControls:WebTop id="WebTop1" runat="server" />
+    <span id="diqudddd"></span>
     <div class="web-page">
     <div class="Recruitment-imgtitle"></div>
     <div class="Recruitment-wordtitle">影视圈招聘</div>
@@ -78,17 +97,20 @@
     <div class="Recruitment-SO">
     <ul>
     <li class="Recruitment-SO-ul-li1">关键词|</li>
-    <li><input class="Recruitment-SO-ul-input" onclick="this.value='';" onblur="this.value='输入职业关键词,如：摄影师';" type="text" value="输入职业关键词,如：摄影师" /></li>
+    <li><input id="scText1" class="Recruitment-SO-ul-input" onclick="javascript:this.value=(this.value=='输入职业关键词,如：摄影师'?'':this.value);" 
+            onblur="javascript:this.value=(this.value==''?'输入职业关键词,如：摄影师':this.value);" 
+            type="text" value="输入职业关键词,如：摄影师" onkeydown='javascript:if(event.keyCode==13) SearchPro($("#scText1").val())' /></li>
     </ul>
     </div>
     <div class="Recruitment-city">
     <ul>
     <li class="Recruitment-city-ul-li1">地区:</li>
-    <li>北京</li>
-    <li>上海</li>
-    <li>广州</li>
-    <li>深圳</li>
-    <li>其他</li>
+    <li><a class="diqa active" href="javascript:;">全部</a></li>
+    <li><a class="diqa" href="javascript:;">北京</a></li>
+    <li><a class="diqa" href="javascript:;">上海</a></li>
+    <li><a class="diqa" href="javascript:;">广州</a></li>
+    <li><a class="diqa" href="javascript:;">深圳</a></li>
+    <li><a class="diqa" href="javascript:;">其他</a></li>
     </ul>
     
     </div>
