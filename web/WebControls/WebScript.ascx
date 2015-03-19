@@ -10,12 +10,7 @@
         $(".web-top").css({ position: "fixed" });
         document.getElementById("web-top").style.left = left;
 
-        $("#kfacbtn,#kfacbtn_btn").click(function () {
-            if ($(".fd-contact .zt").size() == 0)
-                hide();
-            else
-                show();
-        });
+        
     })
     function show() {
         setTimeout(function () {
