@@ -127,7 +127,7 @@
                                 <span class="u-td-4 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# (YS_WEB.Model.YS_Enum.ProductType)Enum.Parse(typeof(YS_WEB.Model.YS_Enum.ProductType), Eval("ProductType").ToString()) %></span>
                                 <span class="u-td-7 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Convert.ToDateTime(Eval("InputTime")).ToString("yyyy-MM-dd hh:mm")%></span>
                                 <span  class="u-td-do <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>">
-                                    <a href="/Shop/ProductItem.aspx?itemid=<%# Eval("ID")%>">查看</a>
+                                    <a href='<%# Convert.ToInt32(Eval("ProductType"))==2 ?"/Order/Secondary_detail.aspx":Convert.ToInt32(Eval("ProductType"))==3?"/Order/Orders_Detail.aspx":"Vrecommendation.aspx?itemid="+ Eval("ID") +"&" %>?pid=<%# Eval("ID")%>'>查看</a>
                                     <a href='<%# Convert.ToInt32(Eval("ProductType"))==2 ?"EQ.aspx":Convert.ToInt32(Eval("ProductType"))==3?"Shooting.aspx":"Vrecommendation.aspx" %>?itemid=<%# Eval("ID")%>'>编辑</a>
                                     <a href="javascript:;" onclick='deletePro(<%# Eval("ID")%>)'>删除</a></span>
                             </li>
