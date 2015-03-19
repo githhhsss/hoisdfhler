@@ -16,6 +16,9 @@ img{border-style: none;padding: 0px;margin: 0px;}
 .web-top .web-top-right{position:absolute;right:0;height:55px;width:360px;}
 .web-top .web-top-right .web-top-center-ul{ list-style:none;}
 .web-top .web-top-right .web-top-center-ul li{ float:left;}
+
+.web-top .web-top-center .web-top-center-ul img:hover{  border-bottom:2px solid #1ea78d;}
+
 .web-top .web-top-right img{ margin-top:18px; margin-left:25px;}
 .web-top .web-top-right .web-top-right-ss{ padding-left:25px;   margin-top:10px;width:184px; height:32px ;}
 .web-top .web-top-right .web-top-right-ss input{ border:none; padding-left:29px;width:155px; height:32px ; line-height:32px; background: url('../Images/web/top_meun_ss.png') left center no-repeat;}
