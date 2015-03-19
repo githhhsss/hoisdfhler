@@ -45,7 +45,18 @@ public class Handler : IHttpHandler
             DataSet ds = Maticsoft.DBUtility.DbHelperSQL.Query("select top 3 * from ys_product where producttype in (2,3,4) order by newid()");
             foreach (DataRow item in ds.Tables[0].Rows)
             {
-                sb.Append("<a href='Orders_Detail.aspx?pid=" + item["ID"] + "'>");
+                if ((YS_Enum.ProductType)Convert.ToInt32(item["ProductType"]) == YS_Enum.ProductType.二手)
+                {
+                    sb.Append("<a href='Order/Secondary_detail.aspx?pid=" + item["ID"] + "'>");
+                }
+                else if ((YS_Enum.ProductType)Convert.ToInt32(item["ProductType"]) == YS_Enum.ProductType.拍摄外单)
+                {
+                    sb.Append("<a href='Order/Orders_Detail.aspx?pid=" + item["ID"] + "'>");
+                }
+                else
+                {
+                    sb.Append("<a href='Recruitment/detail.aspx?pid=" + item["ID"] + "'>");
+                }
                 sb.Append("<div class='Recruitment-title'>");
                 sb.Append("<ul>");
                 sb.Append("<li class='Recruitment-title-name'>" + item["ProductName"] + "</li>");
