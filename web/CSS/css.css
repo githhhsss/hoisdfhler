@@ -44,3 +44,26 @@ img{border-style: none;padding: 0px;margin: 0px;}
 
 /*首页*/
 
+/* 浮动栏 底部：_top:expression(documentElement.scrollTop + documentElement.clientHeight-(this.offsetHeight+50) + "px"); */
+.fd-contact   
+{
+	position:fixed; _position:absolute; z-index:900000;
+	width: 135px;  right:0;top:211px; 
+	_right:expression(documentElement.scrollRight + 0 + "px");
+	_top:expression( documentElement.scrollTop+ 210 + "px");
+	_background-image: url(about:blank);background-attachment:fixed;
+}
+/*浮动客服*/
+.fd-contact .acbtn{ float:left; width:26px; height:95px; overflow:hidden; cursor:pointer; background:url("../Images/fd_bg.gif") no-repeat; background-position: -36px -14px; }
+.fd-contact .acbtn.zt{ background-position: 0 -14px;  }
+.fd-contact .accon{ float:left; width:105px;  border:solid 1px #49A823; background:#fff;}
+.fd-contact .accon .conlist{ padding:5px;}
+.fd-contact .accon .conlist .ht{ width:93px; height:23px; line-height:22px; margin-bottom:10px; overflow:hidden; background:url("../Images/fd_bg.gif") no-repeat; background-position: 0 -119px; }
+.fd-contact .accon .conlist .ht span{ padding-left:29px; color:#0066CC;}
+.fd-contact .accon .conlist .ys{ float:left; margin-bottom:13px;}
+.fd-contact .accon .conlist .ys li{ float:left; width:100%; height:25px; line-height:25px; margin-bottom:7px; list-style:none;}
+.fd-contact .accon .conlist .ys li a{ float:left; width:100%; height:25px; line-height:25px; color:#666; padding-left:7px; }
+.fd-contact .accon .conlist .ys li a:visited{ color:#666;}
+.fd-contact .accon .conlist .ys li a:hover{ color:#333; text-decoration:underline}
+.fd-contact .accon .conlist .ys li a span{ padding-left:40px;}
+.fd-contact .accon .conlist .wx{ text-align:center;}

@@ -9,3 +9,23 @@
         <p>Mmovie资讯  <span class="foot-text-1">|</span>  网站地图  <span class="foot-text-1">|</span>  二手商城  <span class="foot-text-1">|</span>  联络我们  <span class="foot-text-1">|</span>  China</p>
     </div>
 </div>
+
+<!--客服浮动-->
+<div class="fd-contact">
+    <div class="acbtn" id="kfacbtn">
+    </div>
+    <div class="accon">
+        <div class="conlist">
+            <div class="ht">
+                <span>在线客服</span></div>
+            <ul class="ys">
+                <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=839234966&site=qq&menu=yes">
+                    <img border="0" src="http://wpa.qq.com/pa?p=2:839234966:47" alt="点击这里给我发消息" title="点击这里给我发消息" /></a></li>
+                <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=839234966&site=qq&menu=yes">
+                    <img border="0" src="http://wpa.qq.com/pa?p=2:839234966:47" alt="点击这里给我发消息" title="点击这里给我发消息" /></a></li>
+                <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=839234966&site=qq&menu=yes">
+                    <img border="0" src="http://wpa.qq.com/pa?p=2:839234966:47" alt="点击这里给我发消息" title="点击这里给我发消息" /></a></li>
+            </ul>
+        </div>
+    </div>
+</div>

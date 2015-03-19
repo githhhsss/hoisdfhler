@@ -9,5 +9,28 @@
         var left = document.getElementById("web-top").offsetLeft;
         $(".web-top").css({ position: "fixed" });
         document.getElementById("web-top").style.left = left;
+
+        $("#kfacbtn,#kfacbtn_btn").click(function () {
+            if ($(".fd-contact .zt").size() == 0)
+                hide();
+            else
+                show();
+        });
     })
+    function show() {
+        setTimeout(function () {
+            $(".fd-contact .acbtn").removeClass("zt");
+        }, 400);
+        $(".fd-contact").stop(true).animate({ right: 0 }, 400);
+    }
+    function hide() {
+        setTimeout(function () {
+            $(".fd-contact .acbtn").addClass("zt");
+        }, 400);
+        $(".fd-contact").stop(true).animate({ right: -w() }, 400);
+    }
+    function w() {
+        return $(".fd-contact").width() - 26;
+    }
+    
 </script>
