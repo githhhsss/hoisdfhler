@@ -48,7 +48,14 @@ namespace YS_WEB.BLL
 			//该表无主键信息，请自定义主键/条件字段
 			return dal.GetModel();
 		}
-
+        /// <summary>
+        /// 得到一个对象实体
+        /// </summary>
+        public YS_WEB.Model.YS_OrderItem GetModel(int oid)
+        {
+            //该表无主键信息，请自定义主键/条件字段
+            return dal.GetModel(oid);
+        }
 		/// <summary>
 		/// 得到一个对象实体，从缓存中
 		/// </summary>

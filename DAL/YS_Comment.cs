@@ -121,9 +121,9 @@ namespace YS_WEB.DAL
             //该表无主键信息，请自定义主键/条件字段
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select  top 1 ID,UserID,UserName,ProductID,ProductName,Content from YS_Comment ");
-            strSql.Append(" where ID=@ID");
+            strSql.Append(" where UserID=@UserID");
             SqlParameter[] parameters = {
-                new SqlParameter("@ID", SqlDbType.Int,4)
+                new SqlParameter("@UserID", SqlDbType.Int,4)
 			};
             parameters[0].Value = id;
 
