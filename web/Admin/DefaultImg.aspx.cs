@@ -36,8 +36,8 @@ public partial class User_Default : System.Web.UI.Page
         this.readName.InnerText = user.ReadName;
         if (user.HeadImg != "")
         {
-            this.headImg.Src = user.HeadImg;
-            this.userImg.Src = user.HeadImg;
+            this.headImg.Src = "../User/" + user.HeadImg;
+            this.userImg.Src = "../User/" + user.HeadImg;
         }
         this.name.InnerText = user.UserName;
         this.city.InnerText = user.UserType.ToString();
@@ -57,22 +57,22 @@ public partial class User_Default : System.Web.UI.Page
             string fileType = FileUpload1.FileName.Substring(FileUpload1.FileName.LastIndexOf('.')).ToLower();
             if (fileType == ".jpg" || fileType == ".jpeg" || fileType == ".png" || fileType == ".gif")
             {
-                if (!FileOper.ExistsFold(Server.MapPath("UserPic/")))
+                if (!FileOper.ExistsFold(Server.MapPath("~/User/UserPic/")))
                 {
-                    FileOper.CreateFold(Server.MapPath("UserPic/"));
+                    FileOper.CreateFold(Server.MapPath("~/User/UserPic/"));
                 }
-                fileMessage = FileOper.UploadFile(FileUpload1, Server.MapPath("UserPic/"), true);
+                fileMessage = FileOper.UploadFile(FileUpload1, Server.MapPath("~/User/UserPic/"), true);
 
                 YS_UserBLL userbll = new YS_UserBLL();
                 YS_User user = userbll.GetModel(Tool.CookieGet("UserName"));
 
-                string oldPath = Server.MapPath(user.HeadImg);
+                string oldPath = Server.MapPath("~/User/" + user.HeadImg);
                 user.HeadImg = "UserPic/" + fileMessage.FileName;
 
                 userbll.Update(user);
 
-                this.headImg.Src = user.HeadImg;
-                this.userImg.Src = user.HeadImg;
+                this.headImg.Src = "../User/" + user.HeadImg;
+                this.userImg.Src = "../User/" + user.HeadImg;
                 FileOper.DeleteFile(oldPath);//删除历史头像
                 HiddenField1.Value = "false";
             }
