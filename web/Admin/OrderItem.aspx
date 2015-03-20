@@ -64,7 +64,7 @@
                         <a target="_blank" href='../Shop/ProductItem.aspx?itemid=<%# Eval("ProductID") %>'>
                             <%# pbll.GetModel( Convert.ToInt32(Eval("ProductID")))!=null? pbll.GetModel( Convert.ToInt32(Eval("ProductID"))).ProductName :"" %>
                         </a></td>
-                    <td><%# pbll.GetModel( Convert.ToInt32(Eval("ProductID")))!=null? pbll.GetModel( Convert.ToInt32(Eval("ProductID"))).Price :0 %></td>
+                    <td><%# pbll.GetModel( Convert.ToInt32(Eval("ProductID")))!=null? pbll.GetModel( Convert.ToInt32(Eval("ProductID"))).Price.ToString("f2") :"0.00" %></td>
                     <td><%# Eval("Num") %></td>
                     <td><%# pbll.GetModel(Convert.ToInt32(Eval("ProductID"))) != null ? pbll.GetModel(Convert.ToInt32(Eval("ProductID"))).Stock : 0%></td>
                     <td class="btn"><a 
