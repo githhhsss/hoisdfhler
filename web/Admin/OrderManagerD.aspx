@@ -58,7 +58,7 @@
         <div class="my-left">
             <div class="my-left-top">
                 <ul>
-                    <li><img class="headimg" src="/User/UserPic/u_face.jpg" id="headImg" runat="server" /></li>
+                    <li><img class="headimg" src="~/User/UserPic/u_face.jpg" id="headImg" runat="server" /></li>
                     <li>
                         <div class="myName">
                             <span class="myName-name" id="name" runat="server"></span>

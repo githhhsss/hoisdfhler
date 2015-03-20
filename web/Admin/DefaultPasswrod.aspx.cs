@@ -36,7 +36,7 @@ public partial class User_Default : System.Web.UI.Page
         this.readName.InnerText = user.ReadName;
         if (user.HeadImg != "")
         {
-            this.headImg.Src = user.HeadImg;
+            this.headImg.Src = "../User/" + user.HeadImg;
         }
 
         this.name.InnerText = user.UserName;
