@@ -24,13 +24,50 @@
     <div class="web-page">
         <div class="register-body">
             <div class="register-body-top"></div>
-            <div class="text">密码问题</div>
-            <div class="register-body-list">回答问题：<input id="Text6" type="text" /></div>
-            <div class="text">答案错误请重新输入</div>
-            <div class="register-body-bottom"><a href="#"></a></div>
+            <div class="register-body-list">用户名：<input id="uText1" type="text" onblur='SearchUser($("#uText1").val())' onkeydown='javascript:if(event.keyCode==13) SearchUser($("#uText1").val())' /></div>
+            <div class="text" id="uqtext">密码问题</div>
+            <div class="register-body-list">回答问题：<input id="uText3" type="text" /></div>
+            <div class="text" id="mmcw"></div>
+            <div class="register-body-bottom"><a href="javascript:;" onclick="find()"></a></div>
             
         </div>
     </div>
     <mycontrols:webFoot id="WebFoot1" runat="server"/>
+    <script type="text/javascript">
+        function SearchUser() {
+            yscom.ajax({
+                url: "Action/Handler.ashx?cmd=GetUser",
+                data: {
+                    "username": $("#uText1").val()
+                },
+                success: function (data) {
+                    if (data.flag == "true") {
+                        $("#uqtext").html("密码问题 : " + data.msg);
+                    }
+                    else {
+                        alert(data.msg);
+                    }
+                }
+            });
+        }
+        function find() {
+            yscom.ajax({
+                url: "Action/Handler.ashx?cmd=FindUser",
+                data: {
+                    "username": $("#uText1").val(),
+                    "answer": $("#uText3").val()
+                },
+                success: function (data) {
+                    if (data.flag == "true") {
+                        alert(data.msg);
+                        window.location = 'Login.aspx';
+                    }
+                    else {
+                        $("#mmcw").html("答案错误请重新输入");
+                    }
+                }
+            });
+        }
+    </script>
 </body>
 </html>

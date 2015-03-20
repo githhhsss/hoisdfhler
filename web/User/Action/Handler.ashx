@@ -643,7 +643,7 @@ public class Handler : IHttpHandler
         string DeliverZipCode = context.Request["shText5"];
 
         bool isAdd = true;
-        
+
         YS_DeliveryBLL dbll = new YS_DeliveryBLL();
         YS_Delivery d = dbll.GetModelForUser(Convert.ToInt32(Tool.CookieGet("UserID")));
         if (d != null)
@@ -664,7 +664,7 @@ public class Handler : IHttpHandler
         d.UserID = Convert.ToInt32(Tool.CookieGet("UserID"));
         d.UserName = Tool.CookieGet("UserName");
 
-        
+
         if (isAdd)
         {
             if (dbll.Add(d))
@@ -818,6 +818,70 @@ public class Handler : IHttpHandler
         }
 
     }
+
+    public void GetUser(HttpContext context)
+    {
+        string username = context.Request["username"];
+        YS_UserBLL ubll = new YS_UserBLL();
+        YS_User u = ubll.GetModel(username);
+        if (u == null)
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"用户不存在\"}");
+            return;
+        }
+        if (u.Question == "后台创建-非注册会员")
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"该用户不允许自助找回密码。请联系网站管理员重置密码!\"}");
+            return;
+        }
+        if (u.UserType == YS_Enum.UserType.管理员)
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"该用户不允许自助找回密码。请联系网站管理员重置密码!\"}");
+            return;
+        }
+        context.Response.Write("{\"flag\":\"true\",\"msg\":\"" + u.Question + "\"}");
+    }
+    public void FindUser(HttpContext context)
+    {
+        string username = context.Request["username"];
+        string answer = context.Request["answer"];
+        YS_UserBLL ubll = new YS_UserBLL();
+        YS_User u = ubll.GetModel(username);
+        if (u == null)
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"用户不存在\"}");
+            return;
+        }
+        if (u.Question == "后台创建-非注册会员")
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"该用户不允许自助找回密码。请联系网站管理员重置密码!\"}");
+            return;
+        }
+        if (u.UserType == YS_Enum.UserType.管理员)
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"该用户不允许自助找回密码。请联系网站管理员重置密码!\"}");
+            return;
+        }
+        if (u.Answer == answer)
+        {
+            u.Password = HashEncode.MD5("123456");
+            if (ubll.Update(u))
+            {
+                context.Response.Write("{\"flag\":\"true\",\"msg\":\"密码已重置为123456，请及时修改!\"}");
+                return;
+            }
+            else
+            {
+                context.Response.Write("{\"flag\":\"false\",\"msg\":\"未知错误\"}");
+                return;
+            }
+        }
+        else
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"答案错误请重新输入!\"}");
+        }
+    }
+
     public bool IsReusable
     {
         get
