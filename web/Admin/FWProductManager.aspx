@@ -135,7 +135,7 @@
                                 <span class="u-td-6 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Eval("Promotion")%></span>
                                 <span class="u-td-7 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Convert.ToDateTime(Eval("InputTime")).ToString("yyyy-MM-dd hh:mm")%></span>
                                 <span  class="u-td-do <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>">
-                                    <a href="/Shop/ProductItem.aspx?itemid=<%# Eval("ID")%>">查看</a>
+                                    <a href="../Order/Photography_detail.aspx?pid=<%# Eval("ID")%>">查看</a>
                                     <a href="FWProductUpdate.aspx?itemid=<%# Eval("ID")%>">编辑</a>
                                     <a href="javascript:;" onclick='deletePro(<%# Eval("ID")%>)'>删除</a></span>
                             </li>
