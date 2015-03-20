@@ -43,7 +43,7 @@ public class Handler : IHttpHandler
         StringBuilder sb = new StringBuilder();
         try
         {
-            DataSet ds = pbll.GetListByPage("ProductType in(4) and (ProductName like '%" + searchPro + "%' or ProductKey like '%" + searchPro + "%')", "id desc", sItem, sItem);
+            DataSet ds = pbll.GetListByPage("ProductType in(4) and (ProductName like '%" + searchPro + "%' or ProductXinJiu like '%" + searchPro + "%')", "id desc", sItem, sItem);
             if (ds.Tables[0].Rows.Count <= 0)
             {
                 context.Response.Write("{\"flag\":\"true\",\"msg\":\"加载完\"}");

@@ -43,6 +43,26 @@
         var sItem = 1;
         var isadd = true;
         $(window).scroll(function () {
+            queryData();
+        })
+
+        function SearchPro() {
+            $("#xllist").html("");
+            sItem = 1;
+            isadd = true;
+            queryData();
+        }
+        $(function () {
+            queryData();
+            $(".diqa").click(function () {
+                $(".diqa").removeClass("active");
+                $(this).addClass("active");
+                $("#scText1").val($(this).attr("rel"));
+                SearchPro();
+            });
+        })
+
+        function queryData() {
             if (isadd == true) {
                 if ($(window).scrollTop() + 500 >= $(document).height() - $(window).height()) {
                     isadd = false;
@@ -50,10 +70,10 @@
                         type: "POST",
                         dataType: "json",
                         url: "Action/Handler.ashx?cmd=GetProducts",
-                        data: { 
+                        data: {
                             "sItem": sItem,
                             "searchPro": $("#scText1").val() == "输入职业关键词,如：摄影师" ? "" : $("#scText1").val()
-                             },
+                        },
                         success: function (data) {
                             if (data.flag == "true") {
                                 if (data.msg != "加载完") {
@@ -71,25 +91,12 @@
                     });
                 }
             }
-        })
-        function SearchPro() {
-            $("#xllist").html("");
-            sItem = 1;
-            isadd = true;
         }
-        $(function () {
-            $(".diqa").click(function () {
-                $(".diqa").removeClass("active");
-                $(this).addClass("active");
-                $("#order_by_item").text($(this).attr("rel"));
-                SearchPro();
-            });
-        })
+
     </script>
 </head>
 <body>
  <myControls:WebTop id="WebTop1" runat="server" />
-    <span id="diqudddd"></span>
     <div class="web-page">
     <div class="Recruitment-imgtitle"></div>
     <div class="Recruitment-wordtitle">影视圈招聘</div>
@@ -105,12 +112,12 @@
     <div class="Recruitment-city">
     <ul>
     <li class="Recruitment-city-ul-li1">地区:</li>
-    <li><a class="diqa active" href="javascript:;">全部</a></li>
-    <li><a class="diqa" href="javascript:;">北京</a></li>
-    <li><a class="diqa" href="javascript:;">上海</a></li>
-    <li><a class="diqa" href="javascript:;">广州</a></li>
-    <li><a class="diqa" href="javascript:;">深圳</a></li>
-    <li><a class="diqa" href="javascript:;">其他</a></li>
+    <li><a class="diqa active" rel="" href="javascript:;">全部</a></li>
+    <li><a class="diqa" rel="北京" href="javascript:;">北京</a></li>
+    <li><a class="diqa" rel="上海" href="javascript:;">上海</a></li>
+    <li><a class="diqa" rel="广州" href="javascript:;">广州</a></li>
+    <li><a class="diqa" rel="深圳" href="javascript:;">深圳</a></li>
+    <li><a class="diqa" rel="" href="javascript:;">其他</a></li>
     </ul>
     
     </div>

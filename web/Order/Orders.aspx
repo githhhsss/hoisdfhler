@@ -171,38 +171,32 @@
             margin-top: 10px;
         }
         #fwlist a{ color:#000;}
+  .diqa{ color:#000;}
+  .active{ color:Red;}
     </style>
     <script type="text/javascript">
         var sItem = 1;
         var isadd = true;
-        $(function () {
-            if (isadd == true) {
-                if ($(window).scrollTop() + 500 >= $(document).height() - $(window).height()) {
-                    isadd = false;
-                    $.ajax({
-                        type: "POST",
-                        dataType: "json",
-                        url: "Action/Handler.ashx?cmd=GetProducts1",
-                        data: { "sItem": sItem },
-                        success: function (data) {
-                            if (data.flag == "true") {
-                                if (data.msg != "加载完") {
-                                    $("#fwlist").html($("#fwlist").html() + data.msg);
-                                    isadd = true;
-                                    sItem += 1;
-                                }
-                            } else {
-                                alert(data.msg);
-                            }
-                        },
-                        error: function (data, textStatus, errorThrown) {
-                            $.messager.alert('错误', errorThrown);
-                        }
-                    });
-                }
-            }
-        })
         $(window).scroll(function () {
+            queryData();
+        })
+
+        function SearchPro() {
+            $("#fwlist").html("");
+            sItem = 1;
+            isadd = true;
+            queryData();
+        }
+        $(function () {
+            queryData();
+            $(".diqa").click(function () {
+                $(".diqa").removeClass("active");
+                $(this).addClass("active");
+                $("#scText1").val($(this).attr("rel"));
+                SearchPro();
+            });
+        })
+        function queryData() {
             if (isadd == true) {
                 if ($(window).scrollTop() + 500 >= $(document).height() - $(window).height()) {
                     isadd = false;
@@ -210,7 +204,9 @@
                         type: "POST",
                         dataType: "json",
                         url: "Action/Handler.ashx?cmd=GetProducts1",
-                        data: { "sItem": sItem },
+                        data: { "sItem": sItem,
+                            "searchPro": $("#scText1").val() == "输入职业关键词,如：摄影师" ? "" : $("#scText1").val()
+                        },
                         success: function (data) {
                             if (data.flag == "true") {
                                 if (data.msg != "加载完") {
@@ -226,9 +222,9 @@
                             $.messager.alert('错误', errorThrown);
                         }
                     });
-                }
+                } 
             }
-        })
+        }
     </script>
 </head>
 <body>
@@ -243,19 +239,20 @@
         <div class="Recruitment-SO">
             <ul>
                 <li class="Recruitment-SO-ul-li1">关键词|</li>
-                <li>
-                    <input class="Recruitment-SO-ul-input" onclick="this.value='';" onblur="this.value='输入职业关键词,如：摄影师';"
-                        type="text" value="输入职业关键词,如：摄影师" /></li>
+                <li><input id="scText1" class="Recruitment-SO-ul-input" onclick="javascript:this.value=(this.value=='输入职业关键词,如：摄影师'?'':this.value);" 
+                    onblur="javascript:this.value=(this.value==''?'输入职业关键词,如：摄影师':this.value);" 
+                    type="text" value="输入职业关键词,如：摄影师" onkeydown='javascript:if(event.keyCode==13) SearchPro($("#scText1").val())' /></li>
             </ul>
         </div>
         <div class="Recruitment-city">
             <ul>
                 <li class="Recruitment-city-ul-li1">地区:</li>
-                <li>北京</li>
-                <li>上海</li>
-                <li>广州</li>
-                <li>深圳</li>
-                <li>其他</li>
+                <li><a class="diqa active" rel="" href="javascript:;">全部</a></li>
+    <li><a class="diqa" rel="北京" href="javascript:;">北京</a></li>
+    <li><a class="diqa" rel="上海" href="javascript:;">上海</a></li>
+    <li><a class="diqa" rel="广州" href="javascript:;">广州</a></li>
+    <li><a class="diqa" rel="深圳" href="javascript:;">深圳</a></li>
+    <li><a class="diqa" rel="" href="javascript:;">其他</a></li>
             </ul>
         </div>
         <div class="Recruitment-line">
