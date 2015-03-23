@@ -155,7 +155,7 @@ public class Handler : IHttpHandler
         StringBuilder sb = new StringBuilder();
         try
         {
-            DataSet ds = pbll.GetListByPage("ProductType in(7)", "id desc", sItem, sItem);
+            DataSet ds = pbll.GetListByPage("ProductType in(2)", "id desc", sItem, sItem);
             if (ds.Tables[0].Rows.Count <= 0)
             {
                 context.Response.Write("{\"flag\":\"true\",\"msg\":\"加载完\"}");

@@ -10,8 +10,13 @@
         $(".web-top").css({ position: "fixed" });
         document.getElementById("web-top").style.left = left;
 
-        
+
     })
+
+    function sySearchPro() {
+        window.location = "../ProductList.aspx?searchPro=" + encodeURI(encodeURI($(".syText1").val()));
+    }
+
     function show() {
         setTimeout(function () {
             $(".fd-contact .acbtn").removeClass("zt");

@@ -201,6 +201,124 @@ public class Handler : IHttpHandler
         }
         
     }
+
+    public void UpdateIndex4(HttpContext context)
+    {
+        YS_ProductBLL pbll = new YS_ProductBLL();
+        StringBuilder sb = new StringBuilder();
+        int sItem = Convert.ToInt32(context.Request["sItem"]);
+        string searchPro = context.Request["searchPro"];
+        try
+        {
+            DataSet ds = pbll.GetListByPage("ProductType in(0,1,2,3,4,7) and (ProductName like '%" + searchPro + "%' or ProductKey like '%" + searchPro + "%')", "id desc", sItem, sItem); 
+            
+            foreach (DataRow item in ds.Tables[0].Rows)
+            {
+                sb.Append("<li>");
+                if ((YS_Enum.ProductType)Convert.ToInt32(item["ProductType"]) == YS_Enum.ProductType.二手)
+                {
+                    sb.Append("<a href='Order/Secondary_detail.aspx?pid=" + item["ID"] + "'>");
+                    sb.Append("<div class='Recruitment-title'>");
+                    sb.Append("<ul>");
+                    sb.Append("<li class='Recruitment-title-name'>" + item["ProductName"] + "</li>");
+                    sb.Append("<li class='Recruitment-title-city'>（" + item["ProductAddress"] + "）</li>");
+                    sb.Append("<li class='Recruitment-title-Salary'>价格" + Convert.ToDecimal(item["Price"]).ToString("f2") + "</li>");
+                    sb.Append("</ul>");
+                    sb.Append("</div>");
+                    sb.Append("<div class='Recruitment-context'>");
+                    sb.Append("<ul>");
+                    sb.Append("<li>发布机构：" + item["ProductMan"] + "&nbsp;&nbsp;&nbsp;</li>");
+                    sb.Append("<li>公司地址：" + item["ProductAddress"] + "</li>");
+                }
+                else if ((YS_Enum.ProductType)Convert.ToInt32(item["ProductType"]) == YS_Enum.ProductType.拍摄外单)
+                {
+                    sb.Append("<a href='Order/Orders_Detail.aspx?pid=" + item["ID"] + "'>");
+                    sb.Append("<div class='Recruitment-title'>");
+                    sb.Append("<ul>");
+                    sb.Append("<li class='Recruitment-title-name'>" + item["ProductName"] + "</li>");
+                    sb.Append("<li class='Recruitment-title-city'>（" + item["ProductAddress"] + "）</li>");
+                    sb.Append("<li class='Recruitment-title-Salary'>价格" + Convert.ToDecimal(item["Price"]).ToString("f2") + "</li>");
+                    sb.Append("</ul>");
+                    sb.Append("</div>");
+                    sb.Append("<div class='Recruitment-context'>");
+                    sb.Append("<ul>");
+                    sb.Append("<li>发布机构：" + item["ProductMan"] + "&nbsp;&nbsp;&nbsp;</li>");
+                    sb.Append("<li>公司地址：" + item["ProductAddress"] + "</li>");
+                }
+                else if ((YS_Enum.ProductType)Convert.ToInt32(item["ProductType"]) == YS_Enum.ProductType.器材)
+                {
+                    sb.Append("<a href='Shop/ProductItem.aspx?itemid=" + item["ID"] + "'>");
+                    sb.Append("<div class='Recruitment-title'>");
+                    sb.Append("<ul>");
+                    sb.Append("<li class='Recruitment-title-name'>" + item["ProductName"] + "</li>");
+                    sb.Append("<li class='Recruitment-title-city'></li>");
+                    sb.Append("<li class='Recruitment-title-Salary'>(" + Convert.ToDecimal(item["Price"]).ToString("f2") + ")</li>");
+                    sb.Append("</ul>");
+                    sb.Append("</div>");
+                    sb.Append("<div class='Recruitment-context'>");
+                    sb.Append("<ul>");
+                  
+                }
+                else if ((YS_Enum.ProductType)Convert.ToInt32(item["ProductType"]) == YS_Enum.ProductType.摄影服务)
+                {
+                    sb.Append("<a href='Order/Photography_detail.aspx?pid=" + item["ID"] + "'>");
+                    sb.Append("<div class='Recruitment-title'>");
+                    sb.Append("<ul>");
+                    sb.Append("<li class='Recruitment-title-name'>" + item["ProductName"] + "</li>");
+                    sb.Append("<li class='Recruitment-title-city'>（" + item["ProductAddress"] + "）</li>");
+                    sb.Append("<li class='Recruitment-title-Salary'>价格" + Convert.ToDecimal(item["Price"]).ToString("f2") + "</li>");
+                    sb.Append("</ul>");
+                    sb.Append("</div>");
+                    sb.Append("<div class='Recruitment-context'>");
+                    sb.Append("<ul>");
+                    sb.Append("<li>发布机构：" + item["ProductMan"] + "&nbsp;&nbsp;&nbsp;</li>");
+                    sb.Append("<li>公司地址：" + item["ProductAddress"] + "</li>");
+                }
+                else if ((YS_Enum.ProductType)Convert.ToInt32(item["ProductType"]) == YS_Enum.ProductType.职位)
+                {
+                    sb.Append("<a href='Recruitment/detail.aspx?pid=" + item["ID"] + "'>");
+                    sb.Append("<div class='Recruitment-title'>");
+                    sb.Append("<ul>");
+                    sb.Append("<li class='Recruitment-title-name'>" + item["ProductName"] + "</li>");
+                    sb.Append("<li class='Recruitment-title-city'>（" + item["ProductAddress"] + "）</li>");
+                    sb.Append("<li class='Recruitment-title-Salary'>薪资" +item["PriceRange"] + "</li>");
+                    sb.Append("</ul>");
+                    sb.Append("</div>");
+                    sb.Append("<div class='Recruitment-context'>");
+                    sb.Append("<ul>");
+                    sb.Append("<li>发布机构：" + item["ProductMan"] + "&nbsp;&nbsp;&nbsp;</li>");
+                    sb.Append("<li>公司地址：" + item["ProductAddress"] + "</li>");
+                }
+                else
+                {
+                    sb.Append("<a href='Shop/ProductItem.aspx?itemid=" + item["ID"] + "'>");
+                    sb.Append("<a href='Shop/ProductItem.aspx?itemid=" + item["ID"] + "'>");
+                    sb.Append("<div class='Recruitment-title'>");
+                    sb.Append("<ul>");
+                    sb.Append("<li class='Recruitment-title-name'>" + item["ProductName"] + "</li>");
+                    sb.Append("<li class='Recruitment-title-city'></li>");
+                    sb.Append("<li class='Recruitment-title-Salary'>(" + Convert.ToDecimal(item["Price"]).ToString("f2") + ")</li>");
+                    sb.Append("</ul>");
+                    sb.Append("</div>");
+                    sb.Append("<div class='Recruitment-context'>");
+                    sb.Append("<ul>");
+                  
+                }
+                
+                
+                sb.Append("<li class='Recruitment-context-time'>" + Convert.ToDateTime(item["InputTime"]).ToString("yyyy-MM-dd HH:mm") + "</li>");
+                sb.Append(" </ul></div></a>");
+                sb.Append("</li>");
+            }
+            context.Response.Write("{\"flag\":\"true\",\"msg\":\"" + sb.ToString() + "\"}");
+            return;
+        }
+        catch
+        {
+            context.Response.Write("{\"flag\":\"true\",\"msg\":\"!\"}");
+            return;
+        }
+    }
     
     public bool IsReusable
     {
