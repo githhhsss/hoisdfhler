@@ -29,7 +29,7 @@
     <div class="web-page">
     <div class="Secondary_detail-imgtitle">二手器材</div>
     <div class="Secondary_detail-whitebox">
-    <div class="Secondary_detail-whitebox-left"><img /></div>
+    <div class="Secondary_detail-whitebox-left"><img id="esimg" runat="server" style=" width:500px; height:520px;" /></div>
     <div class="Secondary_detail-whitebox-right">
     <div class="Secondary_detail-name"  id="zptxt1" runat="server">Iphone6（9成新）</div>
     <div class="Secondary_detail-name-detailed">

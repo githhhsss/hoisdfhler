@@ -26,5 +26,7 @@ public partial class Order_Secondary__detail : System.Web.UI.Page
         this.zptxt4.InnerText = p.ProductAddress;
         this.zptxt6.InnerHtml = p.ProductPhone;
         this.zptxt7.InnerHtml = p.Description;
+
+        this.esimg.Src = "../ProductImg/esImg/" + p.PriceRange;
     }
 }
