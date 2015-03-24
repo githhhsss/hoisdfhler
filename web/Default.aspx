@@ -185,10 +185,11 @@
         <div class="index-roll">
             <div class="flexslider">
                 <ul class="slides">
-                    <li><a href="javascript:;"><img src="Images/index/roll/roll_1.jpg" /></a></li>
-                    <li><a href="javascript:;"><img src="Images/index/roll/roll_2.jpg" /></a></li>
-                    <li><a href="javascript:;"><img src="Images/index/roll/roll_3.jpg" /></a></li>
-                    <li><a href="javascript:;"><img src="Images/index/roll/roll_4.jpg" /></a></li>
+                    <asp:Repeater ID="Repeater1" runat="server">
+                        <ItemTemplate>
+                            <li><a href='<%# Eval("WebUrl") %>'><img src='../ProductImg/webImg/<%# Eval("WebImg") %>' /></a></li>
+                        </ItemTemplate>
+                    </asp:Repeater>
                 </ul>
             </div>
         </div>

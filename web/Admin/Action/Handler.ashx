@@ -764,7 +764,7 @@ public class Handler : IHttpHandler
         int oid = 0;
         int.TryParse(context.Request["oid"], out oid);
         YS_OrderBLL obll = new YS_OrderBLL();
-        YS_Order o = obll.GetModel(oid,true);
+        YS_Order o = obll.GetModel(oid, true);
         if (o != null)
         {
             if (o.State == YS_Enum.OrderState.待发货)
@@ -781,7 +781,7 @@ public class Handler : IHttpHandler
                     return;
                 }
             }
-            else if(o.State == YS_Enum.OrderState.已发货)
+            else if (o.State == YS_Enum.OrderState.已发货)
             {
                 context.Response.Write("{\"flag\":\"false\",\"msg\":\"订单已经出货。无需重复出货\"}");
                 return;
@@ -973,6 +973,25 @@ public class Handler : IHttpHandler
         }
 
     }
+
+    //删除图片
+    public void DeletePic(HttpContext context)
+    {
+        int UID = Convert.ToInt32(context.Request["ID"]);
+        int i = Maticsoft.DBUtility.DbHelperSQL.ExecuteSql("delete YS_WebImg where ID=" + UID);
+
+        if (i > 0)
+        {
+            context.Response.Write("{\"flag\":\"true\",\"msg\":\"删除成功\"}");
+            return;
+        }
+        else
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"找不到信息，请刷新页面\"}");
+            return;
+        }
+    }
+
     /// <summary>
     /// 转义json特殊字符
     /// </summary>
