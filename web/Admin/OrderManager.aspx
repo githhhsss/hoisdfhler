@@ -29,7 +29,7 @@
     .my-right .u-right .orderTitle a{ display:block; float:left; height:69px; line-height:69px; width:180px;border-right:1px solid #DDDDDD; text-align:center; font-size:23px;text-decoration:none; color:#000000;}
     .my-right .u-right .orderTitle .sel{border-top:5px solid #1ea78d; height:65px; background:#FFF; line-height:60px;}
     
-    .my-right .u-right .data-edit{ height:710px;}
+    .my-right .u-right .data-edit{ height:auto;}
     .my-right .u-right .data-edit ul li{ list-style:none;}
     
     .right-form{ margin-top:40px; margin-left:50px;}
@@ -81,6 +81,7 @@
                 <ul>
                 <li><a href="Default.aspx" class="set-top">个人设置</a></li>
                 <li><a href="UserManager.aspx">用户管理</a></li>
+                <li><a href="WebImgManager.aspx">网站图片</a></li>
                 <li><a href="ProductManager.aspx">商品管理</a></li>
                 <li><a href="FWProductManager.aspx">摄影服务</a></li>
                 <li><a href="OrderManager.aspx" class="active">订单管理</a></li>
