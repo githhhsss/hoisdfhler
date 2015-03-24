@@ -9,7 +9,7 @@
     <style type="text/css">
        .web-page{ height:726px;}
        .zx-title{ height:160px;background:url('/images/Consultation/zx.png') center bottom no-repeat}
-       .zx-wz{  margin:30px;height:50px;;background:url('/images/Consultation/wz.png') center center no-repeat}
+       /*.zx-wz{  margin:30px;height:50px;;background:url('/images/Consultation/wz.png') center center no-repeat}*/
        .zx-body{ left:0px;right:0px;margin-left:auto; margin-right:auto;width:795px; overflow:hidden;position:relative; }
        .zx-body ul li{ float:left; padding:15px; width:235px; list-style:none;}
        .zx-body ul div{ text-align:center;}
@@ -26,8 +26,8 @@
        <div class="zx-body">
             <ul>
                 <li><div><img src="../Images/Consultation/yt.jpg" /></div><div><a href="/Order/Photography.aspx" style="background:url('/images/Consultation/psfw.png') center center no-repeat"></a></div></li>
-                <li><div><img src="../Images/Consultation/yt.jpg" /></div><div><a href="/Order/Orders.aspx" style="background:url('/images/Consultation/wyjd.png') center center no-repeat"></a></div></li>
-                <li><div><img src="../Images/Consultation/yt.jpg" /></div><div><a href="/Order/Secondary.aspx" style="background:url('/images/Consultation/esqc.png') center center no-repeat"></a></div></li>
+                <li><div><img src="../Images/Consultation/2.jpg" /></div><div><a href="/Order/Orders.aspx" style="background:url('/images/Consultation/wyjd.png') center center no-repeat"></a></div></li>
+                <li><div><img src="../Images/Consultation/3.jpg" /></div><div><a href="/Order/Secondary.aspx" style="background:url('/images/Consultation/esqc.png') center center no-repeat"></a></div></li>
             </ul>
        </div>
     </div>
