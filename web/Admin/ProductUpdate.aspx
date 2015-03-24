@@ -112,6 +112,11 @@
                                 <option>在售</option>
                                 <option>下架</option>
                             </select></li>
+                        <li><span class="form-title">是否热销：</span>
+                            <select id="Select10" class="form-txt" runat="server">
+                                <option>是</option>
+                                <option>否</option>
+                            </select></li>
                         <li><span class="form-title">库存：</span><input class="form-txt" id="ptxt3" runat="server" type="text" /></li>
                         <li><span class="form-title">关键字：</span><input class="form-txt" id="ptxt4" runat="server" type="text" /></li>
                         <li><span class="form-title">促销折扣：</span><input class="form-txt" id="ptxt5" runat="server" type="text" /></li>
@@ -155,7 +160,8 @@
                             "txt5": $("#ptxt5").val(),
                             "pimg": $("#ppText1").val(),
                             "txt6": UE.getEditor('editor').getContent(),
-                            "Select3": $("#Select3").val()
+                            "Select3": $("#Select3").val(),
+                            "Select10": $("#Select10").val()
                         },
                         success: function (data) {
                             if (data.flag == "true") {

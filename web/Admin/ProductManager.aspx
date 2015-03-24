@@ -47,7 +47,8 @@
     .right-form .u-th-3{width:80px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
     .right-form .u-th-4{width:80px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
     .right-form .u-th-5{width:80px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
-    .right-form .u-th-6{width:100px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
+    .right-form .u-th-6{width:50px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
+    .right-form .u-th-8{width:50px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
     .right-form .u-th-7{width:100px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
     .right-form .u-th-do{width:210px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
     
@@ -58,7 +59,8 @@
     .right-form .u-td-3{width:80px;}
     .right-form .u-td-4{width:80px;}
     .right-form .u-td-5{width:80px;}
-    .right-form .u-td-6{width:100px;}
+    .right-form .u-td-6{width:50px;}
+    .right-form .u-td-8{width:50px;}
     .right-form .u-td-7{width:100px;}
     .right-form .u-td-do{width:210px;}
     .right-form .u-td-do a{ display:block; float:left; margin-left:3px;margin-top:3px ;background:url("../Images/btnbj.png") no-repeat center center; width:66px; height:24px;background-size:cover; font-size:12px; text-align:center; line-height:24px;}
@@ -122,6 +124,7 @@
                             <span class="u-th-4">库存</span>
                             <span class="u-th-5">状态</span>
                             <span class="u-th-6">折扣</span>
+                            <span class="u-th-8">热销</span>
                             <span class="u-th-7">录入时间</span>
                             <span  class="u-th-do">操作</span>
                         </li>
@@ -134,6 +137,7 @@
                                 <span class="u-td-4 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Eval("Stock")%></span>
                                 <span class="u-td-5 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# (YS_WEB.Model.YS_Enum.ProductState)Eval("State")%></span>
                                 <span class="u-td-6 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Eval("Promotion")%></span>
+                                <span class="u-td-8 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Convert.ToBoolean(Eval("IsHot"))?"是":"否"%></span>
                                 <span class="u-td-7 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Convert.ToDateTime(Eval("InputTime")).ToString("yyyy-MM-dd hh:mm")%></span>
                                 <span  class="u-td-do <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>">
                                     <a href="/Shop/ProductItem.aspx?itemid=<%# Eval("ID")%>">查看</a>

@@ -57,6 +57,7 @@ public partial class User_Default : System.Web.UI.Page
             this.ppText1.Value = pro.ProductAddress;
             this.pimg.Src = "/ProductImg/" + pro.ProductAddress;
             this.Select3.Value = ((YS_Enum.ProductState)pro.State).ToString();
+            this.Select10.Value = pro.IsHot ? "是" : "否";
             editor = StringToJson(pro.Description);
         }
         else

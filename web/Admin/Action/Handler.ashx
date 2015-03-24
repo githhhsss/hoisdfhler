@@ -343,7 +343,7 @@ public class Handler : IHttpHandler
         string Stock = context.Request["txt3"];
         string ProductKey = context.Request["txt4"];
         string pimg = context.Request["pimg"];
-
+        string ishot = context.Request["Select10"];
         if (string.IsNullOrEmpty(ProductName))
         {
             context.Response.Write("{\"flag\":\"false\",\"msg\":\"产品名称不能为空\"}");
@@ -369,7 +369,7 @@ public class Handler : IHttpHandler
         YS_Product pro = new YS_Product();
         pro.Description = Description;
         pro.InputTime = DateTime.Now;
-        pro.IsHot = true;
+        pro.IsHot = ishot == "是" ? true : false;
         pro.OverTime = new DateTime(9999, 12, 30);
         pro.Price = Convert.ToDecimal(Price);
         pro.PriceRange = "";
@@ -425,6 +425,7 @@ public class Handler : IHttpHandler
         string Stock = context.Request["txt3"];
         string ProductKey = context.Request["txt4"];
         string pimg = context.Request["pimg"];
+        string ishot = context.Request["Select10"];
 
         if (string.IsNullOrEmpty(ProductName))
         {
@@ -451,7 +452,7 @@ public class Handler : IHttpHandler
         YS_Product pro = probll.GetModel(pid);
         pro.Description = Description;
         pro.InputTime = DateTime.Now;
-        pro.IsHot = true;
+        pro.IsHot = ishot == "是" ? true : false;
         pro.OverTime = new DateTime(9999, 12, 30);
         pro.Price = Convert.ToDecimal(Price);
         pro.PriceRange = "";

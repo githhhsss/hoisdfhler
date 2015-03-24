@@ -278,6 +278,18 @@ public class Handler : IHttpHandler
             }
             foreach (DataRow item in ds.Tables[0].Rows)
             {
+                sb.Append("<div style='position:relative;'>");
+                if (Convert.ToBoolean(item["IsHot"]))
+                {
+                    if (sItem % 3 == 1)
+                    {
+                        sb.Append("<img src='../Images/rx.jpg' style='position:absolute;top:50px; left:0px;' />");
+                    }
+                    else
+                    {
+                        sb.Append("<img src='../Images/rx.jpg' style='position:absolute;top:50px; left:36px;' />");
+                    }
+                }
                 sb.Append("<a href='ProductItem.aspx?itemid=" + item["ID"] + "'>");
                 sb.Append("<div class='sc-centent-4-div " + (sItem % 3 == 1 ? "h-first" : "") + "'>");
                 sb.Append("<img  src='/ProductImg/" + item["ProductAddress"] + "' />");
@@ -285,6 +297,7 @@ public class Handler : IHttpHandler
                 sb.Append("<span style='margin-top:10px;'>$" + Convert.ToDecimal(item["Price"]).ToString("f2") + "</span>");
                 sb.Append("</div>");
                 sb.Append("</a>");
+                sb.Append("</div>");
             }
             context.Response.Write("{\"flag\":\"true\",\"msg\":\"" + sb.ToString() + "\"}");
             return;
