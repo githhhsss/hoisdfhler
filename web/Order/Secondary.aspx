@@ -9,7 +9,7 @@
     <title></title>
     <style type="text/css">
         .web-page{ }
-    .Secondary-imgtitle{ background:url('/images/zpjd/bgm.png') center bottom no-repeat; width:1366px; height:545px; }
+    .Secondary-imgtitle{ background:url('/images/zpjd/3.jpg') center bottom no-repeat; width:1366px; height:545px; }
     .Secondary-imgtype{ background:url('/images/zpjd/esqc.png') center bottom no-repeat; width:727px; height:65px; margin-left:320px; margin-top:60px; }
     .Secondary-context{ margin-top:30px; margin-left:300px; width:733px; height:219px;}
     .Secondary-context ul{width:733px; height:219px;}

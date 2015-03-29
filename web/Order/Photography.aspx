@@ -13,7 +13,7 @@
         }
         .Photography-imgtitle
         {
-            background: url('/images/zpjd/bgm.png') center bottom no-repeat;
+            background: url('/images/zpjd/bgm.jpg') center bottom no-repeat;
             width: 1366px;
             height: 545px;
         }
