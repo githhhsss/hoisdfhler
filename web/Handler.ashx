@@ -130,7 +130,7 @@ public class Handler : IHttpHandler
             {
                 sb.Append("<div class='index-list'>");
                 sb.Append("<div class='index-list-img fl'>");
-                sb.Append("<img src='Images/index/index_1.jpg' alt='' />");
+                sb.Append("<img src='../ProductImg/esImg/" + item["PriceRange"] + "' alt='' />");
                 sb.Append("</div>");
                 sb.Append("<div class='index-list-text fl'>");
                 sb.Append("<h2><a  target='_blank' href='" + item["ProductAddress"] + "'>" + item["ProductName"] + "</a></h2>");

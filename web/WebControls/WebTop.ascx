@@ -7,7 +7,7 @@
     <div class="web-top-center">
         <ul class="web-top-center-ul">
             <li><a href="../Consultation/Default.aspx"><img src="<%= MyPath %>Images/web/top_meun_zx.png" /></a></li>
-            <li><a href="#"><img src="<%= MyPath %>Images/web/top_meun_pd.png" /></a></li>
+            <li><a href="../#miao"><img src="<%= MyPath %>Images/web/top_meun_pd.png" /></a></li>
             <li><a href="<%= MyPath %>Shop/Default.aspx"><img src="<%= MyPath %>Images/web/top_meun_sc.png" /></a></li>
             <li><a href="<%= MyPath %>Recruitment/Default.aspx"><img src="<%= MyPath %>Images/web/top_meun_yszp.png" /></a></li>
         </ul>

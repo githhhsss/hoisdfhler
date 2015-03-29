@@ -195,7 +195,9 @@
         </div>
         <div class="index-content">
             <div class="index-content-tab">
-                <div class="index-tab-noneleft"></div>
+            <a name="miao"></a>
+                <div class="index-tab-noneleft">
+                </div>
                 <ul>
                     <li><a id="current0" href="javascript:;"><%--最新资讯--%></a></li>
 	                <li><a id="current1" href="javascript:;"><%--行业动态--%></a></li>
