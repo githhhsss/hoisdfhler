@@ -19,7 +19,7 @@
        .slides img{ height:516px; width:1366px;}
        
        /*菜单导航*/
-       .sc-meun{ height:160px;}
+       .sc-meun{ height:160px; display:none;}
        .sc-meun .sc-meun-left{ float:left ;height:100%; width:460px; background:url("/images/shop/hx3.png") 247px 75px no-repeat}
        .sc-meun .sc-meun-centent{ float:left; width:446px; height:100%;}
        .sc-meun .sc-meun-right{ float:left ;height:100%; width:460px;background:url("/images/shop/hx3.png") -1000px 75px no-repeat}
@@ -30,7 +30,7 @@
        .sc-meun .sc-a-3{ display:inline-block; width:117px; height:46px; margin: 55px 0px 59px 32px;}
        
        /*中间固定8栏*/
-       .sc-center{ margin:0px; padding:0px;}
+       .sc-center{ margin:0px; padding:0px; margin-top:50px;}
        .sc-center ul li{ list-style:none; float:left; height:260px;}
        .sc-center ul li .sc-center-img{ width:341px; height:260px;}
        .sc-center ul li .sc-center-img1{width:342px;height:260px;}
