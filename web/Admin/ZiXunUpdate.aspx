@@ -7,6 +7,7 @@
     <title></title>
     <myControls:WebStyle id="WebStyle1" runat="server" />
     <style type="text/css">
+        .web-page{ height:1300px;}
     .my-left{ float:left; width:400px;}
     .my-left-top{ margin-left:30px; margin-top:85px; border:1px solid #ccc; width:312px; background:#FFF}
     .my-left-top .headimg{ margin-left:30px; margin-top:30px; width:255px; height:255px;}
@@ -100,18 +101,26 @@
             <!--信息-->
            <div class="data-edit">
                 <form id="form1" runat="server">
-                <div class="right-form">
+                 <div class="right-form">
                     <ul>
-                        <li><span class="form-say">产品基本信息</span></li>
+                        <li><span class="form-say">资讯基本信息</span></li>
+                        <li><span class="form-title">资讯类别:</span><asp:DropDownList ID="content" 
+                                runat="server" AutoPostBack="True">
+                        <asp:ListItem value="8">电影丶电视剧</asp:ListItem>
+                         <asp:ListItem value="9">器材</asp:ListItem>
+                          <asp:ListItem Value="10">制作</asp:ListItem>
+                        </asp:DropDownList></li>
                         <li><span class="form-title">标题：</span><input class="form-txt" id="ptxt1" type="text" runat="server" /></li>
-                       
-                        <li><span class="form-title">关键字：</span><input class="form-txt" id="ptxt4" runat="server" type="text" /></li>
+                        <li><span class="form-title">关键字：</span><input class="form-txt" id="ptxt4" type="text" runat="server"  /></li>
+                           <li><span class="form-title">资讯封面：</span><asp:FileUpload ID="FileUpload1" runat="server" /></li>
+                            <li><span class="form-title">封面预览：</span><asp:Image ID="Image1" runat="server" /></li>
                        <li><span class="form-say">内容</span>
-                              <script id="editor" type="text/plain" style="width:830px; height:500px;" ></script>
+                               <script id="editor" type="text/plain" style="width:830px; height:500px;" ></script>
                        </li>
                        <li><span style=" display:inline-block;height:5px;"></span></li>
-                        <li><a id="editPro" class="btn" href="javascript:;">确认修改</a></li>
+                        <li><asp:LinkButton  id="AddPro" class="btn" runat="server" onclick="AddPro_Click" OnClientClick="tj_click()" >确认添加</asp:LinkButton></li>
                     </ul>
+                    <asp:HiddenField ID="HiddenField1" Value="" runat="server" />
                 </div>
                 </form>
             </div>
@@ -129,28 +138,33 @@
         var ue = UE.getEditor('editor');
     </script>
     <script type="text/javascript">
-        $(function () {
-            $("#editPro").click(function () {
-                if (confirm("确定要添加信息吗？")) {
-                    yscom.ajax({
-                        url: "Action/Handler.ashx?cmd=EditPro",
-                        data: {
-                            "pid":yscom.getParams("itemid"),
-                            "txt1": $("#ptxt1").val(),
-                            "txt4": $("#ptxt4").val(),
-                            "txt6": UE.getEditor('editor').getContent()
-                        },
-                        success: function (data) {
-                            if (data.flag == "true") {
-                                alert(data.msg);
-                            } else {
-                                alert(data.msg);
-                            }
-                        }
-                    });
-                };
-            });
-        })
+//        $(function () {
+//            $("#editPro").click(function () {
+//                if (confirm("确定要添加信息吗？")) {
+//                    yscom.ajax({
+//                        url: "Action/Handler.ashx?cmd=EditPro",
+//                        data: {
+//                            "pid":yscom.getParams("itemid"),
+//                            "txt1": $("#ptxt1").val(),
+//                            "txt4": $("#ptxt4").val(),
+//                            "txt6": UE.getEditor('editor').getContent()
+//                        },
+//                        success: function (data) {
+//                            if (data.flag == "true") {
+//                                alert(data.msg);
+//                            } else {
+//                                alert(data.msg);
+//                            }
+//                        }
+//                    });
+//                };
+//            });
+        //        })
+        function tj_click() {
+            if ($("#HiddenField1") != null) {
+                $("#HiddenField1").attr("value", UE.getEditor('editor').getContent());
+            }
+        }
     </script>
 </body>
 </html>

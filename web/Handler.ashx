@@ -86,25 +86,20 @@ public class Handler : IHttpHandler
         StringBuilder sb = new StringBuilder();
         try
         {
-            DataSet ds = Maticsoft.DBUtility.DbHelperSQL.Query("select top 3 * from ys_product where producttype in (7) order by newid()");
+            DataSet ds = Maticsoft.DBUtility.DbHelperSQL.Query("select top 3 * from ys_product where producttype in (8,9,10) order by newid()");
             foreach (DataRow item in ds.Tables[0].Rows)
             {
                 sb.Append("<div class='index-list'>");
                 sb.Append("<div class='index-list-img fl'>");
-                sb.Append("<img src='ProductImg/" + item["ProductAddress"] + "' alt='' />");
+                sb.Append("<img src='Information/InformationImg/" + item["PriceRange"] + "' alt='' />");
                 sb.Append("</div>");
-                sb.Append("<a href='Order/Photography_detail.aspx?pid=" + item["id"] + "'><div class='index-list-text fl'>");
+                sb.Append("<a href='Information/Information_detail.aspx?pid=" + item["id"] + "'><div class='index-list-text fl'>");
                 sb.Append("<h2>" + item["ProductName"] + "</h2>");
 
                 sb.Append("<h3>");
-                string[] ss = item["ProductKey"].ToString().Split(' ');
-                foreach (string s in ss)
-                {
-                    sb.Append("<a href='#'>" + s + "</a> ");
-                }
 
                 sb.Append("<span class='index-list-text-time'></span></h3>");
-                sb.Append("<span>联系人：" + item["ProductMan"] + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电话：" + item["ProductPhone"] + "</span>");
+                sb.Append("<span>" + item["Description"] + "</span>");
                 sb.Append("<div class='index-list-text-bottom'></div>");
                 sb.Append("</div>");
                 sb.Append("<div class='index-list-tottom clear'></div>");
@@ -125,7 +120,7 @@ public class Handler : IHttpHandler
         StringBuilder sb = new StringBuilder();
         try
         {
-            DataSet ds = Maticsoft.DBUtility.DbHelperSQL.Query("select top 3 * from ys_product where producttype in (6) order by newid()");
+            DataSet ds = Maticsoft.DBUtility.DbHelperSQL.Query("select top 3 * from ys_product where producttype in (6) and Sales=1 order by newid()");
             foreach (DataRow item in ds.Tables[0].Rows)
             {
                 sb.Append("<div class='index-list'>");
@@ -133,7 +128,7 @@ public class Handler : IHttpHandler
                 sb.Append("<img src='../ProductImg/esImg/" + item["PriceRange"] + "' alt='' />");
                 sb.Append("</div>");
                 sb.Append("<div class='index-list-text fl'>");
-                sb.Append("<h2><a  target='_blank' href='" + item["ProductAddress"] + "'>" + item["ProductName"] + "</a></h2>");
+                sb.Append("<h2><a  target='_blank' href='Vedio/Vedio_detail.aspx?item=" + item["id"] + "'>" + item["ProductName"] + "</a></h2>");
                 sb.Append("<h3><a href='#'>视频</a> <span class='index-list-text-time'></span></h3>");
                 sb.Append("<span>" + item["Description"] + "</span>");
                 sb.Append("<div class='index-list-text-bottom'></div>");

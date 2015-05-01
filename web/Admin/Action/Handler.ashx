@@ -994,6 +994,24 @@ public class Handler : IHttpHandler
             return;
         }
     }
+    public void SHPro(HttpContext context)
+    {
+        int UID = Convert.ToInt32(context.Request["ID"]);
+        int i = Maticsoft.DBUtility.DbHelperSQL.ExecuteSql("update YS_Product SET sales=1 where ID=" + UID);
+
+        if (i > 0)
+        {
+            context.Response.Write("{\"flag\":\"true\",\"msg\":\"审核成功\"}");
+            return;
+        }
+        else
+        {
+            context.Response.Write("{\"flag\":\"false\",\"msg\":\"找不到信息，请刷新页面\"}");
+            return;
+        }
+
+
+    }
 
     /// <summary>
     /// 转义json特殊字符

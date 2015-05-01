@@ -74,13 +74,13 @@ public partial class User_Default : System.Web.UI.Page
 
                     if (string.IsNullOrEmpty(ProductName))
                     {
-                        MessageBox.Show(this, "1不能为空");
+                        MessageBox.Show(this, "标题不能为空");
                         //context.Response.Write("{\"flag\":\"false\",\"msg\":\"器材名称不能为空\"}");
                         return;
                     }
                     if (string.IsNullOrEmpty(ProductKey))
                     {
-                        MessageBox.Show(this, "2不能为空");
+                        MessageBox.Show(this, "关键字");
                         //context.Response.Write("{\"flag\":\"false\",\"msg\":\"价格格式不对\"}");
                         return;
                     }
@@ -114,11 +114,13 @@ public partial class User_Default : System.Web.UI.Page
 
                     if (probll.Add(pro))
                     {
+                        MessageBox.Show(this, "资讯添加成功");
                         //  context.Response.Write("{\"flag\":\"true\",\"msg\":\"资讯添加成功\"}");
                         return;
                     }
                     else
                     {
+                        MessageBox.Show(this, "未知错误");
                         // context.Response.Write("{\"flag\":\"false\",\"msg\":\"未知错误\"}");
                         return;
                     }
@@ -126,6 +128,7 @@ public partial class User_Default : System.Web.UI.Page
                 }
                 catch
                 {
+                    MessageBox.Show(this, "数据库异常");
                     //   context.Response.Write("{\"flag\":\"false\",\"msg\":\"数据库异常\"}");
                     return;
                 }

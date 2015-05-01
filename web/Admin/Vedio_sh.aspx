@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="User_Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Vedio_sh.aspx.cs" Inherits="Admin_Vedio_sh" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -23,7 +23,7 @@
     .my-left-bottom ul li .set-top{border-top:none;}
     .my-left-bottom .active{ color:Red;}
     
-    .my-right{float:left; width:930px;}
+    .my-right{float:left; width:930px;margin-bottom:35px;}
     .u-right{margin-top:85px;margin-bottom:35px; background:#fff;}
     .my-right .u-right .orderTitle{ height:70px; width:100%; background:#ebebeb; border-bottom:1px solid #DDDDDD;}
     .my-right .u-right .orderTitle a{ display:block; float:left; height:69px; line-height:69px; width:180px;border-right:1px solid #DDDDDD; text-align:center; font-size:23px;text-decoration:none; color:#000000;}
@@ -38,6 +38,30 @@
     .right-form ul li .form-readonly{ background:#e9e9e9;}
     
     .right-form ul li .btn{ display:block ;background:url("../Images/btnbj.png") no-repeat center center; width:150px; height:40px;background-size:cover; font-size:18px; text-align:center; line-height:40px; margin-left:432px;}
+    
+    
+    /*列表数据*/
+     .right-form ul li span{  float:left;display:block; margin:0; padding:0 ;text-align:center; line-height:30px ;height:30px; border:1px solid #CCC;overflow:hidden;text-overflow:ellipsis;-o-text-overflow: ellipsis;white-space:nowrap;width:100%;}
+    .right-form .u-th-1{ width:40px; color:#1ea78d;line-height:40px ;height:40px; font-size:16px;}
+    .right-form .u-th-2{ width:400px; color:#1ea78d;line-height:40px ;height:40px; font-size:16px;}
+    .right-form .u-th-3{width:80px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
+    .right-form .u-th-4{width:80px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
+    .right-form .u-th-5{width:80px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
+    .right-form .u-th-6{width:100px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
+    .right-form .u-th-7{width:100px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
+    .right-form .u-th-do{width:210px;color:#1ea78d;line-height:40px ;height:40px;font-size:16px;}
+    
+    .right-form .odd { background:#F9F9F9;}
+    
+    .right-form .u-td-1{width:40px;}
+    .right-form .u-td-2{width:400px;}
+    .right-form .u-td-3{width:80px;}
+    .right-form .u-td-4{width:80px;}
+    .right-form .u-td-5{width:80px;}
+    .right-form .u-td-6{width:100px;}
+    .right-form .u-td-7{width:100px;}
+    .right-form .u-td-do{width:210px;}
+    .right-form .u-td-do a{ display:block; float:left; margin-left:3px;margin-top:3px ;background:url("../Images/btnbj.png") no-repeat center center; width:66px; height:24px;background-size:cover; font-size:12px; text-align:center; line-height:24px;}
     
     </style>
     <myControls:WebScript id="WebScript1" runat="server" />
@@ -65,16 +89,14 @@
             </div>
             <div class="my-left-bottom">
                 <ul>
-                <li><a href="Default.aspx" class="set-top active">个人设置</a></li>
+                <li><a href="Default.aspx" class="set-top">个人设置</a></li>
                 <li><a href="UserManager.aspx">用户管理</a></li>
                 <li><a href="WebImgManager.aspx">网站图片</a></li>
                 <li><a href="ProductManager.aspx">商品管理</a></li>
                 <li><a href="FWProductManager.aspx">摄影服务</a></li>
                 <li><a href="OrderManager.aspx">订单管理</a></li>
                 <li><a href="ZhaoPinManager.aspx">招聘信息</a></li>
-                <li><a href="ZiXunManager.aspx">资讯文章</a></li>
-                <li><a href="UploadExcel.aspx">批量上传</a></li>
-                <li><a href="UploadExcel.aspx">视频审核</a></li>
+                <li><a href="ZiXunManager.aspx" class="active">资讯文章</a></li>
                 </ul>
             </div>
         </div>
@@ -82,21 +104,36 @@
             <div class="u-right">
 
             <div class="orderTitle">
-                <a class="sel" href="Default.aspx">个人信息</a> 
-                <a href="DefaultPasswrod.aspx">修改密码</a> 
-                <a href="DefaultImg.aspx">更改头像</a>
+                <a class="sel" href="Vedio_sh.aspx">视频审核</a> 
             </div>
 
             <!--信息-->
-            <div class="data-edit">
+           <div class="data-edit">
                 <form id="form1" runat="server">
                 <div class="right-form">
                     <ul>
-                        <li><span class="form-title">用户名：</span><input class="form-txt form-readonly" id="mynametxt" type="text" runat="server" readonly ="readonly" /></li>
-                        <li><span class="form-title">真实姓名：</span><input class="form-txt" id="myreadnametxt" runat="server" type="text" /></li>
-                        <li><span class="form-title">地址：</span><input class="form-txt" id="myaddresstxt" runat="server" type="text" /></li>
-                        <li><span class="form-title">e-mail：</span><input class="form-txt" id="myemailtxt" runat="server" type="text" /></li>
-                        <li><a id="ChangeMyInformation" class="btn" href="javascript:;">确认修改</a></li>
+                        <li>
+                            <span class="u-th-1">序号</span>
+                            <span class="u-th-2">标题</span>
+                            <span class="u-th-3">审核状态</span>
+                            <span class="u-th-7">录入时间</span>
+                            <span  class="u-th-do">操作</span>
+                        </li>
+                        <asp:Repeater ID="Repeater1" runat="server">
+                            <ItemTemplate>
+                            <li>
+                                <span class="u-td-1 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Container.ItemIndex+1 %></span>
+                                <span class="u-td-2 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Eval("ProductName")%></span>
+                                <span class="u-td-3 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Convert.ToInt32(Eval("Sales"))==1?"通过":"未审核"%></span>
+                                <span class="u-td-7 <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>"><%# Convert.ToDateTime(Eval("InputTime")).ToString("yyyy-MM-dd hh:mm")%></span>
+                                <span  class="u-td-do <%# (Container.ItemIndex % 2 == 0) ? "odd" : "edd" %>">
+                                    <a href="../Vedio/Vedio_detail.aspx?item=<%# Eval("ID")%>">查看</a>
+                                     <a href="javascript:;" onclick='SHPro(<%# Eval("ID")%>)'>审核</a>
+                                    <a href="javascript:;" onclick='deletePro(<%# Eval("ID")%>)'>删除</a>
+                                    </span>
+                            </li>
+                            </ItemTemplate>
+                        </asp:Repeater>
                     </ul>
                 </div>
                 </form>
@@ -131,6 +168,44 @@
                 };
             });
         })
+        function deletePro(pid) {
+            if (confirm("确定要删除信息吗?")) {
+                yscom.ajax({
+                    url: "Action/Handler.ashx?cmd=DeletePro",
+                    data: {
+                        "ID": pid
+                    },
+                    success: function (data) {
+                        if (data.flag == "true") {
+                            alert(data.msg);
+                            window.location = 'Vedio_sh.aspx';
+                        } else {
+                            alert(data.msg);
+                        }
+                    }
+                });
+            }
+        }
+        function SHPro(pid) {
+            if (confirm("确定要通过审核吗?")) {
+                yscom.ajax({
+                    url: "Action/Handler.ashx?cmd=SHPro",
+                    data: {
+                        "ID": pid
+                    },
+                    success: function (data) {
+                        if (data.flag == "true") {
+                            alert(data.msg);
+                            window.location = 'Vedio_sh.aspx';
+                        } else {
+                            alert(data.msg);
+                        }
+                    }
+                });
+            }
+
+
+        }
     </script>
 </body>
 </html>
