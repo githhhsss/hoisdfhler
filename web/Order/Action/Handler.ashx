@@ -165,7 +165,7 @@ public class Handler : IHttpHandler
             {
                 sb.Append("<div class='Secondary-context'>");
                 sb.Append("<ul>");
-                sb.Append("<li><img style='background:url('/images/index/index_1.jpg') center bottom no-repeat; width:332px; height:219px;' /></li>");
+                sb.Append("<li><img style='background:url(../ProductImg/esImg/" + item["PriceRange"].ToString() + ") center bottom no-repeat; width:332px; height:219px;' /></li>");
                 sb.Append("<li class='Secondary-context-li'><a href='Secondary_detail.aspx?pid="+item["ID"]+"'>");
                 sb.Append("<span class='Secondary-context-li-title'>"+item["ProductName"]+"</span>");
                 sb.Append("<br /><br />");

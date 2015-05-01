@@ -7,6 +7,7 @@ using YS_WEB.BLL;
 using System.Data;
 using Maticsoft.Common.DEncrypt;
 using Maticsoft.Common;
+using System.IO;
 
 public class Handler : IHttpHandler
 {
@@ -492,12 +493,13 @@ public class Handler : IHttpHandler
     }
 
     //添加资讯
+    
     public void AddZiXun(HttpContext context)
     {
+       
         string ProductName = context.Request["txt1"];
         string ProductKey = context.Request["txt4"];
-        string Description = context.Request["txt6"];
-
+        string Description = context.Request["txt6"];;
         if (string.IsNullOrEmpty(ProductName))
         {
             context.Response.Write("{\"flag\":\"false\",\"msg\":\"标题名称不能为空\"}");

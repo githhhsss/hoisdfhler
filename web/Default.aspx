@@ -201,7 +201,7 @@
                 </div>
                 <ul>
                     <li><a id="current0" href="javascript:;"><%--最新资讯--%></a></li>
-	                <li><a id="current1" href="javascript:;"><%--行业动态--%></a></li>
+	                <li><a id="current1" href="Information/Information_main.aspx"><%--行业动态--%></a></li>
                     <li><a id="current2" href="javascript:;"><%--推荐视频--%></a></li>
                 </ul>
             </div>

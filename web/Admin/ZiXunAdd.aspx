@@ -97,21 +97,30 @@
                 <form id="form1" runat="server">
                 <div class="right-form">
                     <ul>
-                        <li><span class="form-say">产品基本信息</span></li>
+                        <li><span class="form-say">资讯基本信息</span></li>
+                        <li><span class="form-title">资讯类别:</span><select id="content" name="selse" runat="server" >
+                        <option value="8">电影丶电视剧</option>
+                         <option value="9">器材</option>
+                          <option value="10">制作</option>
+                        </select></li>
                         <li><span class="form-title">标题：</span><input class="form-txt" id="ptxt1" type="text" runat="server" /></li>
-                        <li><span class="form-title">关键字：</span><input class="form-txt" id="ptxt4" runat="server" type="text" /></li>
+                        <li><span class="form-title">关键字：</span><input class="form-txt" id="ptxt4" type="text" runat="server"  /></li>
+                           <li><span class="form-title">资讯封面：</span><asp:FileUpload ID="FileUpload1" runat="server" /></li>
                        <li><span class="form-say">内容</span>
                                <script id="editor" type="text/plain" style="width:830px; height:500px;" ></script>
                        </li>
                        <li><span style=" display:inline-block;height:5px;"></span></li>
-                        <li><a id="AddPro" class="btn" href="javascript:;">确认添加</a></li>
+                        <li><asp:LinkButton  id="AddPro" class="btn" runat="server" onclick="AddPro_Click" OnClientClick="tj_click()" >确认添加</asp:LinkButton></li>
                     </ul>
+                    <asp:HiddenField ID="HiddenField1" Value="" runat="server" />
                 </div>
+                
                 </form>
             </div>
         </div>
         <div class="clear"></div>
         </div>
+        
         <div class="clear"></div>
     </div>
 
@@ -123,27 +132,33 @@
         var ue = UE.getEditor('editor');
     </script>
     <script type="text/javascript">
-        $(function () {
-            $("#AddPro").click(function () {
-                if (confirm("确定要添加信息吗？")) {
-                    yscom.ajax({
-                        url: "Action/Handler.ashx?cmd=AddZiXun",
-                        data: {
-                            "txt1": $("#ptxt1").val(),
-                            "txt4": $("#ptxt4").val(),
-                            "txt6": UE.getEditor('editor').getContent()
-                        },
-                        success: function (data) {
-                            if (data.flag == "true") {
-                                alert(data.msg);
-                            } else {
-                                alert(data.msg);
-                            }
-                        }
-                    });
-                };
-            });
-        })
+//        $(function () {
+//            $("#AddPro").click(function () {
+//                if (confirm("确定要添加信息吗？")) {
+//                    yscom.ajax({
+//                        url: "Action/Handler.ashx?cmd=AddZiXun",
+//                        data: {
+//                            "txt1": $("#ptxt1").val(),
+//                            "txt4": $("#ptxt4").val(),
+//                            "txt6": UE.getEditor('editor').getContent(),
+//                            "file10": $("#file1").val()
+//                        },
+//                        success: function (data) {
+//                            if (data.flag == "true") {
+//                                alert(data.msg);
+//                            } else {
+//                                alert(data.msg);
+//                            }
+//                        }
+//                    });
+//                };
+//            });
+//        })
+        function tj_click() {
+            if ($("#HiddenField1") != null) {
+                $("#HiddenField1").attr("value",UE.getEditor('editor').getContent());
+            }
+        }
     </script>
 </body>
 </html>
