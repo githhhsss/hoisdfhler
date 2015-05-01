@@ -60,11 +60,11 @@ public partial class User_Default : System.Web.UI.Page
             string fileType = FileUpload1.FileName.Substring(FileUpload1.FileName.LastIndexOf('.')).ToLower();
             if (fileType == ".jpg" || fileType == ".jpeg" || fileType == ".png" || fileType == ".gif")
             {
-                if (!FileOper.ExistsFold(Server.MapPath("~/InformationImg/")))
+                if (!FileOper.ExistsFold(Server.MapPath("~/Information/InformationImg/")))
                 {
-                    FileOper.CreateFold(Server.MapPath("~/InformationImg/"));
+                    FileOper.CreateFold(Server.MapPath("~/Information/InformationImg/"));
                 }
-                fileMessage = FileOper.UploadFile(FileUpload1, Server.MapPath("~/InformationImg/"), true);
+                fileMessage = FileOper.UploadFile(FileUpload1, Server.MapPath("~/Information/InformationImg/"), true);
                 try
                 {
                     string ProductName = ptxt1.Value;

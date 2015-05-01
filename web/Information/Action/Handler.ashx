@@ -53,7 +53,7 @@ public class Handler : IHttpHandler {
                 sb.Append("<div class='Photography-context'>");
                 sb.Append("<ul>");
                 sb.Append("<li>");
-                sb.Append("<img style='width: 332px; height: 219px;' src='/InformationImg/" + item["PriceRange"] + "' /></li>");
+                sb.Append("<img style='width: 332px; height: 219px;' src='InformationImg/" + item["PriceRange"] + "' /></li>");
                 sb.Append("<li class='Photography-context-li'><a href='Information_detail.aspx?pid=" + item["ID"] + "'><span class='Photography-context-li-title'>" + item["ProductName"] + "</span>");
                 sb.Append("<br />");
                 sb.Append("<br />");
@@ -90,7 +90,7 @@ public class Handler : IHttpHandler {
                 sb.Append("<div class='Photography-context'>");
                 sb.Append("<ul>");
                 sb.Append("<li>");
-                sb.Append("<img style='width: 332px; height: 219px;' src='/InformationImg/" + item["PriceRange"] + "' /></li>");
+                sb.Append("<img style='width: 332px; height: 219px;' src='InformationImg/" + item["PriceRange"] + "' /></li>");
                 sb.Append("<li class='Photography-context-li'><a href='Information_detail.aspx?pid=" + item["ID"] + "'><span class='Photography-context-li-title'>" + item["ProductName"] + "</span>");
                 sb.Append("<br />");
                 sb.Append("<br />");
@@ -127,7 +127,7 @@ public class Handler : IHttpHandler {
                 sb.Append("<div class='Photography-context'>");
                 sb.Append("<ul>");
                 sb.Append("<li>");
-                sb.Append("<img style='width: 332px; height: 219px;' src='/InformationImg/" + item["PriceRange"] + "' /></li>");
+                sb.Append("<img style='width: 332px; height: 219px;' src='InformationImg/" + item["PriceRange"] + "' /></li>");
                 sb.Append("<li class='Photography-context-li'><a href='Information_detail.aspx?pid=" + item["ID"] + "'><span class='Photography-context-li-title'>" + item["ProductName"] + "</span>");
                 sb.Append("<br />");
                 sb.Append("<br />");
