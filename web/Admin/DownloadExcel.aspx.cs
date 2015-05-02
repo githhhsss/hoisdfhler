@@ -14,9 +14,13 @@ using Microsoft.Office.Core;
 using Microsoft.Office.Interop.Excel;
 using System.IO;
 using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Configuration; 
 
 public partial class Admin_DownloadExcel : System.Web.UI.Page
 {
+    [DllImport("User32.dll", CharSet = CharSet.Auto)]
+    public static extern int GetWindowThreadProcessId(IntPtr hwnd, out int ID); 
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -25,4 +29,5 @@ public partial class Admin_DownloadExcel : System.Web.UI.Page
     {
 
     }
+
 }
