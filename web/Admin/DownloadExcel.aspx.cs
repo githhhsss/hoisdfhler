@@ -45,18 +45,18 @@ public partial class Admin_DownloadExcel : System.Web.UI.Page
         DataRow[] myRow = dt.Select();//可以类似dt.Select("id>10")之形式达到数据筛选目的
         int i = 0;
         int cl = dt.Columns.Count;
-
+        object[] myhead = { "序号", "商品名称", "价格", "库存", "关键字", "图片路径", "产品介绍" };
 
         //取得数据表各列标题，各标题之间以\t分割，最后一个列标题后加回车符
         for (i = 0; i < cl; i++)
         {
             if (i == (cl - 1))//最后一列，加\n
             {
-                colHeaders += dt.Columns[i].Caption.ToString() + "\n";
+                colHeaders += myhead[i].ToString() + "\n";
             }
             else
             {
-                colHeaders += dt.Columns[i].Caption.ToString() + "\t";
+                colHeaders += myhead[i].ToString() + "\t";
             }
 
         }
