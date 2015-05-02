@@ -91,7 +91,8 @@
                 <form id="form1" runat="server">
                 <div class="right-form">
                     <ul>
-                        <li><a id="ChangeMyInformation" class="btn" href="../商品.xls">确认下载</a></li>
+                        <li><asp:LinkButton id="ChangeMyInformation" class="btn" runat="server" 
+                                onclick="ChangeMyInformation_Click">确认下载</asp:LinkButton></li>
                     </ul>
                 </div>
                 </form>

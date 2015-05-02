@@ -11,4 +11,8 @@ public partial class Admin_DownloadExcel : System.Web.UI.Page
     {
 
     }
+    protected void ChangeMyInformation_Click(object sender, EventArgs e)
+    {
+
+    }
 }
