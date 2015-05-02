@@ -248,6 +248,7 @@
                     <li><a href="ZhaoPinManager.aspx">招聘信息</a></li>
                     <li><a href="ZiXunManager.aspx">资讯文章</a></li>
                     <li><a href="UploadExcel.aspx">批量上传</a></li>
+                    <li><a href="Vedio_sh.aspx">视频审核</a></li>
                 </ul>
             </div>
         </div>
@@ -259,13 +260,12 @@
                 </div>
                 <!--信息-->
                 <div class="data-edit">
-                 
                     <div class="right-form">
                         <ul>
                             <li>
                                 <div id="fileQueue">
                                 </div>
-                                 <input type="file" name="uploadify" id="uploadify" />
+                                <input type="file" name="uploadify" id="uploadify" />
                                 <p>
                                     <a href="javascript:$('#uploadify').uploadifyUpload()">上传</a>| <a href="javascript:$('#uploadify').uploadifyClearQueue()">
                                         取消上传</a>
@@ -277,7 +277,6 @@
             </div>
             <div class="clear">
             </div>
-
         </div>
         <div class="clear">
         </div>
@@ -295,7 +294,7 @@
                 'multi': true,
                 'fileExt': '*.jpg;*.gif;*.png'
             });
-        });  
+        });
         $(function () {
             $("#ChangeMyInformation").click(function () {
                 if (confirm("确定要修改信息吗？")) {

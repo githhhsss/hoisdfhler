@@ -74,7 +74,7 @@
                 <li><a href="ZhaoPinManager.aspx">招聘信息</a></li>
                 <li><a href="ZiXunManager.aspx">资讯文章</a></li>
                 <li><a href="UploadExcel.aspx">批量上传</a></li>
-                <li><a href="UploadExcel.aspx">视频审核</a></li>
+                <li><a href="Vedio_sh.aspx">视频审核</a></li>
                 </ul>
             </div>
         </div>

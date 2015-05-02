@@ -1,11 +1,10 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="OrderManagerD.aspx.cs" Inherits="User_Default" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title></title>
-    <myControls:WebStyle id="WebStyle1" runat="server" />
+    <myControls:WebStyle ID="WebStyle1" runat="server" />
     <style type="text/css">
     .my-left{ float:left; width:400px;}
     .my-left-top{ margin-left:30px; margin-top:85px; border:1px solid #ccc; width:312px; background:#FFF}
@@ -49,81 +48,120 @@
     
     
     </style>
-    <myControls:WebScript id="WebScript1" runat="server" />
+    <myControls:WebScript ID="WebScript1" runat="server" />
 </head>
 <body>
-    <myControls:WebTop id="WebTop1" runat="server" />
-
+    <myControls:WebTop ID="WebTop1" runat="server" />
     <div class="web-page">
         <div class="my-left">
             <div class="my-left-top">
                 <ul>
-                    <li><img class="headimg" src="~/User/UserPic/u_face.jpg" id="headImg" runat="server" /></li>
+                    <li>
+                        <img class="headimg" src="~/User/UserPic/u_face.jpg" id="headImg" runat="server" /></li>
                     <li>
                         <div class="myName">
                             <span class="myName-name" id="name" runat="server"></span>
                             <br />
                             <span id="readName" runat="server"></span>/<span id="city" runat="server"></span>
-                            <div></div>
+                            <div>
+                            </div>
                         </div>
                     </li>
-                    <li><div class="my-mun"><span id="renqi" runat="server"></span> 人气</div></li>
-                    <li><div class="my-mun"><span id="jifen" runat="server"></span> 积分</div></li>
-                    <li><div class="my-mun"><span id="fensi" runat="server"></span> 粉丝 / <span id="guanzhu" runat="server"></span> 关注</div></li>
+                    <li>
+                        <div class="my-mun">
+                            <span id="renqi" runat="server"></span>人气</div>
+                    </li>
+                    <li>
+                        <div class="my-mun">
+                            <span id="jifen" runat="server"></span>积分</div>
+                    </li>
+                    <li>
+                        <div class="my-mun">
+                            <span id="fensi" runat="server"></span>粉丝 / <span id="guanzhu" runat="server"></span>
+                            关注</div>
+                    </li>
                 </ul>
             </div>
             <div class="my-left-bottom">
                 <ul>
-                <li><a href="Default.aspx" class="set-top">个人设置</a></li>
-                <li><a href="UserManager.aspx">用户管理</a></li>
-                <li><a href="WebImgManager.aspx">网站图片</a></li>
-                <li><a href="ProductManager.aspx">商品管理</a></li>
-                <li><a href="FWProductManager.aspx">摄影服务</a></li>
-                <li><a href="OrderManager.aspx" class="active">订单管理</a></li>
-                <li><a href="ZhaoPinManager.aspx">招聘信息</a></li>
-                <li><a href="ZiXunManager.aspx">资讯文章</a></li>
+                    <li><a href="Default.aspx" class="set-top">个人设置</a></li>
+                    <li><a href="UserManager.aspx">用户管理</a></li>
+                    <li><a href="WebImgManager.aspx">网站图片</a></li>
+                    <li><a href="ProductManager.aspx">商品管理</a></li>
+                    <li><a href="FWProductManager.aspx">摄影服务</a></li>
+                    <li><a href="OrderManager.aspx" class="active">订单管理</a></li>
+                    <li><a href="ZhaoPinManager.aspx">招聘信息</a></li>
+                    <li><a href="ZiXunManager.aspx">资讯文章</a></li>
+                    <li><a href="UploadExcel.aspx">批量上传</a></li>
+                    <li><a href="Vedio_sh.aspx">视频审核</a></li>
                 </ul>
             </div>
         </div>
         <div class="my-right">
             <div class="u-right">
-
-            <div class="orderTitle">
-                <a href="OrderManager.aspx">订单列表</a> 
-                <a class="sel" href="OrderManagerD.aspx">待发货订单</a> 
-            </div>
-
-            <!--信息-->
-            <div class="data-edit">
-                <form id="form1" runat="server">
-                <div class="right-form">
-                    <div class="zx-body">
-       <table cellpadding=0 cellspacing=0>
-            <tr><th style="border-left:0;width:205px">下单时间</th><th style="width:120px">收货人</th><th style="width:100px">订单金额</th><th style="width:100px">订单状态</th>
-                <th> 操作</th></tr>
-             <asp:Repeater ID="Repeater1" runat="server">
-                <ItemTemplate>
-                    <tr><td><%# Convert.ToDateTime(Eval("AddTime")).ToString("yyyy-MM-dd HH:mm")%></td>
-                    <td><%# Eval("DeliveryName")%></td>
-                    <td><%# Convert.ToDecimal( Eval("Price")).ToString("f2")%></td>
-                    <td><%# (YS_WEB.Model.YS_Enum.OrderState)Eval("State")%></td>
-                    <td><a onclick="query(<%# Eval("ID")%>)" href="javascript:;">查看</a> / <a onclick="fh(<%# Eval("ID")%>)" href="javascript:;">发货</a></td></tr>
-             </ItemTemplate>
-            </asp:Repeater>
-       </table>
-       </div>
+                <div class="orderTitle">
+                    <a href="OrderManager.aspx">订单列表</a> <a class="sel" href="OrderManagerD.aspx">待发货订单</a>
                 </div>
-                </form>
+                <!--信息-->
+                <div class="data-edit">
+                    <form id="form1" runat="server">
+                    <div class="right-form">
+                        <div class="zx-body">
+                            <table cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <th style="border-left: 0; width: 205px">
+                                        下单时间
+                                    </th>
+                                    <th style="width: 120px">
+                                        收货人
+                                    </th>
+                                    <th style="width: 100px">
+                                        订单金额
+                                    </th>
+                                    <th style="width: 100px">
+                                        订单状态
+                                    </th>
+                                    <th>
+                                        操作
+                                    </th>
+                                </tr>
+                                <asp:Repeater ID="Repeater1" runat="server">
+                                    <ItemTemplate>
+                                        <tr>
+                                            <td>
+                                                <%# Convert.ToDateTime(Eval("AddTime")).ToString("yyyy-MM-dd HH:mm")%>
+                                            </td>
+                                            <td>
+                                                <%# Eval("DeliveryName")%>
+                                            </td>
+                                            <td>
+                                                <%# Convert.ToDecimal( Eval("Price")).ToString("f2")%>
+                                            </td>
+                                            <td>
+                                                <%# (YS_WEB.Model.YS_Enum.OrderState)Eval("State")%>
+                                            </td>
+                                            <td>
+                                                <a onclick="query(<%# Eval("ID")%>)" href="javascript:;">查看</a> / <a onclick="fh(<%# Eval("ID")%>)"
+                                                    href="javascript:;">发货</a>
+                                            </td>
+                                        </tr>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                            </table>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <div class="clear">
             </div>
         </div>
-        <div class="clear"></div>
+        <div class="clear">
         </div>
-        <div class="clear"></div>
     </div>
-
-    <mycontrols:webFoot id="WebFoot1" runat="server"/>
+    <myControls:WebFoot ID="WebFoot1" runat="server" />
     <script type="text/javascript">
-        
+
         function query(oid) {
             $('#orderItem').show();
             yscom.ajax({
@@ -156,12 +194,17 @@
 
         }
     </script>
-    <div id="orderItem" style=" display:none;z-index:100; position:fixed; left:0px;right:0px;top:100px;margin-left:auto; margin-right:auto; height:600px;width:800px; overflow:auto; background:#FFF; border:5px solid #1ea78d;">
-        <div style=" height:40px; border-bottom: 1px solid #CCC; text-align:center; line-height:40px; background:#eee;"> 订单明细
-            <a onclick="$('#orderItem').hide();$('#orderItemhtml').html('')" href="javascript:;" style=" display:block ; position:absolute; right:5px; top:5px;height:30px; width:30px; background:red; color:#FFF; font-size:30px; text-align:center; line-height:30px; font-weight:bold;">×</a>
+    <div id="orderItem" style="display: none; z-index: 100; position: fixed; left: 0px;
+        right: 0px; top: 100px; margin-left: auto; margin-right: auto; height: 600px;
+        width: 800px; overflow: auto; background: #FFF; border: 5px solid #1ea78d;">
+        <div style="height: 40px; border-bottom: 1px solid #CCC; text-align: center; line-height: 40px;
+            background: #eee;">
+            订单明细 <a onclick="$('#orderItem').hide();$('#orderItemhtml').html('')" href="javascript:;"
+                style="display: block; position: absolute; right: 5px; top: 5px; height: 30px;
+                width: 30px; background: red; color: #FFF; font-size: 30px; text-align: center;
+                line-height: 30px; font-weight: bold;">×</a>
         </div>
         <div id="orderItemhtml">
-        
         </div>
     </div>
 </body>
