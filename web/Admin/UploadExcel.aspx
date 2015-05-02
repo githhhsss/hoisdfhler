@@ -93,7 +93,8 @@
                     <ul>
                         <li><span class="form-say">选择EXCEL文件</span></li>
                       <li><asp:FileUpload ID="FileUpload1" runat="server" /></li>
-                        <li><a id="ChangeMyInformation" class="btn" href="javascript:;">确认上传</a></li>
+                        <li><a id="ChangeMyInformation" class="btn" href="javascript:;">确认上传</a><asp:Button
+                            ID="Button1" runat="server" Text="Button"  style=" display:none;" onclick="Button1_Click"/></li>
                     </ul>
                 </div>
                 </form>
@@ -108,24 +109,25 @@
     <script type="text/javascript">
         $(function () {
             $("#ChangeMyInformation").click(function () {
-                if (confirm("确定要修改信息吗？")) {
-                    yscom.ajax({
-                        url: "Action/Handler.ashx?cmd=ChangeMyInformation",
-                        data: {
-                            "username": $("#mynametxt").val(),
-                            "readname": $("#myreadnametxt").val(),
-                            "address": $("#myaddresstxt").val(),
-                            "e_mail": $("#myemailtxt").val()
-                        },
-                        success: function (data) {
-                            if (data.flag == "true") {
-                                alert(data.msg);
-                            } else {
-                                alert(data.msg);
-                            }
-                        }
-                    });
-                };
+                $("#Button1").click(); 
+                //                if (confirm("确定要修改信息吗？")) {
+                //                    yscom.ajax({
+                //                        url: "Action/Handler.ashx?cmd=ChangeMyInformation",
+                //                        data: {
+                //                            "username": $("#mynametxt").val(),
+                //                            "readname": $("#myreadnametxt").val(),
+                //                            "address": $("#myaddresstxt").val(),
+                //                            "e_mail": $("#myemailtxt").val()
+                //                        },
+                //                        success: function (data) {
+                //                            if (data.flag == "true") {
+                //                                alert(data.msg);
+                //                            } else {
+                //                                alert(data.msg);
+                //                            }
+                //                        }
+                //                    });
+                //                };
             });
         })
     </script>

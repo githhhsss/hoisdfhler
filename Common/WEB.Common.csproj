@@ -141,6 +141,7 @@
     <Compile Include="FileMessage.cs" />
     <Compile Include="FileOper.cs" />
     <Compile Include="HttpProc.cs" />
+    <Compile Include="LinkOffice.cs" />
     <Compile Include="MailSender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
