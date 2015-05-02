@@ -83,6 +83,7 @@
             <div class="orderTitle">
                 <a  href="UploadExcel.aspx">上传资料</a> 
                 <a class="sel" href="DownloadExcel.aspx">下载资料</a> 
+                <a  href="UploadPic.aspx">上传图片</a> 
             </div>
 
             <!--信息-->
