@@ -15,19 +15,70 @@ using Microsoft.Office.Interop.Excel;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Configuration; 
+using System.Configuration;
+using Maticsoft.DBUtility;
 
 public partial class Admin_DownloadExcel : System.Web.UI.Page
 {
     [DllImport("User32.dll", CharSet = CharSet.Auto)]
-    public static extern int GetWindowThreadProcessId(IntPtr hwnd, out int ID); 
+    public static extern int GetWindowThreadProcessId(IntPtr hwnd, out int ID);
     protected void Page_Load(object sender, EventArgs e)
     {
 
     }
     protected void ChangeMyInformation_Click(object sender, EventArgs e)
     {
-
+        DataSet ds = DbHelperSQL.Query("select id,ProductName,Price,Stock,ProductKey,ProductAddress,Description from YS_Product where ProductType in (1)");
+        exportToExcel(ds.Tables[0],"商品资料");
     }
+    ///
+    /// 将DataTable导入到Excel中
+    ///
+    /// 数据源
+    /// 目标Excel
+    public void exportToExcel(System.Data.DataTable dt, string filename)
+    {
+        try
+        {
+            //需要添加.Net中的引用
+            Microsoft.Office.Interop.Excel.Application myExcel = new Microsoft.Office.Interop.Excel.Application();//创建Excel
+            myExcel.Visible = true;
+            Microsoft.Office.Interop.Excel.Workbooks myWorkbooks = myExcel.Workbooks;//创建Excel工作表
+            Microsoft.Office.Interop.Excel.Workbook myWorkbook = myWorkbooks.Add(System.Reflection.Missing.Value);//创建工作表
+            //创建Sheet
+            Microsoft.Office.Interop.Excel.Worksheet myWorksheet = (Microsoft.Office.Interop.Excel.Worksheet)myWorkbook.Worksheets[1];
 
+            Microsoft.Office.Interop.Excel.Range myrange = myWorksheet.get_Range("C1", "D1");//获取存储范围
+
+
+            object[] myhead = { "序号", "商品名称","价格","库存","关键字","图片路径","产品介绍" };//表头
+            myrange.Value2 = myhead;
+            if (dt.Rows.Count > 0)
+            {
+                myrange = myWorksheet.get_Range("A2", System.Reflection.Missing.Value);
+                int row = dt.Rows.Count;
+                int col = dt.Columns.Count;
+                object[,] mydata = new object[row, col];
+                for (int i = 0; i < row; i++)
+                {
+                    for (int j = 0; j < col; j++)
+                    {
+                        mydata[i, j] = dt.Rows[i][j].ToString();
+                    }
+                }
+                myrange = myrange.get_Resize(row, col);
+                myrange.Value2 = mydata;
+                myrange.EntireColumn.AutoFit();//调整列宽为自动列宽
+            }
+            if (File.Exists(filename))
+                File.Delete(filename);
+            object missing = System.Reflection.Missing.Value;
+            myWorkbook.SaveAs(filename, missing, missing, missing, missing, missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlNoChange, missing, missing, missing, missing, missing);
+            myExcel = null;//清空表单
+        }
+        catch (Exception ex)
+        {
+            // MessageBox.Show(ex.Message);
+        }
+    }
 }
