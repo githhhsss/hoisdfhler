@@ -55,7 +55,7 @@
     <form id="form1" runat="server">
         <div class="zx-body-item">
             <table cellpadding=0 cellspacing=0>
-            <tr><th style="border-left:0;">商品名称</th><th style="width:120px">单价</th><th style="width:100px">订单数量</th><th style="width:100px">库存</th><th style="width:100px">操作</th>
+            <tr><th style="border-left:0;">商品名称</th><th style="width:120px">单价</th><th style="width:100px">订单数量</th><th style="width:100px">库存</th><th style="width:120px">地址</th><th style="width:100px">操作</th>
                 </tr>
              <asp:Repeater ID="Repeater2" runat="server">
                 <ItemTemplate>
@@ -67,6 +67,7 @@
                     <td><%# pbll.GetModel( Convert.ToInt32(Eval("ProductID")))!=null? pbll.GetModel( Convert.ToInt32(Eval("ProductID"))).Price.ToString("f2") :"0.00" %></td>
                     <td><%# Eval("Num") %></td>
                     <td><%# pbll.GetModel(Convert.ToInt32(Eval("ProductID"))) != null ? pbll.GetModel(Convert.ToInt32(Eval("ProductID"))).Stock : 0%></td>
+                    <td>  <%# obll.GetModel(Convert.ToInt32(Eval("OrderID"))) != null ? obll.GetModel(Convert.ToInt32(Eval("OrderID"))).DeliverAddress : ""%></td>
                     <td class="btn"><a 
                         class='<%# ((cbll.GetModel( Convert.ToInt32(Eval("ID")))!=null)||(obll.GetModel(Convert.ToInt32(Eval("OrderID")),true).State != YS_WEB.Model.YS_Enum.OrderState.已完成))?"huise":"hongse" %>' 
                         onclick='<%# ((cbll.GetModel( Convert.ToInt32(Eval("ID")))!=null)||(obll.GetModel(Convert.ToInt32(Eval("OrderID")),true).State != YS_WEB.Model.YS_Enum.OrderState.已完成))?"bp()":"pj("+ Eval("ID") +")" %>' 

@@ -182,7 +182,7 @@ namespace YS_WEB.DAL
 		public DataSet GetList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID,OrderID,ProductID,Num ");
+            strSql.Append("select ID,OrderID,ProductID,Num ");
 			strSql.Append(" FROM YS_OrderItem ");
 			if(strWhere.Trim()!="")
 			{

@@ -379,7 +379,7 @@
             <div class="u-right">
                 <div class="orderTitle">
                     <a class="sel" href="ZiXunManager.aspx">资讯文章</a> <a href="ZiXunAdd.aspx">添加资讯</a>
-                    <a target="_blank" href="ZiXunQuery.aspx">查看资讯</a> <a href="ZiXunUpdate.aspx">修改资讯</a>
+                    <a target="_blank" href="javascript:;">查看资讯</a> <a href="ZiXunUpdate.aspx">修改资讯</a>
                 </div>
                 <!--信息-->
                 <div class="data-edit">
