@@ -9,7 +9,6 @@
     <style type="text/css">
         .web-page
         {
-            height: 1800px;
             background-color: #d4d4d4;
             position: relative;
         }
