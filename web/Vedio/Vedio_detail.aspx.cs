@@ -30,5 +30,6 @@ public partial class Vedio_Vedio_detail : System.Web.UI.Page
 
         }
         this.zptxt7.InnerHtml = p.ProductName;
+        this.ms.InnerHtml = p.Description;
     }
 }

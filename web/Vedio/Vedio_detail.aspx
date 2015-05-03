@@ -92,6 +92,16 @@
             margin-right: 110px;
              text-align:center;
         }
+        .ms
+        {
+            font-family: 造字工房雅圆（非商用）常规体;
+            font-size: 27px;
+        }
+        .msdiv
+        {
+             margin-left:110px;
+             margin-top:70px;
+        }
     </style>
 </head>
 <body onload="scroll()">
@@ -107,6 +117,9 @@
                 <div id="fwlist">
                 </div>
             </div>
+            <div class="msdiv">
+             <span class="ms" id="ms" runat="server"></span>
+             </div>
         </div>
     </div>
     <script type="text/javascript">
