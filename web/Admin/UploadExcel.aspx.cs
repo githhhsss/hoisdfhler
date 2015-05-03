@@ -9,12 +9,13 @@ using System.IO;
 using YS_WEB.BLL;
 using YS_WEB.Model;
 using Maticsoft.Common;
+using Maticsoft.DBUtility;
 
 public partial class Admin_UploadExcel : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        如果未登陆，转到登陆页
+        //如果未登陆，转到登陆页
         if (string.IsNullOrEmpty(Tool.CookieGet("UserName")))
         {
             Response.Redirect("Login.aspx");
