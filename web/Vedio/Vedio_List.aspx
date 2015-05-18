@@ -12,7 +12,7 @@
         }
         .Photography-imgtype
         {
-            background: url('/images/Vedio/title.png') center bottom no-repeat;
+            background: url('/images/Vedio/line.png') center bottom no-repeat;
             width: 727px;
             height: 65px;
             margin-left: 320px;
@@ -21,6 +21,7 @@
             font-size: 40px;
             color: #0eb493;
             text-align: center;
+            font-weight:bold;
         }
         .Photography-context
         {
