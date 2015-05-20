@@ -40,6 +40,8 @@ public class Handler : IHttpHandler {
         YS_ProductBLL pbll = new YS_ProductBLL();
         int sItem = Convert.ToInt32(context.Request["sItem"]);
         StringBuilder sb = new StringBuilder();
+        string ProductName = string.Empty;
+        string ProductKey = string.Empty;
         try
         {
             DataSet ds = pbll.GetListByPage("ProductType in(10)", "id desc", sItem, sItem);
@@ -50,15 +52,33 @@ public class Handler : IHttpHandler {
             }
             foreach (DataRow item in ds.Tables[0].Rows)
             {
+                if (Convert.ToInt32(item["ProductName"].ToString().Length) > 18)
+                {
+                    ProductName = item["ProductName"].ToString().Substring(0, 17) + "...";
+                }
+                else
+                {
+                    ProductName = item["ProductName"].ToString();
+
+                }
+                if (Convert.ToInt32(item["ProductKey"].ToString().Length) > 30)
+                {
+                    ProductKey = item["ProductKey"].ToString().Substring(0, 27) + "...";
+                }
+                else
+                {
+                    ProductKey = item["ProductKey"].ToString();
+
+                }
                 sb.Append("<div class='Photography-context'>");
                 sb.Append("<ul>");
                 sb.Append("<li>");
                 sb.Append("<img style='width: 332px; height: 219px;' src='InformationImg/" + item["PriceRange"] + "' /></li>");
-                sb.Append("<li class='Photography-context-li'><a href='Information_detail.aspx?pid=" + item["ID"] + "'><span class='Photography-context-li-title'>" + item["ProductName"] + "</span>");
+                sb.Append("<li class='Photography-context-li'><a href='Information_detail.aspx?pid=" + item["ID"] + "'><span class='Photography-context-li-title'>" + ProductName + "</span>");
                 sb.Append("<br />");
                 sb.Append("<br />");
               //  sb.Append("<span>价格：￥" + Convert.ToDecimal(item["Price"]).ToString("f2") + "&nbsp;&nbsp;联系人：" + item["ProductMan"] + "&nbsp;&nbsp;电话：" + item["ProductPhone"] + "</span></a> </li>");
-                sb.Append("<span>" + item["ProductKey"] + "</span></a> </li>");
+                sb.Append("<span>" + ProductKey + "</span></a> </li>");
                 sb.Append("</ul>");
                 sb.Append("<div class='Photography-context-line'>");
                 sb.Append("<hr /></div></div>");
@@ -77,6 +97,8 @@ public class Handler : IHttpHandler {
         YS_ProductBLL pbll = new YS_ProductBLL();
         int sItem = Convert.ToInt32(context.Request["sItem"]);
         StringBuilder sb = new StringBuilder();
+        string ProductName = string.Empty;
+        string ProductKey = string.Empty;
         try
         {
             DataSet ds = pbll.GetListByPage("ProductType in(9)", "id desc", sItem, sItem);
@@ -87,15 +109,33 @@ public class Handler : IHttpHandler {
             }
             foreach (DataRow item in ds.Tables[0].Rows)
             {
+                if (Convert.ToInt32(item["ProductName"].ToString().Length) > 18)
+                {
+                    ProductName = item["ProductName"].ToString().Substring(0, 17) + "...";
+                }
+                else
+                {
+                    ProductName = item["ProductName"].ToString();
+
+                }
+                if (Convert.ToInt32(item["ProductKey"].ToString().Length) > 30)
+                {
+                    ProductKey = item["ProductKey"].ToString().Substring(0, 27) + "...";
+                }
+                else
+                {
+                    ProductKey = item["ProductKey"].ToString();
+
+                }
                 sb.Append("<div class='Photography-context'>");
                 sb.Append("<ul>");
                 sb.Append("<li>");
                 sb.Append("<img style='width: 332px; height: 219px;' src='InformationImg/" + item["PriceRange"] + "' /></li>");
-                sb.Append("<li class='Photography-context-li'><a href='Information_detail.aspx?pid=" + item["ID"] + "'><span class='Photography-context-li-title'>" + item["ProductName"] + "</span>");
+                sb.Append("<li class='Photography-context-li'><a href='Information_detail.aspx?pid=" + item["ID"] + "'><span class='Photography-context-li-title'>" + ProductName + "</span>");
                 sb.Append("<br />");
                 sb.Append("<br />");
                 //  sb.Append("<span>价格：￥" + Convert.ToDecimal(item["Price"]).ToString("f2") + "&nbsp;&nbsp;联系人：" + item["ProductMan"] + "&nbsp;&nbsp;电话：" + item["ProductPhone"] + "</span></a> </li>");
-                sb.Append("<span>" + item["ProductKey"] + "</span></a> </li>");
+                sb.Append("<span>" + ProductKey + "</span></a> </li>");
                 sb.Append("</ul>");
                 sb.Append("<div class='Photography-context-line'>");
                 sb.Append("<hr /></div></div>");
@@ -114,6 +154,8 @@ public class Handler : IHttpHandler {
         YS_ProductBLL pbll = new YS_ProductBLL();
         int sItem = Convert.ToInt32(context.Request["sItem"]);
         StringBuilder sb = new StringBuilder();
+        string ProductName = string.Empty;
+        string ProductKey = string.Empty;
         try
         {
             DataSet ds = pbll.GetListByPage("ProductType in(8)", "id desc", sItem, sItem);
@@ -124,15 +166,33 @@ public class Handler : IHttpHandler {
             }
             foreach (DataRow item in ds.Tables[0].Rows)
             {
+                if (Convert.ToInt32(item["ProductName"].ToString().Length) > 18)
+                {
+                    ProductName = item["ProductName"].ToString().Substring(0, 17) + "...";
+                }
+                else
+                {
+                    ProductName = item["ProductName"].ToString();
+
+                }
+                if (Convert.ToInt32(item["ProductKey"].ToString().Length) > 30)
+                {
+                    ProductKey = item["ProductKey"].ToString().Substring(0, 27) + "...";
+                }
+                else
+                {
+                    ProductKey = item["ProductKey"].ToString();
+
+                }
                 sb.Append("<div class='Photography-context'>");
                 sb.Append("<ul>");
                 sb.Append("<li>");
                 sb.Append("<img style='width: 332px; height: 219px;' src='InformationImg/" + item["PriceRange"] + "' /></li>");
-                sb.Append("<li class='Photography-context-li'><a href='Information_detail.aspx?pid=" + item["ID"] + "'><span class='Photography-context-li-title'>" + item["ProductName"] + "</span>");
+                sb.Append("<li class='Photography-context-li'><a href='Information_detail.aspx?pid=" + item["ID"] + "'><span class='Photography-context-li-title'>" + ProductName + "</span>");
                 sb.Append("<br />");
                 sb.Append("<br />");
                 //  sb.Append("<span>价格：￥" + Convert.ToDecimal(item["Price"]).ToString("f2") + "&nbsp;&nbsp;联系人：" + item["ProductMan"] + "&nbsp;&nbsp;电话：" + item["ProductPhone"] + "</span></a> </li>");
-                sb.Append("<span>" + item["ProductKey"] + "</span></a> </li>");
+                sb.Append("<span>" + ProductKey + "</span></a> </li>");
                 sb.Append("</ul>");
                 sb.Append("<div class='Photography-context-line'>");
                 sb.Append("<hr /></div></div>");
