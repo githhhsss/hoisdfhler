@@ -46,7 +46,7 @@
         .Photography-context .Photography-context-li .Photography-context-li-title
         {
             color: #376d97;
-            font-size: 22px;
+            font-size: 18px;
             font-weight: bold;
             margin-bottom: 20px;
         }
