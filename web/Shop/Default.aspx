@@ -173,7 +173,7 @@
             <div class="sc-meun-right"></div>
         </div>
 
-        <div class="sc-center">
+        <%--<div class="sc-center">
             <ul>
                 <li><a href="#"><img class="sc-center-img sc-center-img1" src="../Images/shop/yt.jpg" /></a></li>
                 <li><a href="#"><img class="sc-center-img" src="../Images/shop/2.jpg" /></a></li>
@@ -184,7 +184,7 @@
                 <li><a href="#"><img class="sc-center-img" src="../Images/shop/7.jpg" /></a></li>
                 <li><a href="#"><img class="sc-center-img sc-center-img1" src="../Images/shop/8.jpg" /></a></li>
             </ul>
-        </div>
+        </div>--%>
 
         <div class="sc-centent sc-width">
             <div class="sc-centent-1">
