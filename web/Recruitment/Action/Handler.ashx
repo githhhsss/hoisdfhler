@@ -40,10 +40,22 @@ public class Handler : IHttpHandler
         YS_ProductBLL pbll = new YS_ProductBLL();
         int sItem = Convert.ToInt32(context.Request["sItem"]);
         string searchPro = context.Request["searchPro"];
+        string rel = context.Request["rel"];
+        string sql = string.Empty;
         StringBuilder sb = new StringBuilder();
         try
         {
-            DataSet ds = pbll.GetListByPage("ProductType in(4) and (ProductName like '%" + searchPro + "%' or ProductXinJiu like '%" + searchPro + "%')", "id desc", sItem, sItem);
+            if (!rel.Equals("其他"))
+            {
+                sql = "ProductType in(4) and (ProductName like '%" + searchPro + "%' and ProductXinJiu  like '%" + rel + "%')";
+
+            }
+            else
+            {
+                sql = "ProductType in(4) and (ProductName like '%" + searchPro + "%' and ProductXinJiu Not  like '%北京%' and ProductXinJiu Not  like '%上海%' and ProductXinJiu Not  like '%广州%' and ProductXinJiu Not  like '%深圳%')";
+
+            }
+            DataSet ds = pbll.GetListByPage(sql, "id desc", sItem, sItem);
             if (ds.Tables[0].Rows.Count <= 0)
             {
                 context.Response.Write("{\"flag\":\"true\",\"msg\":\"加载完\"}");
