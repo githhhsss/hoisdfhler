@@ -41,6 +41,8 @@ public class Handler : IHttpHandler {
         int sItem = Convert.ToInt32(context.Request["sItem"]);
         int stock = Convert.ToInt32(context.Request["stock"]);
         StringBuilder sb = new StringBuilder();
+        string ProductName = string.Empty;
+        string Description = string.Empty;
         try
         {
             DataSet ds = pbll.GetListByPage("ProductType in(6) and " + "stock='" + stock + "' and Sales=1", "id desc", sItem, sItem);
@@ -51,15 +53,34 @@ public class Handler : IHttpHandler {
             }
             foreach (DataRow item in ds.Tables[0].Rows)
             {
+                if (Convert.ToInt32(item["ProductName"].ToString().Length) > 18)
+                {
+                    ProductName = item["ProductName"].ToString().Substring(0, 17) + "...";
+                }
+                else
+                {
+                    ProductName = item["ProductName"].ToString();
+
+                }
+                if (Convert.ToInt32(item["Description"].ToString().Length) > 100)
+                {
+                    Description = item["Description"].ToString().Substring(0, 97) + "...";
+                }
+                else
+                {
+                    Description = item["Description"].ToString();
+
+                }
                 sb.Append("<div class='Photography-context'>");
                 sb.Append("<ul>");
                 sb.Append("<li>");
                 sb.Append("<img style='width: 332px; height: 219px;' src='InformationImg/" + item["PriceRange"] + "' /></li>");
-                sb.Append("<li class='Photography-context-li'><a href='Vedio_detail.aspx?item=" + item["ID"] + "'><span class='Photography-context-li-title'>" + item["ProductName"] + "</span>");
+                sb.Append("<li class='Photography-context-li'><a href='Vedio_detail.aspx?item=" + item["ID"] + "'><span class='Photography-context-li-title'>" + ProductName + "</span>");
                 sb.Append("<br />");
                 sb.Append("<br />");
                 //  sb.Append("<span>价格：￥" + Convert.ToDecimal(item["Price"]).ToString("f2") + "&nbsp;&nbsp;联系人：" + item["ProductMan"] + "&nbsp;&nbsp;电话：" + item["ProductPhone"] + "</span></a> </li>");
-                sb.Append("<span>" + item["Description"] + "</span></a> </li>");
+                sb.Append("<span style='display:-moz-inline-box; display:inline-block;width: 332px; '>" + Description + "</span></a> </li>");
+               // sb.Append("<span style='display:-moz-inline-box; display:inline-block;width: 332px; '>《钢铁侠》改编自“漫威漫画”中的经典故事，讲述了工业家及发明家托尼·斯塔克遭阴谋绑架，被迫制造最致命的武器，身受重伤的他却暗中制造了一套高科技盔甲，保护自己逃生，从此变身“钢铁侠”保卫地球。[1] </span></a> </li>");
                 sb.Append("</ul>");
                 sb.Append("<div class='Photography-context-line'>");
                 sb.Append("<hr /></div></div>");

@@ -61,9 +61,9 @@ public class Handler : IHttpHandler {
                     ProductName = item["ProductName"].ToString();
 
                 }
-                if (Convert.ToInt32(item["ProductKey"].ToString().Length) > 30)
+                if (Convert.ToInt32(item["ProductKey"].ToString().Length) > 100)
                 {
-                    ProductKey = item["ProductKey"].ToString().Substring(0, 27) + "...";
+                    ProductKey = item["ProductKey"].ToString().Substring(0, 97) + "...";
                 }
                 else
                 {
@@ -78,7 +78,7 @@ public class Handler : IHttpHandler {
                 sb.Append("<br />");
                 sb.Append("<br />");
               //  sb.Append("<span>价格：￥" + Convert.ToDecimal(item["Price"]).ToString("f2") + "&nbsp;&nbsp;联系人：" + item["ProductMan"] + "&nbsp;&nbsp;电话：" + item["ProductPhone"] + "</span></a> </li>");
-                sb.Append("<span>" + ProductKey + "</span></a> </li>");
+                sb.Append("<span style='display:-moz-inline-box; display:inline-block;width: 332px; '>" + ProductKey + "</span></a> </li>");
                 sb.Append("</ul>");
                 sb.Append("<div class='Photography-context-line'>");
                 sb.Append("<hr /></div></div>");
@@ -118,9 +118,9 @@ public class Handler : IHttpHandler {
                     ProductName = item["ProductName"].ToString();
 
                 }
-                if (Convert.ToInt32(item["ProductKey"].ToString().Length) > 30)
+                if (Convert.ToInt32(item["ProductKey"].ToString().Length) > 100)
                 {
-                    ProductKey = item["ProductKey"].ToString().Substring(0, 27) + "...";
+                    ProductKey = item["ProductKey"].ToString().Substring(0, 97) + "...";
                 }
                 else
                 {
@@ -135,7 +135,7 @@ public class Handler : IHttpHandler {
                 sb.Append("<br />");
                 sb.Append("<br />");
                 //  sb.Append("<span>价格：￥" + Convert.ToDecimal(item["Price"]).ToString("f2") + "&nbsp;&nbsp;联系人：" + item["ProductMan"] + "&nbsp;&nbsp;电话：" + item["ProductPhone"] + "</span></a> </li>");
-                sb.Append("<span>" + ProductKey + "</span></a> </li>");
+                sb.Append("<span style='display:-moz-inline-box; display:inline-block;width: 332px; '>" + ProductKey + "</span></a> </li>");
                 sb.Append("</ul>");
                 sb.Append("<div class='Photography-context-line'>");
                 sb.Append("<hr /></div></div>");
@@ -175,9 +175,9 @@ public class Handler : IHttpHandler {
                     ProductName = item["ProductName"].ToString();
 
                 }
-                if (Convert.ToInt32(item["ProductKey"].ToString().Length) > 30)
+                if (Convert.ToInt32(item["ProductKey"].ToString().Length) > 100)
                 {
-                    ProductKey = item["ProductKey"].ToString().Substring(0, 27) + "...";
+                    ProductKey = item["ProductKey"].ToString().Substring(0, 97) + "...";
                 }
                 else
                 {
@@ -192,7 +192,7 @@ public class Handler : IHttpHandler {
                 sb.Append("<br />");
                 sb.Append("<br />");
                 //  sb.Append("<span>价格：￥" + Convert.ToDecimal(item["Price"]).ToString("f2") + "&nbsp;&nbsp;联系人：" + item["ProductMan"] + "&nbsp;&nbsp;电话：" + item["ProductPhone"] + "</span></a> </li>");
-                sb.Append("<span>" + ProductKey + "</span></a> </li>");
+                sb.Append("<span style='display:-moz-inline-box; display:inline-block;width: 332px; '>" + ProductKey + "</span></a> </li>");
                 sb.Append("</ul>");
                 sb.Append("<div class='Photography-context-line'>");
                 sb.Append("<hr /></div></div>");
