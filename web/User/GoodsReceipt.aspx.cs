@@ -21,11 +21,17 @@ public partial class User_GoodsReceipt : System.Web.UI.Page
         {
             YS_DeliveryBLL dbll = new YS_DeliveryBLL();
             YS_Delivery d = dbll.GetModelForUser(Convert.ToInt32(Tool.CookieGet("UserID")));
-            this.shText1.Value = d.DeliveryName;
-            this.shText2.Value = d.DeliverPhone;
-            this.shText3.Value = d.DeliverSheng;
-            this.shText4.Value = d.DeliverAddress;
-            this.shText5.Value = d.DeliverZipCode;
+            if (d != null)
+            {
+                if (d.ID > 0)
+                {
+                    this.shText1.Value = d.DeliveryName;
+                    this.shText2.Value = d.DeliverPhone;
+                    this.shText3.Value = d.DeliverSheng;
+                    this.shText4.Value = d.DeliverAddress;
+                    this.shText5.Value = d.DeliverZipCode;
+                }
+            }
         }
     }
 }
