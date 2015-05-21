@@ -81,12 +81,12 @@ public class Handler : IHttpHandler
         {
             if (!rel.Equals("其他"))
             {
-                sql = "ProductType in(4) and (ProductName like '%" + searchPro + "%' and ProductAddress  like '%" + rel + "%')";
+                sql = "ProductType in(3) and (ProductName like '%" + searchPro + "%' and ProductAddress  like '%" + rel + "%')";
 
             }
             else
             {
-                sql = "ProductType in(4) and (ProductName like '%" + searchPro + "%' and ProductAddress Not  like '%北京%' and ProductAddress Not  like '%上海%' and ProductAddress Not  like '%广州%' and ProductAddress Not  like '%深圳%')";
+                sql = "ProductType in(3) and (ProductName like '%" + searchPro + "%' and ProductAddress Not  like '%北京%' and ProductAddress Not  like '%上海%' and ProductAddress Not  like '%广州%' and ProductAddress Not  like '%深圳%')";
 
             }
             DataSet ds = pbll.GetListByPage(sql, "id desc", sItem, sItem);
