@@ -61,7 +61,7 @@ public class Handler : IHttpHandler
                 sb.Append("<ul>");
                 sb.Append("<li class='Recruitment-title-name'>" + item["ProductName"] + "</li>");
                 sb.Append("<li class='Recruitment-title-city'>（" + item["ProductAddress"] + "）</li>");
-                sb.Append("<li class='Recruitment-title-Salary'>日薪" + Convert.ToDecimal(item["Price"]).ToString("f2") + "</li>");
+              //  sb.Append("<li class='Recruitment-title-Salary'>日薪" + Convert.ToDecimal(item["Price"]).ToString("f2") + "</li>");
                 sb.Append("</ul>");
                 sb.Append("</div>");
                 sb.Append("<div class='Recruitment-context'>");
