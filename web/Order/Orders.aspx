@@ -177,6 +177,7 @@
     <script type="text/javascript">
         var sItem = 1;
         var isadd = true;
+        var rel = "";
         $(window).scroll(function () {
             queryData();
         })
@@ -192,7 +193,8 @@
             $(".diqa").click(function () {
                 $(".diqa").removeClass("active");
                 $(this).addClass("active");
-                $("#scText1").val($(this).attr("rel"));
+                rel = $(this).attr("rel");
+                //   $("#scText1").val($(this).attr("rel"));
                 SearchPro();
             });
         })
@@ -205,7 +207,8 @@
                         dataType: "json",
                         url: "Action/Handler.ashx?cmd=GetProducts1",
                         data: { "sItem": sItem,
-                            "searchPro": $("#scText1").val() == "输入职业关键词,如：摄影师" ? "" : $("#scText1").val()
+                            "searchPro": $("#scText1").val() == "输入职业关键词,如：摄影师" ? "" : $("#scText1").val(),
+                            "rel": rel
                         },
                         success: function (data) {
                             if (data.flag == "true") {
@@ -252,7 +255,7 @@
     <li><a class="diqa" rel="上海" href="javascript:;">上海</a></li>
     <li><a class="diqa" rel="广州" href="javascript:;">广州</a></li>
     <li><a class="diqa" rel="深圳" href="javascript:;">深圳</a></li>
-    <li><a class="diqa" rel="" href="javascript:;">其他</a></li>
+    <li><a class="diqa" rel="其他" href="javascript:;">其他</a></li>
             </ul>
         </div>
         <div class="Recruitment-line">
