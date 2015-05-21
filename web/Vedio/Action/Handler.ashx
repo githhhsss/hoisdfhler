@@ -62,9 +62,9 @@ public class Handler : IHttpHandler {
                     ProductName = item["ProductName"].ToString();
 
                 }
-                if (Convert.ToInt32(item["Description"].ToString().Length) > 100)
+                if (Convert.ToInt32(item["Description"].ToString().Length) > 50)
                 {
-                    Description = item["Description"].ToString().Substring(0, 97) + "...";
+                    Description = item["Description"].ToString().Substring(0, 47) + "...";
                 }
                 else
                 {
