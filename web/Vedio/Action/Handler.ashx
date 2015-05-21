@@ -74,7 +74,7 @@ public class Handler : IHttpHandler {
                 sb.Append("<div class='Photography-context'>");
                 sb.Append("<ul>");
                 sb.Append("<li>");
-                sb.Append("<img style='width: 332px; height: 219px;' src='InformationImg/" + item["PriceRange"] + "' /></li>");
+                sb.Append("<img style='width: 332px; height: 219px;' src='~/ProductImg/esImg/" + item["PriceRange"] + "' /></li>");
                 sb.Append("<li class='Photography-context-li'><a href='Vedio_detail.aspx?item=" + item["ID"] + "'><span class='Photography-context-li-title'>" + ProductName + "</span>");
                 sb.Append("<br />");
                 sb.Append("<br />");
