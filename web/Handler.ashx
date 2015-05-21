@@ -130,6 +130,11 @@ public class Handler : IHttpHandler
 
 
                 }
+                else
+                {
+                    Description = item["Description"].ToString();
+
+                }
                 sb.Append("<div class='index-list'>");
                 sb.Append("<div class='index-list-img fl'>");
                 sb.Append("<img src='../ProductImg/esImg/" + item["PriceRange"] + "' alt='' />");
