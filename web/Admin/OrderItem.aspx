@@ -68,8 +68,8 @@
                     <td><%# Eval("Num") %></td>
                     <td><%# pbll.GetModel(Convert.ToInt32(Eval("ProductID"))) != null ? pbll.GetModel(Convert.ToInt32(Eval("ProductID"))).Stock : 0%></td>
                     <td>  <%# obll.GetModel(Convert.ToInt32(Eval("OrderID")),true) != null ? obll.GetModel(Convert.ToInt32(Eval("OrderID")),true).DeliverAddress : ""%></td>
-                    <td class="btn"><a 
-                        class='<%# ((cbll.GetModel( Convert.ToInt32(Eval("ID")))!=null)||(obll.GetModel(Convert.ToInt32(Eval("OrderID")),true).State != YS_WEB.Model.YS_Enum.OrderState.已完成))?"huise":"hongse" %>' 
+                    <td class="btn">
+                      <a   class='<%# ((cbll.GetModel( Convert.ToInt32(Eval("ID")))!=null)||(obll.GetModel(Convert.ToInt32(Eval("OrderID")),true).State != YS_WEB.Model.YS_Enum.OrderState.已完成))?"huise":"hongse" %>' 
                         onclick='<%# ((cbll.GetModel( Convert.ToInt32(Eval("ID")))!=null)||(obll.GetModel(Convert.ToInt32(Eval("OrderID")),true).State != YS_WEB.Model.YS_Enum.OrderState.已完成))?"bp()":"pj("+ Eval("ID") +")" %>' 
                         href="javascript:;">评价</a></td>
                     </tr>
