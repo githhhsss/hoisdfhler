@@ -43,10 +43,10 @@ namespace YS_WEB.BLL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public YS_WEB.Model.YS_Order GetModel(int userID)
+		public YS_WEB.Model.YS_Order GetModel(int id)
 		{
 			//该表无主键信息，请自定义主键/条件字段
-            return dal.GetModel(userID);
+            return dal.GetModel(id);
 		}
         /// <summary>
         /// 得到一个对象实体

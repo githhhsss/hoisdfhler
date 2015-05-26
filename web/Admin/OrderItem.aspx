@@ -67,7 +67,7 @@
                     <td><%# pbll.GetModel( Convert.ToInt32(Eval("ProductID")))!=null? pbll.GetModel( Convert.ToInt32(Eval("ProductID"))).Price.ToString("f2") :"0.00" %></td>
                     <td><%# Eval("Num") %></td>
                     <td><%# pbll.GetModel(Convert.ToInt32(Eval("ProductID"))) != null ? pbll.GetModel(Convert.ToInt32(Eval("ProductID"))).Stock : 0%></td>
-                    <td>  <%# obll.GetModel(Convert.ToInt32(Eval("OrderID"))) != null ? obll.GetModel(Convert.ToInt32(Eval("OrderID"))).DeliverAddress : ""%></td>
+                    <td>  <%# obll.GetModel(Convert.ToInt32(Eval("OrderID")),true) != null ? obll.GetModel(Convert.ToInt32(Eval("OrderID")),true).DeliverAddress : ""%></td>
                     <td class="btn"><a 
                         class='<%# ((cbll.GetModel( Convert.ToInt32(Eval("ID")))!=null)||(obll.GetModel(Convert.ToInt32(Eval("OrderID")),true).State != YS_WEB.Model.YS_Enum.OrderState.已完成))?"huise":"hongse" %>' 
                         onclick='<%# ((cbll.GetModel( Convert.ToInt32(Eval("ID")))!=null)||(obll.GetModel(Convert.ToInt32(Eval("OrderID")),true).State != YS_WEB.Model.YS_Enum.OrderState.已完成))?"bp()":"pj("+ Eval("ID") +")" %>' 
