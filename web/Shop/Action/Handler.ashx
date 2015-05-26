@@ -25,9 +25,9 @@ public class Handler : IHttpHandler
                 System.Reflection.MethodInfo Remethod = this.GetType().GetMethod(cmd);
                 if (Remethod != null) { Remethod.Invoke(this, new object[] { context }); }
             }
-            catch( Exception e)
+            catch
             {
-                context.Response.Write("{\"flag\":\"false\",\"msg\":\""+e.ToString()+" \"}");
+                context.Response.Write("{\"flag\":\"false\",\"msg\":\"系统异常 \"}");
             }
         }
         else
