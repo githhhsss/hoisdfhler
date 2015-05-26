@@ -20,15 +20,15 @@ public class Handler : IHttpHandler
         string cmd = context.Request["cmd"];
         if (cmd != "")
         {
-            //try
-           // {
+            try
+            {
                 System.Reflection.MethodInfo Remethod = this.GetType().GetMethod(cmd);
                 if (Remethod != null) { Remethod.Invoke(this, new object[] { context }); }
-          //  }
-           // catch
-           // {
-               // context.Response.Write("{\"flag\":\"false\",\"msg\":\"系统异常 \"}");
-           // }
+            }
+            catch( Exception e)
+            {
+                context.Response.Write("{\"flag\":\"false\",\"msg\":\""+e.ToString()+" \"}");
+            }
         }
         else
         {
