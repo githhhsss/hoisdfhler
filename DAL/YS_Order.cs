@@ -180,7 +180,7 @@ namespace YS_WEB.DAL
 			//该表无主键信息，请自定义主键/条件字段
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select  top 1 ID,UserID,UserName,DeliveryName,DeliverPhone,DeliverSheng,DeliverCity,DeliverZipCode,DeliverAddress,Price,Promotion,State,AddTime from YS_Order ");
-            strSql.Append(" where id=@id Order By AddTime DESC");
+            strSql.Append(" where userid=@id Order By AddTime DESC");
 			SqlParameter[] parameters = {
                 new SqlParameter("@id", SqlDbType.Int,4)
 			};
